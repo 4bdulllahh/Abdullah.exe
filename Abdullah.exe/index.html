@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullah.exe</title>
+
+    <!-- Theme & Performance -->
+    <meta name="theme-color" content="#121212">
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Space+Grotesk:wght@800&display=swap"
+        as="style">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link type="logo" rel="icon" href="Assets/images/title_icon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neo-yellow': '#FBFF48',
+                        'neo-pink': '#FF70A6',
+                        'neo-blue': '#3B82F6',
+                        'neo-green': '#33FF57',
+                        'neo-purple': '#A855F7',
+                        'neo-orange': '#FF9F1C',
+                        'neo-red': '#FF2A2A',
+                        'neo-white': '#FFFDF5',
+                        'neo-black': '#121212',
+                    },
+                    fontFamily: {
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'hard': '4px 4px 0px 0px #000',
+                        'hard-sm': '2px 2px 0px 0px #000',
+                        'hard-lg': '8px 8px 0px 0px #000',
+                        'hard-xl': '12px 12px 0px 0px #000',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Styles */
+        body {
+            cursor: none;
+            /* We use a custom cursor */
+            background-color: #FFFDF5;
+            background-image:
+                radial-gradient(#000 1px, transparent 1px),
+                linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+                linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+            background-size: 40px 40px, 100px 100px, 100px 100px;
+        }
+
+        /* Custom Cursor */
+        #cursor {
+            pointer-events: none;
+            position: fixed;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.1s;
+        }
+
+        /* Animations */
+        .marquee-container {
+            overflow: hidden;
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: scroll 40s linear infinite;
+            width: max-content;
+        }
+
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
+
+        .marquee-content-reverse {
+            display: inline-block;
+            animation: scroll-reverse 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes scroll-reverse {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glitch Effect on Hover */
+        .glitch-hover:hover {
+            animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+            color: #FF2A2A;
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                transform: translate(0)
+            }
+
+            20% {
+                transform: translate(-2px, 2px)
+            }
+
+            40% {
+                transform: translate(-2px, -2px)
+            }
+
+            60% {
+                transform: translate(2px, 2px)
+            }
+
+            80% {
+                transform: translate(2px, -2px)
+            }
+
+            100% {
+                transform: translate(0)
+            }
+        }
+    </style>
+</head>
+
+<body class="text-neo-black font-display antialiased selection:bg-neo-black selection:text-neo-yellow">
+
+    <div id="cursor" class="w-6 h-6 bg-white rounded-full border-2 border-black hidden lg:block"></div>
+
+    <div class="fixed top-0 left-0 h-2 bg-neo-green z-[60] border-b-2 border-black" id="progressBar" style="width: 0%">
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 px-4 py-4 pointer-events-none">
+        <div class="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
+            <a href="#"
+                class="bg-neo-white border-2 border-black px-4 py-1 text-2xl font-black shadow-hard hover:bg-neo-yellow transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none cursor-hover">
+                Abdullah.exe
+            </a>
+
+            <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
+                <a href="#about"
+                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/ABOUT</a>
+                <a href="#skills"
+                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/SKILLS</a>
+                <a href="#experience"
+                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/LOGS</a>
+                <a href="#projects"
+                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/WORK</a>
+                <a href="#contact"
+                    class="px-3 py-1 font-mono font-bold text-sm bg-neo-yellow border border-black hover:bg-neo-pink transition-colors cursor-hover">/CONTACT ME</a>
+            </div>
+        </div>
+    </nav>
+
+    <section
+        class="min-h-screen flex flex-col justify-center items-center px-4 pt-20 relative overflow-hidden border-b-4 border-black">
+        <div
+            class="absolute top-1/3 left-[10%] w-16 h-16 bg-neo-blue border-4 border-black shadow-hard animate-bounce hidden lg:block rotate-12">
+        </div>
+        <div
+            class="absolute bottom-1/3 right-[10%] w-24 h-24 bg-neo-pink rounded-full border-4 border-black shadow-hard hidden lg:block animate-pulse">
+        </div>
+        <div class="absolute top-20 right-20 text-9xl opacity-5 font-black select-none pointer-events-none">CODE</div>
+
+        <div class="relative z-10 text-center max-w-5xl">
+            <div
+                class="inline-block bg-neo-white border-2 border-black px-4 py-1 mb-6 shadow-hard rotate-[-2deg] reveal">
+                <span class="font-mono font-bold text-neo-green bg-black px-2 mr-2">●</span>
+                <span class="font-mono font-bold">SYSTEM STATUS: ONLINE</span>
+            </div>
+
+            <h1
+                class="text-[13vw] md:text-[10vw] leading-[0.8] font-black uppercase tracking-tighter mb-6 reveal mix-blend-darken">
+                FULL STACK<br>
+                <span class="text-white text-stroke-black" style="-webkit-text-stroke: 3px black;">DEVELOPER</span>
+            </h1>
+
+            <p
+                class="font-mono text-lg md:text-2xl max-w-2xl mx-auto mb-10 bg-neo-yellow border-2 border-black p-4 shadow-hard reveal rotate-1">
+                I build digital products that refuse to be boring. <br>
+                <b>React • Python • Java • Node</b>
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center gap-6 reveal">
+                <a href="#projects"
+                    class="bg-black text-white border-2 border-black px-10 py-5 text-xl font-bold shadow-hard hover:bg-neo-green hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
+                    VIEW DATABASE
+                </a>
+                <a href="Assets/Resume/Resume.pdf" download
+                    class="bg-neo-white text-black border-2 border-black px-10 py-5 text-xl font-bold shadow-hard hover:bg-neo-pink hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover flex items-center justify-center gap-2">
+                    <i class="ri-download-line"></i> DOWNLOAD CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="border-b-4 border-black bg-neo-blue py-3 relative z-20">
+        <div class="marquee-container font-mono font-bold text-2xl text-white">
+            <div class="marquee-content">
+                /// OPEN FOR WORK /// FULL STACK DEVELOPMENT /// UI/UX DESIGN /// WEB3 READY /// ACCESSIBLE /// FAST ///
+                SECURE /// OPEN FOR WORK /// FULL STACK DEVELOPMENT ///
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="py-24 px-4 max-w-7xl mx-auto border-x-4 border-black bg-white my-12 shadow-hard-lg">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div class="md:col-span-4 reveal">
+                <div class="aspect-square bg-gray-200 border-4 border-black relative shadow-hard overflow-hidden group">
+                    <img src="Assets/images/img.jpg" alt="Arham"
+                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    <span
+                        class="absolute top-2 left-2 bg-neo-red text-white px-2 font-mono text-xs border border-black z-10">Abdullah.JPG</span>
+                </div>
+            </div>
+            <div class="md:col-span-8 flex flex-col justify-center reveal">
+                <h2 class="text-6xl font-black uppercase mb-6">Who am I?</h2>
+                <p class="font-mono text-xl leading-relaxed mb-6">
+                    I am Abdullah. A creative developer who believes the web has become too sanitized. I bring <span
+                        class="bg-neo-yellow px-1 border border-black">personality</span> back to code.
+                </p>
+                <p class="font-mono text-lg mb-8 text-gray-600 border-l-4 border-neo-purple pl-4">
+                    > Specialized in Designing and Web Development.<br>
+                    > Obsessed with Minimalism and AI.<br>
+                    > 3+ years of autopiloting Learning.
+                </p>
+
+                <div class="flex gap-4">
+                    <div class="bg-neo-black text-white px-4 py-2 font-mono text-sm border-2 border-transparent">
+                        📍 LOCATION: WORLDWIDE
+                    </div>
+                    <div class="bg-neo-green text-black px-4 py-2 font-mono text-sm border-2 border-black">
+                        🟢 STATUS: AVAILABLE
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-neo-black text-neo-white border-y-4 border-black relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20"
+            style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 40px 40px;">
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-4 border-white pb-4">
+                <h2 class="text-6xl md:text-8xl font-black uppercase text-white tracking-tighter">
+                    TECH<span class="text-neo-green">_STACK</span>
+                </h2>
+                <div class="flex items-center gap-2 mb-2 md:mb-4">
+                    <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                    <p class="font-mono text-neo-green text-sm font-bold">/// SYSTEM_OPTIMIZED</p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center md:justify-start">
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ LIBRARY
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">REACT</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ FRAMEWORK
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">NEXT.JS
+                    </div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ LANGUAGE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">Python
+                    </div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ BACKEND
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">NODE.JS
+                    </div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ STYLING
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">TAILWIND
+                    </div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ ANDRIOD</div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">KOTLIN</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ CORE</div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">HTML5</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ PACKAGES
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">JSON</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ CREATION</div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">ADOBE
+                    </div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ GAME_DEV</div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">UNITY
+                    </div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ LANGUAGE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">JAVA</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ APPS
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">ANDROID
+                    </div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ LANGUAGE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">CSS</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ MODELS
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">LLM TRAINING
+                    </div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ ROBOTICS</div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">ARDUINO
+                    </div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ LANGUAGE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">C++</div>
+                </div>
+            </div>
+
+            <div class="border-t-4 border-white mt-8 pt-4 flex justify-between font-mono text-xs text-gray-500">
+                <span>TOTAL_NODES: 16</span>
+                <span>MEMORY_USAGE: 128MB</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 px-4 max-w-7xl mx-auto">
+        <h2 class="text-5xl md:text-8xl font-black uppercase mb-12 tracking-tighter text-center">
+            Experience<span class="text-neo-red">_Log</span>
+        </h2>
+
+        <div class="relative border-l-4 border-black ml-4 md:ml-10 space-y-12">
+            <div class="reveal relative pl-8 md:pl-16">
+                <div class="absolute -left-[14px] top-2 w-6 h-6 bg-neo-yellow border-4 border-black"></div>
+                <div class="bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-dashed border-gray-300 pb-4 mb-4">
+                        <h3 class="text-3xl font-black uppercase">Sales Manager</h3>
+                        <span class="font-mono font-bold bg-neo-black text-white px-2 py-1">Jun 2022 - PRESENT</span>
+                    </div>
+                    <p class="font-mono text-xl mb-2 text-neo-pink font-bold">@ Uniformers</p>
+                    <ul class="list-disc list-inside font-mono text-gray-700 space-y-1">
+                        <li>Started out as a regular sales guy with amatuer tech experience and just a drive to close deals.</li>
+                        <li>Learned how to build websites on the fly because I wanted to give my customers a better experience.</li>
+                        <li>Taught myself HTML, CSS, and JS to solve real business problems instead of just talking about them.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="reveal relative pl-8 md:pl-16">
+                <div class="absolute -left-[14px] top-2 w-6 h-6 bg-neo-red border-4 border-black"></div>
+                <div class="bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-dashed border-gray-300 pb-4 mb-4">
+                        <h3 class="text-3xl font-black uppercase">Web Developer</h3>
+                        <span class="font-mono font-bold bg-neo-black text-white px-2 py-1">Jun 2023 - Present</span>
+                    </div>
+                    <p class="font-mono text-xl mb-2 text-neo-red font-bold">@ Freelancing</p>
+                    <ul class="list-disc list-inside font-mono text-gray-700 space-y-1">
+                        <li>Spent my first year of uni learning the "why" behind web design and building my first sites for small businesses.</li>
+                        <li>Started hunting for my own leads and figured out how to turn a client's idea into a working website.</li>
+                        <li>Focused on getting the basics down and growing my network while sharpening my coding and design skills.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="reveal relative pl-8 md:pl-16">
+                <div class="absolute -left-[14px] top-2 w-6 h-6 bg-neo-green border-4 border-black"></div>
+                <div class="bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-dashed border-gray-300 pb-4 mb-4">
+                        <h3 class="text-3xl font-black uppercase">Full Stack Developer</h3>
+                        <span class="font-mono font-bold bg-neo-black text-white px-2 py-1">Dec 2025 - Present</span>
+                    </div>
+                    <p class="font-mono text-xl mb-2 text-neo-green font-bold">@ SELF_EMPLOYED</p>
+                    <ul class="list-disc list-inside font-mono text-gray-700 space-y-1">
+                        <li>Taking full ownership of projects, from designing the look to building out the backend and launching it.</li>
+                        <li>Working directly with clients to build modern apps that actually solve their problems and look great on any screen.</li>
+                        <li>Managing the whole process myself balancing code, deadlines, and client feedback to get the job done right.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section id="experience" class="py-24 px-4 max-w-7xl mx-auto">
+        <h2 class="text-5xl md:text-8xl font-black uppercase mb-12 tracking-tighter text-center">
+            Education<span class="text-neo-red">_Log</span>
+        </h2>
+
+        <div class="relative border-l-4 border-black ml-4 md:ml-10 space-y-12">
+            <div class="reveal relative pl-8 md:pl-16">
+                <div class="absolute -left-[14px] top-2 w-6 h-6 bg-neo-yellow border-4 border-black"></div>
+                <div class="bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-dashed border-gray-300 pb-4 mb-4">
+                        <h3 class="text-3xl font-black uppercase">Degree of Higher Education in General Science</h3>
+                        <span class="font-mono font-bold bg-neo-black text-white px-2 py-1">2010 - 2022</span>
+                    </div>
+                    <p class="font-mono text-xl mb-2 text-neo-pink font-bold">@ The English Private School</p>
+                </div>
+            </div>
+
+            <div class="reveal relative pl-8 md:pl-16">
+                <div class="absolute -left-[14px] top-2 w-6 h-6 bg-neo-red border-4 border-black"></div>
+                <div class="bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-dashed border-gray-300 pb-4 mb-4">
+                        <h3 class="text-3xl font-black uppercase">Bachelors in Computer Science  </h3>
+                        <span class="font-mono font-bold bg-neo-black text-white px-2 py-1">2023 - 2026</span>
+                    </div>
+                    <p class="font-mono text-xl mb-2 text-neo-red font-bold">@ University of BathSpa</p>
+                </div>
+            </div>
+
+            <div class="reveal relative pl-8 md:pl-16">
+                <div class="absolute -left-[14px] top-2 w-6 h-6 bg-neo-green border-4 border-black"></div>
+                <div class="bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
+                    <div
+                        class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-dashed border-gray-300 pb-4 mb-4">
+                        <h3 class="text-3xl font-black uppercase">Masters in Data Science</h3>
+                        <span class="font-mono font-bold bg-neo-black text-white px-2 py-1">2026 - Present</span>
+                    </div>
+                    <p class="font-mono text-xl mb-2 text-neo-green font-bold">@ Unknown</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 bg-neo-yellow border-t-4 border-black px-4 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-6xl md:text-9xl font-black mb-16 uppercase tracking-tighter text-white drop-shadow-[4px_4px_0_rgba(0,0,0,1)] text-stroke-black"
+                style="-webkit-text-stroke: 3px black;">
+                Selected Works
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/Dekor.jpg"
+                            alt="PhisGaurd - AI-powered cybersecurity platform for threat detection by Arham"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3
+                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-red transition-colors glitch-hover">
+                                Dekor</h3>
+                            <p class="font-mono text-sm mb-4 max-w-xs">A fully funtional minimalistic website for authentic swedish furniture with a Database and payment wall</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">MongoDB</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Backend</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Three.js</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Frontend</span>
+                            </div>
+                        </div>
+                        <a href="https://dekorfurniture.vercel.app/"
+                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard mt-0 md:mt-20">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/Prime.jpg"
+                            alt="StockEasy - Real-time stock market data and portfolio management by Arham"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3
+                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-blue transition-colors glitch-hover">
+                                Prime Real Estate</h3>
+                            <p class="font-mono text-sm mb-4 max-w-xs">Comprehensive online stock exchange platform
+                                providing real-time market data, portfolio management, and trading capabilities.</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">Frontend</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Three.js</span>
+                                <span class="bg-neo-black text-white px-2 py-1">MySQL</span>
+                                <span class="bg-neo-black text-white px-2 py-1">TailWind</span>
+                            </div>
+                        </div>
+                        <a href="https://prime-marketing-two.vercel.app/"
+                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/Habibi.jpg"
+                            alt="Creative Portfolio - High-end WebGL and GSAP developer showcase by Arham"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3
+                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-pink transition-colors glitch-hover">
+                                Al Habibi Bakery</h3>
+                            <p class="font-mono text-sm mb-4 max-w-xs">A website i made for my local bakery to start my lead generations</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">WebGL</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Frontend</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Three.js</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/4bdulllahhexe/Al-Habibi-Bakery.github.io.git"
+                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard mt-0 md:mt-20">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/SuperCar App.jpg"
+                            alt="Android Habit Tracker - Material Design productivity app by Arham"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3
+                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-orange transition-colors glitch-hover">
+                                SuperCar App</h3>
+                            <p class="font-mono text-sm mb-4 max-w-xs">A wiki app to get information and history about various SuperCar comapanies</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">Java</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Kotlin</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Android</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Material-UI</span>
+                            </div>
+                        </div>
+                        <a href="https://drive.google.com/drive/folders/1AAui8mtSlI0Icuko635WuqXJL2-oai_4?usp=sharing"
+                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                    
+                </article>
+
+                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/DndK.jpg"
+                            alt="Creative Portfolio - High-end WebGL and GSAP developer showcase by Arham"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3
+                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-pink transition-colors glitch-hover">
+                                Dragon & Knights</h3>
+                            <p class="font-mono text-sm mb-4 max-w-xs">A fully indipendently developed indie game about knights and dragon i made for fun.</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">Unity</span>
+                                <span class="bg-neo-black text-white px-2 py-1">C++</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Animations</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Physics</span>
+                            </div>
+                        </div>
+                        <a href="https://a6dullah.itch.io/dragons-knights"
+                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard mt-0 md:mt-20">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/stroke.jpg"
+                            alt="Android Habit Tracker - Material Design productivity app by Arham"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3
+                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-orange transition-colors glitch-hover">
+                                Machine Learning</h3>
+                            <p class="font-mono text-sm mb-4 max-w-xs">A Model I trained to detect if a person is having a stroke or not using RandomForestClassifier</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">Python</span>
+                                <span class="bg-neo-black text-white px-2 py-1">MySQL</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Database</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Kaggle</span>
+                            </div>
+                        </div>
+                        <a href="https://www.kaggle.com/code/abood186/stroke-prediction-using-randomforestclassifier"
+                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                    
+                </article>
+                
+                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/Twine.jpg"
+                            alt="Creative Portfolio - High-end WebGL and GSAP developer showcase by Arham"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3
+                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-pink transition-colors glitch-hover">
+                                Hallways</h3>
+                            <p class="font-mono text-sm mb-4 max-w-xs">A horror game with mutliple choice and mutliple ending i make using Twine.</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">Twine</span>
+                                <span class="bg-neo-black text-white px-2 py-1">HTML5</span>
+                                <span class="bg-neo-black text-white px-2 py-1">CSS</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Adobe</span>
+                            </div>
+                        </div>
+                        <a href="https://drive.google.com/drive/folders/1Ddc5JVyv-Wa_dSpraJdL7n838MO633_5?usp=sharing"
+                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard mt-0 md:mt-20">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/Trivia.jpg"
+                            alt="Android Habit Tracker - Material Design productivity app by Arham"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3
+                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-orange transition-colors glitch-hover">
+                                Trivia App</h3>
+                            <p class="font-mono text-sm mb-4 max-w-xs">An app I made that uses an API to get random trivia questions, app has diffrent difficulties</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">APIs</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Andriod Studio</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Kotlin</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Gradle</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/CodeLab-II/skills-portfolio-4bdulllahh.git"
+                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                    
+                </article>
+                <!-- End Projects -->
+            </div>
+
+            <div class="text-center mt-24">
+                <a href="https://github.com/4bdulllahh"
+                    class="inline-block bg-neo-black text-white px-12 py-5 font-bold font-mono text-xl hover:bg-neo-white hover:text-black border-4 border-black transition-all shadow-hard hover:shadow-none cursor-hover">
+                    VIEW ALL REPOS ON GITHUB
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="py-24 bg-neo-black border-t-4 border-black overflow-hidden relative">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center gap-2 mb-16 bg-white/5 border-2 border-white/10 p-4 inline-flex shadow-hard shadow-neo-blue/20">
+            <div class="flex gap-2">
+                <div class="h-3 w-3 bg-red-500 rounded-full border border-black"></div>
+                <div class="h-3 w-3 bg-yellow-500 rounded-full border border-black"></div>
+                <div class="h-3 w-3 bg-green-500 rounded-full border border-black"></div>
+            </div>
+            <h2 class="font-mono text-white text-xl font-bold ml-4 tracking-tighter">Certifications.log</h2>
+            <div class="ml-8 px-2 bg-neo-green text-black text-[10px] font-black uppercase">Verified_Records</div>
+        </div>
+    </div>
+
+    <div class="marquee-container group cursor-hover">
+        <div class="marquee-content flex gap-8 py-12 px-4 select-none">
+            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-green/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-neo-green"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="font-mono text-neo-green text-xs font-bold tracking-widest uppercase">CERT_001.jpg</div>
+                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                </div>
+                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
+                    <img src="Assets/Certificates/certificate1.jpg" alt="Certificate 1" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                </div>
+                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
+            </div>
+
+            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-neo-blue"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">CERT_002.jpg</div>
+                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                </div>
+                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
+                    <img src="Assets/Certificates/certificate2.jpg" alt="Certificate 2" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                </div>
+                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
+            </div>
+
+            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-pink/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-neo-pink"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="font-mono text-neo-pink text-xs font-bold tracking-widest uppercase">CERT_003.jpg</div>
+                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                </div>
+                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
+                    <img src="Assets/Certificates/certificate3.jpg" alt="Certificate 3" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                </div>
+                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
+            </div>
+
+            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-purple/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-neo-purple"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="font-mono text-neo-purple text-xs font-bold tracking-widest uppercase">CERT_004.jpg</div>
+                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                </div>
+                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
+                    <img src="Assets/Certificates/certificate4.jpg" alt="Certificate 4" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                </div>
+                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
+            </div>
+
+            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-green/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-neo-green"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="font-mono text-neo-green text-xs font-bold tracking-widest uppercase">CERT_005.jpg</div>
+                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                </div>
+                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
+                    <img src="Assets/Certificates/certificate5.jpg" alt="Certificate 1" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                </div>
+                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
+            </div>
+
+            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-neo-blue"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">CERT_006.jpg</div>
+                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                </div>
+                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
+                    <img src="Assets/Certificates/certificate6.jpg" alt="Certificate 2" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                </div>
+                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
+            </div>
+
+            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-neo-blue"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">CERT_007.jpg</div>
+                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                </div>
+                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
+                    <img src="Assets/Certificates/certificate6.jpg" alt="Certificate 2" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                </div>
+                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
+            </div>
+
+            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-neo-blue"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">CERT_008.jpg</div>
+                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                </div>
+                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
+                    <img src="certificate2.jpg" alt="Certificate 2" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                </div>
+                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
+            </div>
+            
+            </div>
+    </div>
+</section>
+
+    <section id="contact" class="py-24 px-4 max-w-5xl mx-auto">
+        <div class="bg-white border-4 border-black shadow-hard-xl p-8 md:p-12 relative reveal mt-12">
+            <div
+                class="absolute -top-10 -left-6 bg-neo-yellow border-4 border-black px-6 py-2 shadow-hard rotate-[-5deg]">
+                <span class="font-black text-2xl">CONTACT ME</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-6xl font-black uppercase mb-6 leading-[0.85]">Let's<br>Talk<br>Code.</h2>
+                    <p class="font-mono text-lg mb-8 text-gray-600">
+                        I am currently available for work and open to full-time opportunities.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-neo-black text-white flex items-center justify-center border-2 border-black">
+                                <i class="ri-mail-line text-xl"></i>
+                            </div>
+                            <a href="mailto:topiwalaarham@gmail.com"
+                                class="text-xl font-bold hover:bg-neo-blue cursor-hover">abdullahkamran823@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-neo-black text-white flex items-center justify-center border-2 border-black">
+                                <i class="ri-map-pin-line text-xl"></i>
+                            </div>
+                            <span class="text-xl font-bold"> Earth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="space-y-6 bg-gray-50 p-6 border-2 border-black"
+                    onsubmit="event.preventDefault(); this.innerHTML='<div class=\'py-20 text-center\'><i class=\'ri-checkbox-circle-fill text-6xl text-neo-green mb-4 block\'></i><h3 class=\'text-2xl font-black uppercase\'>Transmission Received</h3><p class=\'font-mono text-sm mt-2\'>System response initialized. I will reach out shortly.</p></div>'">
+                    <div class="flex flex-col">
+                        <label class="font-mono font-bold mb-1 uppercase text-xs">Identity</label>
+                        <input type="text" placeholder="NAME / COMPANY"
+                            class="bg-white border-2 border-black p-3 font-bold focus:outline-none focus:bg-neo-yellow focus:shadow-hard-sm transition-all cursor-hover">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="font-mono font-bold mb-1 uppercase text-xs">Coordinates</label>
+                        <input type="email" placeholder="EMAIL ADDRESS"
+                            class="bg-white border-2 border-black p-3 font-bold focus:outline-none focus:bg-neo-yellow focus:shadow-hard-sm transition-all cursor-hover">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="font-mono font-bold mb-1 uppercase text-xs">Transmission</label>
+                        <textarea rows="4" placeholder="QUERY..."
+                            class="bg-white border-2 border-black p-3 font-bold focus:outline-none focus:bg-neo-yellow focus:shadow-hard-sm transition-all resize-none cursor-hover"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-neo-blue text-white font-black text-xl py-4 border-2 border-black shadow-hard neo-button hover:bg-neo-black hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
+                        TRANSMIT DATA
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-16 px-4 border-t-8 border-neo-green font-mono relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+            <div class="col-span-1 md:col-span-2">
+                <h2 class="text-4xl font-black mb-6">Abdullah.</h2>
+                <p class="text-gray-400 max-w-sm">
+                    Designing for the future with the raw aesthetics of the past. No cookies, no trackers, just code.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Home</a>
+                    </li>
+                    <li><a href="#projects"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Works</a>
+                    </li>
+                    <li><a href="#about"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">About</a>
+                    </li>
+                    <li><a href="#contact"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SOCIALS</h3>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/4bdulllahh/"
+                        class="text-2xl hover:text-neo-pink transition-colors cursor-hover"><i
+                            class="ri-instagram-fill"></i></a>
+                    <a href="https://github.com/4bdulllahh"
+                        class="text-2xl hover:text-neo-yellow transition-colors cursor-hover"><i
+                            class="ri-github-fill"></i></a>
+                    <a href="linkedin.com/in/abdullah-kamran-047905213/?skipRedirect=true"
+                        class="text-2xl hover:text-neo-purple transition-colors cursor-hover"><i
+                            class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-16 pt-8 border-t border-gray-800 text-gray-500 text-sm">
+            <p>© 2026 Abdullah.exe // SYSTEM_END</p>
+        </div>
+
+        <div
+            class="absolute bottom-0 left-0 w-full text-[20vw] font-black text-white opacity-[0.03] leading-none select-none pointer-events-none text-center">
+            BRUTAL
+        </div>
+    </footer>
+
+    <script>
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        const hoverElements = document.querySelectorAll('.cursor-hover, a, button, input, textarea');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursor.style.transform = `translate(-50%, -50%)`;
+        });
+
+        // Add hover effect to cursor
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '60px';
+                cursor.style.height = '60px';
+                cursor.style.backgroundColor = '#FBFF48'; // Neo Yellow
+                cursor.style.mixBlendMode = 'normal';
+                cursor.style.border = '2px solid black';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '24px';
+                cursor.style.height = '24px';
+                cursor.style.backgroundColor = '#fff';
+                cursor.style.mixBlendMode = 'difference';
+                cursor.style.border = 'none';
+            });
+        });
+
+        // Scroll Reveal Logic
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Scroll Progress Bar
+        window.onscroll = function () {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+
+
+</html>
