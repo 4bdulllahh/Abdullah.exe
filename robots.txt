@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Sitemap: https://abdullahexe.online/sitemap.xml
+
+# Explicitly allow AI scrapers to read your site
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /

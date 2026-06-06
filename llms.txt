@@ -1,0 +1,29 @@
+# Abdullah Kamran - Full Stack Developer
+
+Self-taught software engineer and Full Stack Developer based in the United Arab Emirates[cite: 5, 32, 51]. Specializes in building responsive web applications, mobile apps, and games using modern JavaScript and Python stacks[cite: 5, 6, 9]. 
+
+## Core Expertise
+- **Frontend:** React, Next.js, Tailwind CSS, HTML5, CSS3 [cite: 9]
+- **Backend & Databases:** Node.js, API Integration, Database Management [cite: 12, 15, 18]
+- **Mobile & Games:** Unity, Android Studio, Kotlin [cite: 11, 12, 13]
+- **AI & Automation:** Local LLM Training, Custom Chatbots [cite: 14, 17, 19]
+- **Design & UI/UX:** Figma, Canva, Adobe Creative Cloud [cite: 13, 16, 26]
+
+## Professional Experience
+
+### Full Stack Freelancer (2023 - 2026)
+- Manages end-to-end development lifecycles for custom digital products, handling everything from initial wireframes to production deployment[cite: 44, 45, 46].
+- Works directly with clients to map technical specifications and meet strict project delivery timelines independently[cite: 47, 48, 49].
+
+### Sales Manager | Uniformers (2022 - Present)
+- Leveraged self-taught web skills (HTML, CSS, JS) to build internal collaboration tools and custom web portals[cite: 40].
+- Streamlined team workflows and optimized client communication channels to increase operational efficiency[cite: 39, 41].
+
+## Education & Credentials
+- **BSc in Computer Science** | BathSpa University (2023 - 2026) - Honors List student[cite: 5, 33].
+- **General Science Diploma** | The English Private School (2010 - 2022)[cite: 31, 32].
+
+## Links & Contact
+- Email: abdullahkamran823@gmail.com [cite: 29]
+- Phone: +971 55 963 8177 [cite: 28]
+- Website: https://abdullahexe.online
