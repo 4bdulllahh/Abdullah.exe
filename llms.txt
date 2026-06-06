@@ -1,29 +1,86 @@
 # Abdullah Kamran - Full Stack Developer
 
-Self-taught software engineer and Full Stack Developer based in the United Arab Emirates[cite: 5, 32, 51]. Specializes in building responsive web applications, mobile apps, and games using modern JavaScript and Python stacks[cite: 5, 6, 9]. 
+Self-taught software engineer and Full Stack Developer based in the United Arab Emirates. Specializes in performance-optimized client-side architectures, lightweight web experiences, and raw Neo-Brutalist digital product design.
 
-## Core Expertise
-- **Frontend:** React, Next.js, Tailwind CSS, HTML5, CSS3 [cite: 9]
-- **Backend & Databases:** Node.js, API Integration, Database Management [cite: 12, 15, 18]
-- **Mobile & Games:** Unity, Android Studio, Kotlin [cite: 11, 12, 13]
-- **AI & Automation:** Local LLM Training, Custom Chatbots [cite: 14, 17, 19]
-- **Design & UI/UX:** Figma, Canva, Adobe Creative Cloud [cite: 13, 16, 26]
+## Technical Philosophy & Architecture
+- **Vanilla Performance Engineering:** Built as a standalone, high-performance static page using zero-dependency semantic HTML5, custom ES6+ JavaScript, and utility-first Tailwind CSS configuration. Employs preloaded fonts (`JetBrains Mono`, `Space Grotesk`) to avoid heavy SPA framework footprint, optimizing for instant render states and high responsiveness.
+- **Neo-Brutalist Interface Design:** Uses high-contrast typography scaling, stark layout borders, dot-grid radial background patterns, hard box shadows (`boxShadow: { 'hard': '4px 4px 0px 0px #000' }`), and signature raw neon hex accents (#FBFF48 Neo-Yellow, #FF70A6 Neo-Pink, #3B82F6 Neo-Blue, #33FF57 Neo-Green, #A855F7 Neo-Purple, #FF9F1C Neo-Orange, #FF2A2A Neo-Red).
+- **Interactive Mechanics:** Features a custom client-side cursor tracking node with dynamic CSS matrix transforms and mix-blend-mode adjustments, an asynchronous fluid marquee loop, dynamic scroll-reveal intersection observing, and a client-side window progress bar tracker.
 
-## Professional Experience
+## Core Technical Stack
+- **Languages:** JavaScript (ES6+), Python, C++, Java, Kotlin
+- **Web Architectures:** Tailwind CSS, HTML5, CSS3, JSON, APIs, WebGL
+- **Game Engines & Prototyping:** Unity, Twine
+- **Mobile Environments:** Android Studio, Gradle
+- **Data Science:** Kaggle (RandomForestClassifier, predictive model training)
+- **Creative Suites & Layouts:** Adobe Creative Cloud, Figma, UX/UI, WordPress, Material Design, Remix Icons
 
-### Full Stack Freelancer (2023 - 2026)
-- Manages end-to-end development lifecycles for custom digital products, handling everything from initial wireframes to production deployment[cite: 44, 45, 46].
-- Works directly with clients to map technical specifications and meet strict project delivery timelines independently[cite: 47, 48, 49].
+## Production Engineering & Selected Works
 
-### Sales Manager | Uniformers (2022 - Present)
-- Leveraged self-taught web skills (HTML, CSS, JS) to build internal collaboration tools and custom web portals[cite: 40].
-- Streamlined team workflows and optimized client communication channels to increase operational efficiency[cite: 39, 41].
+### 1. Dekor (E-Commerce Platform)
+- **URL:** https://dekorfurniture.vercel.app/
+- **Description:** A minimalist, fully functional web platform for authentic Swedish furniture design configurations.
+- **Stack:** Frontend (HTML5/Tailwind/Three.js), Backend architecture, MongoDB database integration, and custom secure payment wall implementation.
 
-## Education & Credentials
-- **BSc in Computer Science** | BathSpa University (2023 - 2026) - Honors List student[cite: 5, 33].
-- **General Science Diploma** | The English Private School (2010 - 2022)[cite: 31, 32].
+### 2. Prime Real Estate (Corporate Platform)
+- **URL:** https://prime-marketing-two.vercel.app/
+- **Description:** Comprehensive online real estate showcase framework modeled initially alongside real-time asset data pipelines and trading layout capabilities.
+- **Stack:** Frontend layout, Three.js spatial components, MySQL database querying, and responsive Tailwind UI styling.
 
-## Links & Contact
-- Email: abdullahkamran823@gmail.com [cite: 29]
-- Phone: +971 55 963 8177 [cite: 28]
-- Website: https://abdullahexe.online
+### 3. Al Habibi Bakery (B2B Landing Engine)
+- **Code Repository:** https://github.com/4bdulllahhexe/Al-Habibi-Bakery.github.io.git
+- **Description:** Custom performance-tuned business landing page built to initialize automated local lead generation funnels.
+- **Stack:** WebGL render modules, vanilla frontend architecture, and Three.js environmental layouts.
+
+### 4. SuperCar App (Android Architecture)
+- **Asset Hub:** https://drive.google.com/drive/folders/1AAui8mtSlI0Icuko635WuqXJL2-oai_4?usp=sharing
+- **Description:** A dedicated mobile wiki application compiling historical logs, design languages, and specifications for global supercar manufacturers.
+- **Stack:** Native Android environment, Kotlin, Java compilation, and Material-UI design patterns.
+
+### 5. Dragon & Knights (Indie Game Production)
+- **URL:** https://a6dullah.itch.io/dragons-knights
+- **Description:** An independently constructed side-scrolling action indie game implementing physics loops and custom environmental state layers.
+- **Stack:** Unity Engine, C++ scripting patterns, custom 2D sprite animations, and local velocity mechanics.
+
+### 6. Stroke Prediction Engine (Machine Learning Notebook)
+- **Kaggle Notebook:** https://www.kaggle.com/code/abood186/stroke-prediction-using-randomforestclassifier
+- **Description:** A classification model trained to isolate patient diagnostic risk parameters and accurately calculate acute brain stroke probability.
+- **Stack:** Python data structures, Kaggle dataset kernels, RandomForestClassifier execution, and MySQL target tables.
+
+### 7. Hallways (Interactive Fiction Production)
+- **Asset Hub:** https://drive.google.com/drive/folders/1Ddc5JVyv-Wa_dSpraJdL7n838MO633_5?usp=sharing
+- **Description:** A text-driven psychological branch-logic survival horror game presenting dynamic choices leading to multiple unique endings.
+- **Stack:** Twine core logic, custom engine HTML5 structure, semantic styling, and Adobe layout assets.
+
+### 8. Trivia App (API-Driven Productivity Prototype)
+- **Code Repository:** https://github.com/CodeLab-II/skills-portfolio-4bdulllahh.git
+- **Description:** An interactive quiz application making automated third-party API queries to serve randomized trivia modules separated across complex operational difficulties.
+- **Stack:** Android Studio interface, Gradle builds, Kotlin routines, and asynchronous API integrations.
+
+## Professional Milestone Log
+
+### Full Stack Developer | Self-Employed (Dec 2025 - Present)
+- Assumes complete product ownership across full product life cycles—translating initial mockups into deployment-ready backend logic and custom client application instances.
+- Manages client-facing feedback structures, version-control pipelines, and production release windows independently.
+
+### Web Developer | Freelancer (Jun 2023 - Dec 2025)
+- Orchestrated web visibility projects and scalable layouts for independent businesses, establishing localized lead pipelines.
+- Transformed early corporate ideas into clean production code while growing an active engineering network during early university training.
+
+### Sales Manager | Uniformers (Jun 2022 - Present)
+- Directs client conversions, communication strategies, and contract completions.
+- Maximized operational downtime to master web mechanics, self-teaching frontend logic to deploy web environments and streamline customer feedback routes.
+
+## Verified Credentials & Academic History
+- **BSc in Computer Science** | BathSpa University (2023 - 2026). Honors List student. Focuses on advanced algorithm structures, responsive application engineering, and mobile platform design.
+- **Masters in Data Science** | In-Progress (2026 - Present). Emphasizes classification mechanics, dataset curation, and scalable neural architectures.
+- **General Science Diploma** | The English Private School (2010 - 2022).
+- **Verified Certifications Tracker (`Certifications.log`):** Contains 8 distinct verified credentials documented locally via verified image path maps (`Assets/Certificates/certificate1.jpg` through `certificate7.jpg`).
+
+## Links, Coordinates & Verified Profiles
+- **Primary Website:** https://abdullahexe.online
+- **Direct CV Asset Download Path:** https://abdullahexe.online/Assets/Resume/Abdullah.pdf
+- **Primary Email Address:** abdullahkamran823@gmail.com
+- **Global GitHub Interface:** https://github.com/4bdulllahh
+- **Instagram Portal:** https://www.instagram.com/4bdulllahh/
+- **LinkedIn Profile:** linkedin.com/in/abdullah-kamran-047905213/
