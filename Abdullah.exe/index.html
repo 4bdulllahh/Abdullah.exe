@@ -64,18 +64,23 @@
 
     <!-- ============ BOOT SEQUENCE ============ -->
     <div id="preloader" aria-hidden="true">
-        <div class="relative z-10 w-full max-w-3xl px-6 text-center">
-            <h1 class="text-[13vw] md:text-[9vw] leading-[0.85] font-black uppercase tracking-tighter text-white">
-                Abdullah<span class="text-neo-green">.exe</span><span class="boot-caret text-neo-green">_</span>
-            </h1>
-
-            <div class="mt-10 h-6 w-full bg-black border-4 border-white">
-                <div id="boot-bar-fill" class="h-full bg-neo-green"></div>
+        <div class="relative z-10 w-full px-6 flex flex-col items-center text-center">
+            <!-- The caret is absolutely positioned so it blinks beside the name
+                 without nudging the name off-centre. -->
+            <div class="relative inline-block whitespace-nowrap text-[12vw] md:text-[8vw] leading-[0.85] font-black uppercase tracking-tighter text-white">
+                Abdullah<span class="text-neo-green">.exe</span><span
+                    class="boot-caret text-neo-green absolute left-full bottom-0">_</span>
             </div>
 
-            <div class="mt-4 flex justify-between font-mono text-xs md:text-sm font-bold text-gray-400 uppercase">
-                <span>Loading system<span class="boot-caret">…</span></span>
-                <span id="boot-counter" class="text-neo-green">000%</span>
+            <div class="w-full max-w-3xl">
+                <div class="mt-10 h-6 w-full bg-black border-4 border-white">
+                    <div id="boot-bar-fill" class="h-full bg-neo-green"></div>
+                </div>
+
+                <div class="mt-4 flex justify-between font-mono text-xs md:text-sm font-bold text-gray-400 uppercase">
+                    <span>Loading system<span class="boot-caret">…</span></span>
+                    <span id="boot-counter" class="text-neo-green">000%</span>
+                </div>
             </div>
         </div>
     </div>
@@ -83,7 +88,7 @@
     <!-- ============ PAGE TRANSITION CURTAIN ============ -->
     <div id="page-transition" aria-hidden="true">
         <span
-            class="relative z-10 text-[11vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
+            class="relative z-10 whitespace-nowrap text-[12vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
             Abdullah<span class="text-neo-green">.exe</span>
         </span>
     </div>
@@ -101,7 +106,7 @@
                     Abdullah.exe
                 </a>
 
-                <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
+                <div class="hidden lg:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
                     <a href="about.html"
                         class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/ABOUT</a>
                     <a href="skills.html"
@@ -117,12 +122,12 @@
 
                 <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
                     aria-label="Toggle navigation menu"
-                    class="md:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
+                    class="lg:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
                     <i class="ri-menu-line text-2xl"></i>
                 </button>
             </div>
 
-            <div id="mobile-menu" class="md:hidden mt-3">
+            <div id="mobile-menu" class="lg:hidden mt-3">
                 <div class="bg-white border-2 border-black shadow-hard flex flex-col divide-y-2 divide-black">
                     <a href="about.html"
                         class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/ABOUT</a>
@@ -148,7 +153,7 @@
         <div
             class="absolute bottom-1/3 right-[10%] w-24 h-24 bg-neo-pink rounded-full border-4 border-black shadow-hard hidden lg:block animate-pulse">
         </div>
-        <div class="absolute top-20 right-20 text-9xl opacity-5 font-black select-none pointer-events-none">CODE</div>
+        <div class="absolute top-20 right-20 text-9xl opacity-5 font-black select-none pointer-events-none hidden md:block">CODE</div>
 
         <div class="relative z-10 text-center max-w-5xl">
             <div
@@ -158,7 +163,7 @@
             </div>
 
             <h1
-                class="text-[13vw] md:text-[10vw] leading-[0.8] font-black uppercase tracking-tighter mb-6 reveal mix-blend-darken">
+                class="text-[13vw] md:text-[length:min(10vw,12rem)] leading-[0.8] font-black uppercase tracking-tighter mb-6 reveal mix-blend-darken">
                 FULL STACK<br>
                 <span class="text-white text-stroke-black" style="-webkit-text-stroke: 3px black;">DEVELOPER</span>
             </h1>
@@ -191,7 +196,7 @@
         </div>
     </div>
 
-    <section id="about" class="py-24 px-4 max-w-7xl mx-auto border-x-4 border-black bg-white my-12 shadow-hard-lg">
+    <section id="about" class="py-16 md:py-24 px-5 md:px-8 w-[calc(100%-2rem)] max-w-7xl mx-auto border-x-4 border-black bg-white my-12 shadow-hard-lg">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div class="md:col-span-4 reveal">
                 <div class="aspect-square bg-gray-200 border-4 border-black relative shadow-hard overflow-hidden group">
@@ -238,7 +243,7 @@
         <div class="max-w-[1400px] mx-auto px-4 relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-4 border-white pb-4">
                 <h2 class="text-6xl md:text-8xl font-black uppercase text-white tracking-tighter">
-                    TECH<span class="text-neo-green">_STACK</span>
+                    TECH<wbr><span class="text-neo-green">_STACK</span>
                 </h2>
                 <div class="flex items-center gap-2 mb-2 md:mb-4">
                     <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
@@ -249,7 +254,7 @@
             <div class="flex flex-wrap justify-center md:justify-start">
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ CORE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -257,7 +262,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ CORE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -265,7 +270,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -273,7 +278,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -281,7 +286,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -289,7 +294,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -297,7 +302,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -305,7 +310,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -313,7 +318,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LIBRARY
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -321,7 +326,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ FRAMEWORK
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -329,7 +334,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ FRAMEWORK
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -337,7 +342,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ STYLING
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -345,7 +350,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ WEBGL
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -353,7 +358,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ MOTION
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -361,7 +366,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ BUILD
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -369,7 +374,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DESIGN
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -377,7 +382,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ BACKEND
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -385,7 +390,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ BACKEND
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -393,7 +398,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ INTERFACE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -401,7 +406,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DATA
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -409,7 +414,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DATABASE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -417,7 +422,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DATABASE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -425,7 +430,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DATABASE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -433,7 +438,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ QUERY
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -441,7 +446,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DATA_SCI
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -449,7 +454,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ MACHINE_LRN
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -457,7 +462,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ MODELS
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -465,7 +470,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ AI_AGENTS
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -473,7 +478,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ VISION
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -481,7 +486,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ ROBOTICS
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -489,7 +494,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DESKTOP
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -497,7 +502,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ GAME_DEV
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -505,7 +510,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ MOBILE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -513,7 +518,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ TOOLING
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -521,7 +526,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ BUILD
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -529,7 +534,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ NARRATIVE
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -537,7 +542,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ VERSION_CTRL
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -545,7 +550,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ HOSTING
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -553,7 +558,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DEPLOY
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -561,7 +566,7 @@
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
                     <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DESIGN
                     </div>
                     <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
@@ -578,7 +583,7 @@
 
     <section id="experience" class="py-24 px-4 max-w-7xl mx-auto">
         <h2 class="text-5xl md:text-8xl font-black uppercase mb-12 tracking-tighter text-center">
-            Experience<span class="text-neo-red">_Log</span>
+            Experience<wbr><span class="text-neo-red">_Log</span>
         </h2>
 
         <div class="relative border-l-4 border-black ml-4 md:ml-10 space-y-12">
@@ -637,7 +642,7 @@
 
         <section id="education" class="py-24 px-4 max-w-7xl mx-auto">
         <h2 class="text-5xl md:text-8xl font-black uppercase mb-12 tracking-tighter text-center">
-            Education<span class="text-neo-red">_Log</span>
+            Education<wbr><span class="text-neo-red">_Log</span>
         </h2>
 
         <div class="relative border-l-4 border-black ml-4 md:ml-10 space-y-12">
@@ -1079,7 +1084,7 @@
     <section id="contact" class="py-24 px-4 max-w-5xl mx-auto">
         <div class="bg-white border-4 border-black shadow-hard-xl p-8 md:p-12 relative reveal mt-12">
             <div
-                class="absolute -top-10 -left-6 bg-neo-yellow border-4 border-black px-6 py-2 shadow-hard rotate-[-5deg]">
+                class="absolute -top-10 -left-2 lg:-left-6 bg-neo-yellow border-4 border-black px-6 py-2 shadow-hard rotate-[-5deg]">
                 <span class="font-black text-2xl">CONTACT ME</span>
             </div>
 
@@ -1095,7 +1100,7 @@
                                 class="w-12 h-12 bg-neo-black text-white flex items-center justify-center border-2 border-black">
                                 <i class="ri-mail-line text-xl"></i>
                             </div>
-                            <a href="mailto:abdullahkamran823@gmail.com" class="text-xl font-bold hover:bg-neo-blue cursor-hover">abdullahkamran823@gmail.com</a>
+                            <a href="mailto:abdullahworkaholic@gmail.com" class="text-base sm:text-xl font-bold break-all hover:bg-neo-blue cursor-hover">abdullahworkaholic@gmail.com</a>
                         </div>
                         <div class="flex items-center gap-4">
                             <div
@@ -1146,22 +1151,22 @@
                 <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
                 <ul class="space-y-2 text-gray-400">
                     <li><a href="index.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Home</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Home</a>
                     </li>
                     <li><a href="about.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">About</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">About</a>
                     </li>
                     <li><a href="skills.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Skills</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Skills</a>
                     </li>
                     <li><a href="logs.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Logs</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Logs</a>
                     </li>
                     <li><a href="work.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Work</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Work</a>
                     </li>
                     <li><a href="index.html#contact"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Contact</a>
                     </li>
                 </ul>
             </div>
