@@ -43,7 +43,7 @@
     <!-- ============ PAGE TRANSITION CURTAIN ============ -->
     <div id="page-transition" aria-hidden="true">
         <span
-            class="relative z-10 text-[11vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
+            class="relative z-10 whitespace-nowrap text-[12vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
             Abdullah<span class="text-neo-green">.exe</span>
         </span>
     </div>
@@ -61,7 +61,7 @@
                     Abdullah.exe
                 </a>
 
-                <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
+                <div class="hidden lg:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
                     <a href="about.html"
                         class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover bg-neo-black text-white">/ABOUT</a>
                     <a href="skills.html"
@@ -77,12 +77,12 @@
 
                 <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
                     aria-label="Toggle navigation menu"
-                    class="md:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
+                    class="lg:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
                     <i class="ri-menu-line text-2xl"></i>
                 </button>
             </div>
 
-            <div id="mobile-menu" class="md:hidden mt-3">
+            <div id="mobile-menu" class="lg:hidden mt-3">
                 <div class="bg-white border-2 border-black shadow-hard flex flex-col divide-y-2 divide-black">
                     <a href="about.html"
                         class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors bg-neo-black text-white">/ABOUT</a>
@@ -106,7 +106,7 @@
             <span class="font-mono font-bold">FILE: ABOUT.MD</span>
         </div>
 
-        <h1 class="text-[15vw] md:text-[11vw] leading-[0.82] font-black uppercase tracking-tighter mb-8">
+        <h1 class="text-[15vw] md:text-[length:min(11vw,13.2rem)] leading-[0.82] font-black uppercase tracking-tighter mb-8">
             WHO<br><span class="text-white" style="-webkit-text-stroke: 3px black;">AM I?</span>
         </h1>
 
@@ -115,53 +115,57 @@
         </p>
     </header>
 
-    <!-- ============ HERO IMAGE ============ -->
+    <!-- ============ PHOTO + ORIGIN STORY ============ -->
     <section class="px-4 max-w-7xl mx-auto mb-24">
-        <div class="relative border-4 border-black shadow-hard-lg overflow-hidden bg-neo-black">
-            <img src="Assets/images/about-hero.jpg"
-                alt="Abdullah Kamran looking out over a mountain range"
-                onerror="this.onerror=null;this.src='Assets/images/img.jpg';"
-                class="w-full h-[45vh] md:h-[70vh] object-cover object-center">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 p-6 md:p-10">
-                <span class="font-mono text-xs bg-neo-red text-white px-2 py-1 border border-black">ABDULLAH.JPG</span>
-                <p class="font-mono text-white text-lg md:text-2xl mt-4 max-w-2xl leading-relaxed">
-                    Best ideas arrive somewhere with no Wi-Fi.
-                </p>
-            </div>
-        </div>
-    </section>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
-    <!-- ============ ORIGIN STORY ============ -->
-    <section class="py-20 px-4 max-w-7xl mx-auto border-x-4 border-black bg-white shadow-hard-lg mb-24">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
-            <div class="md:col-span-4">
-                <h2 class="text-5xl md:text-6xl font-black uppercase leading-[0.9] sticky top-32">
-                    The<br>Origin<br><span class="text-neo-red">Story</span>
-                </h2>
+            <!-- Photo: portrait shot, so it gets a portrait frame instead of a letterbox crop. -->
+            <div class="lg:col-span-5 reveal">
+                <div
+                    class="relative border-4 border-black shadow-hard-lg overflow-hidden bg-neo-black aspect-[4/5] sm:aspect-[3/4] max-w-xl mx-auto lg:max-w-none">
+                    <img src="Assets/images/about-hero.jpg"
+                        alt="Abdullah Kamran in headphones looking out over a mountain range"
+                        onerror="this.onerror=null;this.src='Assets/images/img.jpg';"
+                        class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                    <span
+                        class="absolute top-3 left-3 font-mono text-xs bg-neo-red text-white px-2 py-1 border border-black">ABDULLAH.JPG</span>
+                    <p
+                        class="absolute bottom-0 left-0 right-0 p-5 md:p-6 font-mono text-white text-base md:text-lg leading-relaxed">
+                        Best ideas arrive somewhere with no Wi-Fi.
+                    </p>
+                </div>
             </div>
-            <div class="md:col-span-8 space-y-6 font-mono text-lg leading-relaxed">
-                <p>
-                    In 2022 I was a sales guy at <b>Uniformers</b> with amateur tech experience and a drive to close
-                    deals. I was good at the talking part. What bothered me was everything that happened after the
-                    handshake &mdash; the clunky forms, the dead links, the websites that made good businesses look
-                    careless.
-                </p>
-                <p>
-                    So I stopped complaining and opened a text editor. HTML, then CSS, then JavaScript, learned on the
-                    fly between calls because I wanted to give my customers a better experience than the one I was
-                    selling them.
-                </p>
-                <p class="border-l-4 border-neo-purple pl-5 text-gray-700">
-                    That's still the shape of how I work: I don't learn a technology because it's trending. I learn it
-                    because something in front of me is broken and that's what fixes it.
-                </p>
-                <p>
-                    A degree in Computer Science at <b>Bath Spa University</b> gave that instinct a backbone &mdash;
-                    algorithms, databases, machine learning, the reasons things work rather than just the fact that they
-                    do. Now I take projects end to end: the design, the backend, the deploy, and the client conversation
-                    in between.
-                </p>
+
+            <!-- Story -->
+            <div class="lg:col-span-7 bg-white border-4 border-black shadow-hard-lg p-6 sm:p-8 md:p-10 reveal">
+                <h2 class="text-5xl md:text-6xl font-black uppercase leading-[0.9] mb-8">
+                    The Origin<br><span class="text-neo-red">Story</span>
+                </h2>
+
+                <div class="space-y-6 font-mono text-base md:text-lg leading-relaxed">
+                    <p>
+                        In 2022 I was a sales guy at <b>Uniformers</b> with amateur tech experience and a drive to close
+                        deals. I was good at the talking part. What bothered me was everything that happened after the
+                        handshake &mdash; the clunky forms, the dead links, the websites that made good businesses look
+                        careless.
+                    </p>
+                    <p>
+                        So I stopped complaining and opened a text editor. HTML, then CSS, then JavaScript, learned on
+                        the fly between calls because I wanted to give my customers a better experience than the one I
+                        was selling them.
+                    </p>
+                    <p class="border-l-4 border-neo-purple pl-5 text-gray-700">
+                        That's still the shape of how I work: I don't learn a technology because it's trending. I learn
+                        it because something in front of me is broken and that's what fixes it.
+                    </p>
+                    <p>
+                        A degree in Computer Science at <b>Bath Spa University</b> gave that instinct a backbone &mdash;
+                        algorithms, databases, machine learning, the reasons things work rather than just the fact that
+                        they do. Now I take projects end to end: the design, the backend, the deploy, and the client
+                        conversation in between.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -174,7 +178,7 @@
 
         <div class="max-w-6xl mx-auto px-4 relative z-10">
             <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4">
-                WHAT I<span class="text-neo-green">_BELIEVE</span>
+                WHAT I<wbr><span class="text-neo-green">_BELIEVE</span>
             </h2>
             <p class="font-mono text-neo-green text-sm mb-14">/// OPINIONS, HELD LOOSELY BUT HELD</p>
 
@@ -224,10 +228,10 @@
     <!-- ============ WORLDVIEW ============ -->
     <section class="py-20 px-4 max-w-7xl mx-auto mb-12">
         <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-12">
-            How I See<span class="text-neo-purple">_The World</span>
+            How I See<wbr><span class="text-neo-purple">_The World</span>
         </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="reveal bg-white border-4 border-black p-8 shadow-hard">
                 <i class="ri-node-tree text-5xl text-neo-purple mb-4 block"></i>
                 <h3 class="text-2xl font-black uppercase mb-3">It's all one system</h3>
@@ -312,14 +316,14 @@
     <!-- ============ LIFE OUTSIDE CODE ============ -->
     <section class="py-20 px-4 max-w-7xl mx-auto mb-12">
         <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4">
-            Life Outside<span class="text-neo-pink">_The Editor</span>
+            Life Outside<wbr><span class="text-neo-pink">_The Editor</span>
         </h2>
         <p class="font-mono text-gray-600 mb-14">/// THE PART THAT MAKES THE OTHER PART WORK</p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="reveal bg-white border-4 border-black p-8 shadow-hard hover:shadow-hard-xl transition-all">
                 <div class="flex items-center gap-4 mb-4">
-                    <i class="ri-mountain-line text-4xl text-neo-green"></i>
+                    <i class="ri-landscape-line text-4xl text-neo-green"></i>
                     <h3 class="text-3xl font-black uppercase">Outdoors</h3>
                 </div>
                 <p class="font-mono text-sm leading-relaxed text-gray-700">
@@ -359,7 +363,7 @@
                 </div>
                 <p class="font-mono text-sm leading-relaxed text-gray-700">
                     Arduino boards, servos, 3D-printed parts and things that move when they're told to. The
-                    <a href="work.html" class="underline decoration-neo-orange decoration-2 cursor-hover">face-tracking
+                    <a href="work.html" class="hl-link cursor-hover">face-tracking
                         turret</a> exists purely because software that stays on a screen eventually gets boring.
                 </p>
             </div>
@@ -442,22 +446,22 @@
                 <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
                 <ul class="space-y-2 text-gray-400">
                     <li><a href="index.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Home</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Home</a>
                     </li>
                     <li><a href="about.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">About</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">About</a>
                     </li>
                     <li><a href="skills.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Skills</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Skills</a>
                     </li>
                     <li><a href="logs.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Logs</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Logs</a>
                     </li>
                     <li><a href="work.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Work</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Work</a>
                     </li>
                     <li><a href="index.html#contact"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Contact</a>
                     </li>
                 </ul>
             </div>
