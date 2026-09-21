@@ -43,7 +43,7 @@
     <!-- ============ PAGE TRANSITION CURTAIN ============ -->
     <div id="page-transition" aria-hidden="true">
         <span
-            class="relative z-10 text-[11vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
+            class="relative z-10 whitespace-nowrap text-[12vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
             Abdullah<span class="text-neo-green">.exe</span>
         </span>
     </div>
@@ -61,7 +61,7 @@
                     Abdullah.exe
                 </a>
 
-                <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
+                <div class="hidden lg:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
                     <a href="about.html"
                         class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/ABOUT</a>
                     <a href="skills.html"
@@ -77,12 +77,12 @@
 
                 <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
                     aria-label="Toggle navigation menu"
-                    class="md:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
+                    class="lg:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
                     <i class="ri-menu-line text-2xl"></i>
                 </button>
             </div>
 
-            <div id="mobile-menu" class="md:hidden mt-3">
+            <div id="mobile-menu" class="lg:hidden mt-3">
                 <div class="bg-white border-2 border-black shadow-hard flex flex-col divide-y-2 divide-black">
                     <a href="about.html"
                         class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/ABOUT</a>
@@ -106,7 +106,7 @@
             <span class="font-mono font-bold">FILE: SKILLS.JSON</span>
         </div>
 
-        <h1 class="text-[15vw] md:text-[11vw] leading-[0.82] font-black uppercase tracking-tighter mb-8">
+        <h1 class="text-[15vw] md:text-[length:min(11vw,13.2rem)] leading-[0.82] font-black uppercase tracking-tighter mb-8">
             TECH<br><span class="text-white" style="-webkit-text-stroke: 3px black;">STACK</span>
         </h1>
 
@@ -123,7 +123,7 @@
         <div class="max-w-[1400px] mx-auto px-4 relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-4 border-white pb-4">
                 <h2 class="text-5xl md:text-7xl font-black uppercase text-white tracking-tighter">
-                    FULL<span class="text-neo-green">_BREAKDOWN</span>
+                    FULL<wbr><span class="text-neo-green">_BREAKDOWN</span>
                 </h2>
                 <div class="flex items-center gap-2 mb-2 md:mb-4">
                     <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
@@ -686,11 +686,11 @@
     <!-- ============ CURRENTLY LEARNING ============ -->
     <section class="py-24 px-4 max-w-7xl mx-auto">
         <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4">
-            Currently<span class="text-neo-orange">_Learning</span>
+            Currently<wbr><span class="text-neo-orange">_Learning</span>
         </h2>
         <p class="font-mono text-gray-600 mb-12">/// THE STACK IS NEVER FINISHED</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="reveal bg-white border-4 border-black p-8 shadow-hard">
                 <i class="ri-robot-2-line text-5xl text-neo-purple mb-4 block"></i>
                 <h3 class="text-2xl font-black uppercase mb-3">AI Agent Architecture</h3>
@@ -742,22 +742,22 @@
                 <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
                 <ul class="space-y-2 text-gray-400">
                     <li><a href="index.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Home</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Home</a>
                     </li>
                     <li><a href="about.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">About</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">About</a>
                     </li>
                     <li><a href="skills.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Skills</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Skills</a>
                     </li>
                     <li><a href="logs.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Logs</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Logs</a>
                     </li>
                     <li><a href="work.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Work</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Work</a>
                     </li>
                     <li><a href="index.html#contact"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Contact</a>
                     </li>
                 </ul>
             </div>
