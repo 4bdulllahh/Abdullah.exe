@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Abdullah.exe — shared stylesheet
+   Neo-brutalist portfolio. Tailwind handles utilities; this file holds the
+   custom pieces: grid background, cursor, marquee, reveal, boot sequence,
+   page-transition curtain and the certificate rail.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+body {
+    cursor: none;
+    /*use a custom cursor */
+    background-color: #FFFDF5;
+    background-image:
+        radial-gradient(#000 1px, transparent 1px),
+        linear-gradient(to right, #e5e5e5 1px, transparent 1px),
+        linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
+    background-size: 40px 40px, 100px 100px, 100px 100px;
+}
+
+/* Touch devices get the real cursor back — there is no pointer to replace. */
+@media (hover: none),
+(pointer: coarse) {
+    body {
+        cursor: auto;
+    }
+
+    #cursor {
+        display: none !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Custom Cursor
+   -------------------------------------------------------------------------- */
+#cursor {
+    pointer-events: none;
+    position: fixed;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.1s;
+}
+
+/* --------------------------------------------------------------------------
+   Animations
+   -------------------------------------------------------------------------- */
+.marquee-container {
+    overflow: hidden;
+}
+
+.marquee-content {
+    display: flex;
+    animation: scroll 40s linear infinite;
+    width: max-content;
+}
+
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+.marquee-content-reverse {
+    display: inline-block;
+    animation: scroll-reverse 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scroll-reverse {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Reveal Animation
+   -------------------------------------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Glitch Effect on Hover
+   -------------------------------------------------------------------------- */
+.glitch-hover:hover {
+    animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    color: #FF2A2A;
+}
+
+@keyframes glitch-anim {
+    0% {
+        transform: translate(0)
+    }
+
+    20% {
+        transform: translate(-2px, 2px)
+    }
+
+    40% {
+        transform: translate(-2px, -2px)
+    }
+
+    60% {
+        transform: translate(2px, 2px)
+    }
+
+    80% {
+        transform: translate(2px, -2px)
+    }
+
+    100% {
+        transform: translate(0)
+    }
+}
+
+/* ==========================================================================
+   BOOT SEQUENCE (index.html only)
+   ========================================================================== */
+/* Hidden by default. An inline <head> script adds .boot-active to <html> only
+   when JS is running and the session hasn't seen the boot yet — so a visitor
+   with JS off never meets a black screen they can't dismiss. */
+#preloader {
+    display: none;
+}
+
+.boot-active #preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #121212;
+    transform: translateY(0);
+    transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.boot-active #preloader.booted {
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
+/* While the boot sequence owns the screen, keep the page behind it still. */
+.boot-active body {
+    overflow: hidden;
+}
+
+/* Faint terminal grid behind the boot text, matching the tech-stack section. */
+#preloader::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    background-image:
+        linear-gradient(#333 1px, transparent 1px),
+        linear-gradient(90deg, #333 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.boot-caret {
+    animation: boot-blink 0.8s steps(1) infinite;
+}
+
+@keyframes boot-blink {
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+#boot-bar-fill {
+    width: 0%;
+    transition: width 0.12s linear;
+}
+
+/* ==========================================================================
+   PAGE TRANSITION CURTAIN
+   Fills bottom -> top on leave, continues up and off-screen on arrival.
+   ========================================================================== */
+#page-transition {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #121212;
+    transform: translateY(100%);
+    pointer-events: none;
+    will-change: transform;
+}
+
+#page-transition::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    background-image:
+        linear-gradient(#333 1px, transparent 1px),
+        linear-gradient(90deg, #333 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Sub-pages render with the curtain already down so there is no white flash
+   between the old page unloading and the new one painting. */
+.transition-page #page-transition {
+    transform: translateY(0);
+}
+
+/* Covering the screen, on the way in. */
+#page-transition.is-covering {
+    transform: translateY(0);
+    transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+    pointer-events: all;
+}
+
+/* Sweeping up and away, on arrival. */
+#page-transition.is-leaving {
+    transform: translateY(-100%);
+    transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   CERTIFICATE RAIL — drag, flick, scroll or arrow through
+   ========================================================================== */
+.cert-rail {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    padding: 3rem 1rem;
+}
+
+.cert-rail::-webkit-scrollbar {
+    display: none;
+}
+
+.cert-rail.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+}
+
+/* While dragging, swallow clicks so a flick never opens a link. */
+.cert-rail.is-dragging * {
+    pointer-events: none;
+}
+
+.cert-card {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+}
+
+/* Dots under the rail. */
+.cert-dot {
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.cert-dot.is-active {
+    background-color: #33FF57;
+    transform: scale(1.4);
+}
+
+/* ==========================================================================
+   PROJECT CARDS — equal-height footers across the 3-up grid
+   ========================================================================== */
+.project-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card .project-card-footer {
+    margin-top: auto;
+}
+
+/* ==========================================================================
+   SKILL BARS
+   ========================================================================== */
+.skill-bar-fill {
+    width: 0;
+    transition: width 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ==========================================================================
+   MOBILE MENU
+   ========================================================================== */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#mobile-menu.is-open {
+    max-height: 26rem;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   Anyone who asks for less motion gets none of the above.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+    #preloader,
+    #page-transition {
+        display: none !important;
+    }
+}
