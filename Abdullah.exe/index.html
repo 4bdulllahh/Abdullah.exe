@@ -19,7 +19,10 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Space+Grotesk:wght@800&display=swap"
         as="style">
 
+    <link rel="canonical" href="https://abdullahexe.online/">
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -30,145 +33,60 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="css/style.css">
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'neo-yellow': '#FBFF48',
-                        'neo-pink': '#FF70A6',
-                        'neo-blue': '#3B82F6',
-                        'neo-green': '#33FF57',
-                        'neo-purple': '#A855F7',
-                        'neo-orange': '#FF9F1C',
-                        'neo-red': '#FF2A2A',
-                        'neo-white': '#FFFDF5',
-                        'neo-black': '#121212',
-                    },
-                    fontFamily: {
-                        'display': ['"Space Grotesk"', 'sans-serif'],
-                        'mono': ['"JetBrains Mono"', 'monospace'],
-                    },
-                    boxShadow: {
-                        'hard': '4px 4px 0px 0px #000',
-                        'hard-sm': '2px 2px 0px 0px #000',
-                        'hard-lg': '8px 8px 0px 0px #000',
-                        'hard-xl': '12px 12px 0px 0px #000',
-                    }
+        // Decide up front whether the boot sequence runs, so the very first
+        // paint is either the black boot screen or the page - never a flash of
+        // one then the other.
+        //   First visit this session -> play the boot sequence.
+        //   Coming back from another page -> arm the transition curtain instead,
+        //   so returning home sweeps up like every other page rather than
+        //   flashing white.
+        // With JS off neither class lands and the site renders plainly.
+        (function () {
+            var root = document.documentElement;
+            try {
+                if (sessionStorage.getItem('abdullah-booted')) {
+                    root.classList.add('transition-page');
+                } else {
+                    root.classList.add('boot-active');
+                    sessionStorage.setItem('abdullah-booted', '1');
                 }
+            } catch (e) {
+                root.classList.add('boot-active');
             }
-        }
+        })();
     </script>
-
-    <style>
-        /* Base Styles */
-        body {
-            cursor: none;
-            /*use a custom cursor */
-            background-color: #FFFDF5;
-            background-image:
-                radial-gradient(#000 1px, transparent 1px),
-                linear-gradient(to right, #e5e5e5 1px, transparent 1px),
-                linear-gradient(to bottom, #e5e5e5 1px, transparent 1px);
-            background-size: 40px 40px, 100px 100px, 100px 100px;
-        }
-
-        /* Custom Cursor */
-        #cursor {
-            pointer-events: none;
-            position: fixed;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.1s;
-        }
-
-        /* Animations */
-        .marquee-container {
-            overflow: hidden;
-        }
-
-        .marquee-content {
-            display: flex;
-            animation: scroll 40s linear infinite;
-            width: max-content;
-        }
-
-        .marquee-container:hover .marquee-content {
-            animation-play-state: paused;
-        }
-
-        .marquee-content-reverse {
-            display: inline-block;
-            animation: scroll-reverse 20s linear infinite;
-        }
-
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        @keyframes scroll-reverse {
-            0% {
-                transform: translateX(-50%);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        /* Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Glitch Effect on Hover */
-        .glitch-hover:hover {
-            animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
-            color: #FF2A2A;
-        }
-
-        @keyframes glitch-anim {
-            0% {
-                transform: translate(0)
-            }
-
-            20% {
-                transform: translate(-2px, 2px)
-            }
-
-            40% {
-                transform: translate(-2px, -2px)
-            }
-
-            60% {
-                transform: translate(2px, 2px)
-            }
-
-            80% {
-                transform: translate(2px, -2px)
-            }
-
-            100% {
-                transform: translate(0)
-            }
-        }
-    </style>
 </head>
 
 <body class="text-neo-black font-display antialiased selection:bg-neo-black selection:text-neo-yellow">
+
+    <!-- ============ BOOT SEQUENCE ============ -->
+    <div id="preloader" aria-hidden="true">
+        <div class="relative z-10 w-full max-w-3xl px-6 text-center">
+            <h1 class="text-[13vw] md:text-[9vw] leading-[0.85] font-black uppercase tracking-tighter text-white">
+                Abdullah<span class="text-neo-green">.exe</span><span class="boot-caret text-neo-green">_</span>
+            </h1>
+
+            <div class="mt-10 h-6 w-full bg-black border-4 border-white">
+                <div id="boot-bar-fill" class="h-full bg-neo-green"></div>
+            </div>
+
+            <div class="mt-4 flex justify-between font-mono text-xs md:text-sm font-bold text-gray-400 uppercase">
+                <span>Loading system<span class="boot-caret">…</span></span>
+                <span id="boot-counter" class="text-neo-green">000%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PAGE TRANSITION CURTAIN ============ -->
+    <div id="page-transition" aria-hidden="true">
+        <span
+            class="relative z-10 text-[11vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
+            Abdullah<span class="text-neo-green">.exe</span>
+        </span>
+    </div>
 
     <div id="cursor" class="w-6 h-6 bg-white rounded-full border-2 border-black hidden lg:block"></div>
 
@@ -176,23 +94,48 @@
     </div>
 
     <nav class="fixed top-0 w-full z-50 px-4 py-4 pointer-events-none">
-        <div class="max-w-7xl mx-auto flex justify-between items-center pointer-events-auto">
-            <a href="#"
-                class="bg-neo-white border-2 border-black px-4 py-1 text-2xl font-black shadow-hard hover:bg-neo-yellow transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none cursor-hover">
-                Abdullah.exe
-            </a>
+        <div class="max-w-7xl mx-auto pointer-events-auto">
+            <div class="flex justify-between items-center">
+                <a href="index.html"
+                    class="bg-neo-white border-2 border-black px-4 py-1 text-2xl font-black shadow-hard hover:bg-neo-yellow transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none cursor-hover">
+                    Abdullah.exe
+                </a>
 
-            <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
-                <a href="#about"
-                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/ABOUT</a>
-                <a href="#skills"
-                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/SKILLS</a>
-                <a href="#experience"
-                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/LOGS</a>
-                <a href="#projects"
-                    class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/WORK</a>
-                <a href="#contact"
-                    class="px-3 py-1 font-mono font-bold text-sm bg-neo-yellow border border-black hover:bg-neo-pink transition-colors cursor-hover">/CONTACT ME</a>
+                <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
+                    <a href="about.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/ABOUT</a>
+                    <a href="skills.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/SKILLS</a>
+                    <a href="logs.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/LOGS</a>
+                    <a href="work.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/WORK</a>
+                    <a href="index.html#contact"
+                        class="px-3 py-1 font-mono font-bold text-sm bg-neo-yellow border border-black hover:bg-neo-pink transition-colors cursor-hover">/CONTACT
+                        ME</a>
+                </div>
+
+                <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                    class="md:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
+                    <i class="ri-menu-line text-2xl"></i>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden mt-3">
+                <div class="bg-white border-2 border-black shadow-hard flex flex-col divide-y-2 divide-black">
+                    <a href="about.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/ABOUT</a>
+                    <a href="skills.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/SKILLS</a>
+                    <a href="logs.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/LOGS</a>
+                    <a href="work.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/WORK</a>
+                    <a href="index.html#contact"
+                        class="px-4 py-3 font-mono font-bold bg-neo-yellow hover:bg-neo-pink transition-colors">/CONTACT
+                        ME</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -252,7 +195,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
             <div class="md:col-span-4 reveal">
                 <div class="aspect-square bg-gray-200 border-4 border-black relative shadow-hard overflow-hidden group">
-                    <img src="Assets/images/img.jpg" alt="Arham"
+                    <img src="Assets/images/img.jpg" alt="Portrait of Abdullah Kamran, full stack developer"
                         class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                     <span
                         class="absolute top-2 left-2 bg-neo-red text-white px-2 font-mono text-xs border border-black z-10">Abdullah.JPG</span>
@@ -270,7 +213,7 @@
                     > 3+ years of autopiloting Learning.
                 </p>
 
-                <div class="flex gap-4">
+                <div class="flex gap-4 flex-wrap">
                     <div class="bg-neo-black text-white px-4 py-2 font-mono text-sm border-2 border-transparent">
                         📍 LOCATION: WORLDWIDE
                     </div>
@@ -278,6 +221,11 @@
                         🟢 STATUS: AVAILABLE
                     </div>
                 </div>
+
+                <a href="about.html"
+                    class="mt-8 self-start inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-6 py-3 font-mono font-bold shadow-hard hover:bg-neo-purple hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
+                    READ THE FULL BIO <i class="ri-arrow-right-line"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -302,124 +250,328 @@
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ LIBRARY
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ CORE
                     </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">REACT</div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        HTML5</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ FRAMEWORK
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ CORE
                     </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">NEXT.JS
-                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        CSS3</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ LANGUAGE
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
                     </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">Python
-                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        JavaScript</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ BACKEND
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
                     </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">NODE.JS
-                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Python</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ STYLING
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
                     </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">TAILWIND
-                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Java</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ ANDRIOD</div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">KOTLIN</div>
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Kotlin</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ CORE</div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">HTML5</div>
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        C#</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ PACKAGES
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LANGUAGE
                     </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">JSON</div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        C++</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ CREATION</div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">ADOBE
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ LIBRARY
                     </div>
-                </div>
-
-                <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ GAME_DEV</div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">UNITY
-                    </div>
-                </div>
-
-                <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ LANGUAGE
-                    </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">JAVA</div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        React</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ APPS
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ FRAMEWORK
                     </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">ANDROID
-                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Next.js</div>
                 </div>
 
                 <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ LANGUAGE
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ FRAMEWORK
                     </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">CSS</div>
-                </div>
-
-                <div
-                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ MODELS
-                    </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">LLM TRAINING
-                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Vue 3</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ ROBOTICS</div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">ARDUINO
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ STYLING
                     </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Tailwind</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ WEBGL
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Three.js</div>
                 </div>
 
                 <div
                     class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
-                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ LANGUAGE
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ MOTION
                     </div>
-                    <div class="text-white group-hover:text-black font-black font-display text-xl uppercase">C++</div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        GSAP</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ BUILD
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Vite</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DESIGN
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Responsive</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ BACKEND
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Node.js</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ BACKEND
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Express</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ INTERFACE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        REST APIs</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DATA
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        JSON</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DATABASE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        MongoDB</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DATABASE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        MySQL</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DATABASE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        SQLite</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ QUERY
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        SQL</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DATA_SCI
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Pandas</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ MACHINE_LRN
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Scikit-learn</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ MODELS
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        LLM Training</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ AI_AGENTS
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Google ADK</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ VISION
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        OpenCV</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ ROBOTICS
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Arduino</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DESKTOP
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        PyQt6</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ GAME_DEV
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Unity</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ MOBILE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Android</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ TOOLING
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Android Studio</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ BUILD
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Gradle</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-green transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ NARRATIVE
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Twine</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-pink transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ VERSION_CTRL
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Git</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-purple transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ HOSTING
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        GitHub</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-neo-orange transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DEPLOY
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Vercel</div>
+                </div>
+
+                <div
+                    class="group w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-[12.5%] h-24 border-r-2 border-b-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">&gt;_ DESIGN
+                    </div>
+                    <div class="text-white group-hover:text-black font-black font-display text-lg md:text-xl uppercase text-center leading-tight">
+                        Figma</div>
                 </div>
             </div>
 
             <div class="border-t-4 border-white mt-8 pt-4 flex justify-between font-mono text-xs text-gray-500">
-                <span>TOTAL_NODES: 16</span>
-                <span>MEMORY_USAGE: 128MB</span>
+                <span>TOTAL_NODES: 40</span>
+                <a href="skills.html" class="text-neo-green hover:text-white font-bold cursor-hover">&gt; VIEW FULL SKILL BREAKDOWN</a>
             </div>
         </div>
     </section>
@@ -483,7 +635,7 @@
         </div>
     </section>
 
-        <section id="experience" class="py-24 px-4 max-w-7xl mx-auto">
+        <section id="education" class="py-24 px-4 max-w-7xl mx-auto">
         <h2 class="text-5xl md:text-8xl font-black uppercase mb-12 tracking-tighter text-center">
             Education<span class="text-neo-red">_Log</span>
         </h2>
@@ -513,17 +665,13 @@
                 </div>
             </div>
 
-            <div class="reveal relative pl-8 md:pl-16">
-                <div class="absolute -left-[14px] top-2 w-6 h-6 bg-neo-green border-4 border-black"></div>
-                <div class="bg-white border-4 border-black p-6 shadow-hard hover:shadow-hard-xl transition-all">
-                    <div
-                        class="flex flex-col md:flex-row justify-between items-start md:items-center border-b-2 border-dashed border-gray-300 pb-4 mb-4">
-                        <h3 class="text-3xl font-black uppercase">Masters in Data Science</h3>
-                        <span class="font-mono font-bold bg-neo-black text-white px-2 py-1">2026 - Present</span>
-                    </div>
-                    <p class="font-mono text-xl mb-2 text-neo-green font-bold">@ Unknown</p>
-                </div>
-            </div>
+        </div>
+
+        <div class="text-center mt-16">
+            <a href="logs.html"
+                class="inline-flex items-center gap-2 bg-neo-black text-white px-10 py-5 font-bold font-mono text-lg border-4 border-black shadow-hard hover:bg-neo-green hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
+                OPEN THE FULL LOG <i class="ri-arrow-right-line"></i>
+            </a>
         </div>
     </section>
 
@@ -534,231 +682,246 @@
                 Selected Works
             </h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+
+                <article class="reveal project-card group bg-white border-4 border-black p-4 shadow-hard">
                     <div
                         class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
-                        <img src="Assets/images/Dekor.jpg"
-                            alt="PhisGaurd - AI-powered cybersecurity platform for threat detection by Arham"
+                        <img src="Assets/images/Dekor.jpg" alt="Dekor - Swedish furniture e-commerce storefront with product database and payment wall, built by Abdullah Kamran" loading="lazy"
                             class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
                     </div>
-                    <div class="flex justify-between items-start">
+                    <div class="project-card-footer flex justify-between items-start gap-4">
                         <div>
                             <h3
-                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-red transition-colors glitch-hover">
+                                class="text-3xl font-black uppercase mb-2 group-hover:text-neo-red transition-colors glitch-hover">
                                 Dekor</h3>
-                            <p class="font-mono text-sm mb-4 max-w-xs">A fully funtional minimalistic website for authentic swedish furniture with a Database and payment wall</p>
+                            <p class="font-mono text-sm mb-4">A minimalist storefront for authentic Swedish furniture, with a full product database and a working payment wall.</p>
                             <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">JavaScript</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Node.js</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Express</span>
                                 <span class="bg-neo-black text-white px-2 py-1">MongoDB</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Backend</span>
                                 <span class="bg-neo-black text-white px-2 py-1">Three.js</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Frontend</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Tailwind</span>
                             </div>
                         </div>
-                        <a href="https://dekorfurniture.vercel.app/"
-                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                        <a href="https://dekorfurniture.vercel.app/" target="_blank" rel="noopener"
+                            aria-label="Open Dekor project"
+                            class="shrink-0 w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
                             <i class="ri-arrow-right-up-line text-2xl"></i>
                         </a>
                     </div>
                 </article>
 
-                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard mt-0 md:mt-20">
+                <article class="reveal project-card group bg-white border-4 border-black p-4 shadow-hard">
                     <div
                         class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
-                        <img src="Assets/images/Prime.jpg"
-                            alt="StockEasy - Real-time stock market data and portfolio management by Arham"
+                        <img src="Assets/images/Prime.jpg" alt="Prime Real Estate - property marketing site with 3D visuals and listings database, built by Abdullah Kamran" loading="lazy"
                             class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
                     </div>
-                    <div class="flex justify-between items-start">
+                    <div class="project-card-footer flex justify-between items-start gap-4">
                         <div>
                             <h3
-                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-blue transition-colors glitch-hover">
+                                class="text-3xl font-black uppercase mb-2 group-hover:text-neo-blue transition-colors glitch-hover">
                                 Prime Real Estate</h3>
-                            <p class="font-mono text-sm mb-4 max-w-xs">Comprehensive online stock exchange platform
-                                providing real-time market data, portfolio management, and trading capabilities.</p>
+                            <p class="font-mono text-sm mb-4">A property marketing site for a real estate brand - animated 3D visuals, searchable listings and a lead capture flow.</p>
                             <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
-                                <span class="bg-neo-black text-white px-2 py-1">Frontend</span>
+                                <span class="bg-neo-black text-white px-2 py-1">JavaScript</span>
                                 <span class="bg-neo-black text-white px-2 py-1">Three.js</span>
+                                <span class="bg-neo-black text-white px-2 py-1">GSAP</span>
                                 <span class="bg-neo-black text-white px-2 py-1">MySQL</span>
-                                <span class="bg-neo-black text-white px-2 py-1">TailWind</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Tailwind</span>
+                                <span class="bg-neo-black text-white px-2 py-1">HTML5</span>
                             </div>
                         </div>
-                        <a href="https://prime-marketing-two.vercel.app/"
-                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                        <a href="https://prime-marketing-two.vercel.app/" target="_blank" rel="noopener"
+                            aria-label="Open Prime Real Estate project"
+                            class="shrink-0 w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
                             <i class="ri-arrow-right-up-line text-2xl"></i>
                         </a>
                     </div>
                 </article>
 
-                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard">
+                <article class="reveal project-card group bg-white border-4 border-black p-4 shadow-hard">
                     <div
                         class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
-                        <img src="Assets/images/Habibi.jpg"
-                            alt="Creative Portfolio - High-end WebGL and GSAP developer showcase by Arham"
+                        <img src="Assets/images/Habibi.jpg" alt="Al Habibi Bakery - website built for a local bakery by Abdullah Kamran" loading="lazy"
                             class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
                     </div>
-                    <div class="flex justify-between items-start">
+                    <div class="project-card-footer flex justify-between items-start gap-4">
                         <div>
                             <h3
-                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-pink transition-colors glitch-hover">
+                                class="text-3xl font-black uppercase mb-2 group-hover:text-neo-pink transition-colors glitch-hover">
                                 Al Habibi Bakery</h3>
-                            <p class="font-mono text-sm mb-4 max-w-xs">A website i made for my local bakery to start my lead generations</p>
+                            <p class="font-mono text-sm mb-4">A website I built for my local bakery - my first real client and the start of my lead generation.</p>
                             <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">HTML5</span>
+                                <span class="bg-neo-black text-white px-2 py-1">CSS3</span>
+                                <span class="bg-neo-black text-white px-2 py-1">JavaScript</span>
                                 <span class="bg-neo-black text-white px-2 py-1">WebGL</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Frontend</span>
                                 <span class="bg-neo-black text-white px-2 py-1">Three.js</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Responsive</span>
                             </div>
                         </div>
-                        <a href="https://github.com/4bdulllahhexe/Al-Habibi-Bakery.github.io.git"
-                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                        <a href="https://github.com/4bdulllahh/Al-Habibi-Bakery.github.io" target="_blank" rel="noopener"
+                            aria-label="Open Al Habibi Bakery project"
+                            class="shrink-0 w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
                             <i class="ri-arrow-right-up-line text-2xl"></i>
                         </a>
                     </div>
                 </article>
 
-                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard mt-0 md:mt-20">
+                <article class="reveal project-card group bg-white border-4 border-black p-4 shadow-hard">
                     <div
                         class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
-                        <img src="Assets/images/SuperCar App.jpg"
-                            alt="Android Habit Tracker - Material Design productivity app by Arham"
+                        <img src="Assets/images/SuperCar App.jpg" alt="SuperCar App - Android wiki app covering supercar manufacturers, built by Abdullah Kamran" loading="lazy"
                             class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
                     </div>
-                    <div class="flex justify-between items-start">
+                    <div class="project-card-footer flex justify-between items-start gap-4">
                         <div>
                             <h3
-                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-orange transition-colors glitch-hover">
+                                class="text-3xl font-black uppercase mb-2 group-hover:text-neo-orange transition-colors glitch-hover">
                                 SuperCar App</h3>
-                            <p class="font-mono text-sm mb-4 max-w-xs">A wiki app to get information and history about various SuperCar comapanies</p>
+                            <p class="font-mono text-sm mb-4">A wiki app for browsing the history and specs of the world's supercar manufacturers.</p>
                             <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
                                 <span class="bg-neo-black text-white px-2 py-1">Java</span>
                                 <span class="bg-neo-black text-white px-2 py-1">Kotlin</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Android</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Material-UI</span>
-                            </div>
-                        </div>
-                        <a href="https://drive.google.com/drive/folders/1AAui8mtSlI0Icuko635WuqXJL2-oai_4?usp=sharing"
-                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
-                            <i class="ri-arrow-right-up-line text-2xl"></i>
-                        </a>
-                    </div>
-                    
-                </article>
-
-                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard">
-                    <div
-                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
-                        <img src="Assets/images/DndK.jpg"
-                            alt="Creative Portfolio - High-end WebGL and GSAP developer showcase by Arham"
-                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3
-                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-pink transition-colors glitch-hover">
-                                Dragon & Knights</h3>
-                            <p class="font-mono text-sm mb-4 max-w-xs">A fully indipendently developed indie game about knights and dragon i made for fun.</p>
-                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
-                                <span class="bg-neo-black text-white px-2 py-1">Unity</span>
-                                <span class="bg-neo-black text-white px-2 py-1">C++</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Animations</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Physics</span>
-                            </div>
-                        </div>
-                        <a href="https://a6dullah.itch.io/dragons-knights"
-                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
-                            <i class="ri-arrow-right-up-line text-2xl"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard mt-0 md:mt-20">
-                    <div
-                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
-                        <img src="Assets/images/stroke.jpg"
-                            alt="Android Habit Tracker - Material Design productivity app by Arham"
-                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3
-                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-orange transition-colors glitch-hover">
-                                Machine Learning</h3>
-                            <p class="font-mono text-sm mb-4 max-w-xs">A Model I trained to detect if a person is having a stroke or not using RandomForestClassifier</p>
-                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
-                                <span class="bg-neo-black text-white px-2 py-1">Python</span>
-                                <span class="bg-neo-black text-white px-2 py-1">MySQL</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Database</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Kaggle</span>
-                            </div>
-                        </div>
-                        <a href="https://www.kaggle.com/code/abood186/stroke-prediction-using-randomforestclassifier"
-                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
-                            <i class="ri-arrow-right-up-line text-2xl"></i>
-                        </a>
-                    </div>
-                    
-                </article>
-                
-                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard">
-                    <div
-                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
-                        <img src="Assets/images/Twine.jpg"
-                            alt="Creative Portfolio - High-end WebGL and GSAP developer showcase by Arham"
-                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3
-                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-pink transition-colors glitch-hover">
-                                Hallways</h3>
-                            <p class="font-mono text-sm mb-4 max-w-xs">A horror game with mutliple choice and mutliple ending i make using Twine.</p>
-                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
-                                <span class="bg-neo-black text-white px-2 py-1">Twine</span>
-                                <span class="bg-neo-black text-white px-2 py-1">HTML5</span>
-                                <span class="bg-neo-black text-white px-2 py-1">CSS</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Adobe</span>
-                            </div>
-                        </div>
-                        <a href="https://drive.google.com/drive/folders/1Ddc5JVyv-Wa_dSpraJdL7n838MO633_5?usp=sharing"
-                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
-                            <i class="ri-arrow-right-up-line text-2xl"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="reveal group bg-white border-4 border-black p-4 shadow-hard mt-0 md:mt-20">
-                    <div
-                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
-                        <img src="Assets/images/Trivia.jpg"
-                            alt="Android Habit Tracker - Material Design productivity app by Arham"
-                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3
-                                class="text-4xl font-black uppercase mb-2 group-hover:text-neo-orange transition-colors glitch-hover">
-                                Trivia App</h3>
-                            <p class="font-mono text-sm mb-4 max-w-xs">An app I made that uses an API to get random trivia questions, app has diffrent difficulties</p>
-                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
-                                <span class="bg-neo-black text-white px-2 py-1">APIs</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Andriod Studio</span>
-                                <span class="bg-neo-black text-white px-2 py-1">Kotlin</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Android SDK</span>
+                                <span class="bg-neo-black text-white px-2 py-1">XML</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Material UI</span>
                                 <span class="bg-neo-black text-white px-2 py-1">Gradle</span>
                             </div>
                         </div>
-                        <a href="https://github.com/CodeLab-II/skills-portfolio-4bdulllahh.git"
-                            class="w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                        <a href="https://drive.google.com/drive/folders/1AAui8mtSlI0Icuko635WuqXJL2-oai_4?usp=sharing" target="_blank" rel="noopener"
+                            aria-label="Open SuperCar App project"
+                            class="shrink-0 w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
                             <i class="ri-arrow-right-up-line text-2xl"></i>
                         </a>
                     </div>
-                    
+                </article>
+
+                <article class="reveal project-card group bg-white border-4 border-black p-4 shadow-hard">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/DndK.jpg" alt="Dragons and Knights - independently developed Unity indie game by Abdullah Kamran" loading="lazy"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="project-card-footer flex justify-between items-start gap-4">
+                        <div>
+                            <h3
+                                class="text-3xl font-black uppercase mb-2 group-hover:text-neo-purple transition-colors glitch-hover">
+                                Dragons &amp; Knights</h3>
+                            <p class="font-mono text-sm mb-4">A fully independently developed indie game about knights and dragons that I built for fun.</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">Unity</span>
+                                <span class="bg-neo-black text-white px-2 py-1">C#</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Physics</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Animation</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Game Design</span>
+                            </div>
+                        </div>
+                        <a href="https://a6dullah.itch.io/dragons-knights" target="_blank" rel="noopener"
+                            aria-label="Open Dragons and Knights project"
+                            class="shrink-0 w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="reveal project-card group bg-white border-4 border-black p-4 shadow-hard">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/stroke.jpg" alt="Stroke prediction machine learning model using RandomForestClassifier, built by Abdullah Kamran" loading="lazy"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="project-card-footer flex justify-between items-start gap-4">
+                        <div>
+                            <h3
+                                class="text-3xl font-black uppercase mb-2 group-hover:text-neo-green transition-colors glitch-hover">
+                                Stroke Prediction</h3>
+                            <p class="font-mono text-sm mb-4">A model I trained to predict whether a patient is at risk of a stroke, using a RandomForestClassifier.</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">Python</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Pandas</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Scikit-learn</span>
+                                <span class="bg-neo-black text-white px-2 py-1">RandomForest</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Matplotlib</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Kaggle</span>
+                            </div>
+                        </div>
+                        <a href="https://www.kaggle.com/code/abood186/stroke-prediction-using-randomforestclassifier" target="_blank" rel="noopener"
+                            aria-label="Open Stroke Prediction project"
+                            class="shrink-0 w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="reveal project-card group bg-white border-4 border-black p-4 shadow-hard">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/Twine.jpg" alt="Hallways - branching horror game with multiple endings built in Twine by Abdullah Kamran" loading="lazy"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="project-card-footer flex justify-between items-start gap-4">
+                        <div>
+                            <h3
+                                class="text-3xl font-black uppercase mb-2 group-hover:text-neo-pink transition-colors glitch-hover">
+                                Hallways</h3>
+                            <p class="font-mono text-sm mb-4">A horror game with multiple choices and multiple endings, written and built in Twine.</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">Twine</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Harlowe</span>
+                                <span class="bg-neo-black text-white px-2 py-1">HTML5</span>
+                                <span class="bg-neo-black text-white px-2 py-1">CSS3</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Branching Narrative</span>
+                            </div>
+                        </div>
+                        <a href="https://drive.google.com/drive/folders/1Ddc5JVyv-Wa_dSpraJdL7n838MO633_5?usp=sharing" target="_blank" rel="noopener"
+                            aria-label="Open Hallways project"
+                            class="shrink-0 w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="reveal project-card group bg-white border-4 border-black p-4 shadow-hard">
+                    <div
+                        class="bg-black border-2 border-black aspect-video relative overflow-hidden mb-6 group-hover:shadow-none transition-all">
+                        <img src="Assets/images/Trivia.jpg" alt="Trivia App - Android quiz app consuming a live trivia REST API, built by Abdullah Kamran" loading="lazy"
+                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="project-card-footer flex justify-between items-start gap-4">
+                        <div>
+                            <h3
+                                class="text-3xl font-black uppercase mb-2 group-hover:text-neo-orange transition-colors glitch-hover">
+                                Trivia App</h3>
+                            <p class="font-mono text-sm mb-4">An Android app that pulls random trivia from a live API, with selectable difficulty levels.</p>
+                            <div class="flex gap-2 font-mono text-xs font-bold flex-wrap">
+                                <span class="bg-neo-black text-white px-2 py-1">Kotlin</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Android Studio</span>
+                                <span class="bg-neo-black text-white px-2 py-1">REST API</span>
+                                <span class="bg-neo-black text-white px-2 py-1">JSON</span>
+                                <span class="bg-neo-black text-white px-2 py-1">Gradle</span>
+                            </div>
+                        </div>
+                        <a href="https://github.com/CodeLab-II/skills-portfolio-4bdulllahh" target="_blank" rel="noopener"
+                            aria-label="Open Trivia App project"
+                            class="shrink-0 w-12 h-12 border-2 border-black bg-neo-green flex items-center justify-center hover:bg-black hover:text-white transition-all cursor-hover shadow-hard-sm">
+                            <i class="ri-arrow-right-up-line text-2xl"></i>
+                        </a>
+                    </div>
                 </article>
                 <!-- End Projects -->
             </div>
 
-            <div class="text-center mt-24">
-                <a href="https://github.com/4bdulllahh"
+            <div class="text-center mt-24 flex flex-col sm:flex-row justify-center gap-6">
+                <a href="work.html"
                     class="inline-block bg-neo-black text-white px-12 py-5 font-bold font-mono text-xl hover:bg-neo-white hover:text-black border-4 border-black transition-all shadow-hard hover:shadow-none cursor-hover">
+                    SEE EVERY PROJECT
+                </a>
+                <a href="https://github.com/4bdulllahh" target="_blank" rel="noopener"
+                    class="inline-block bg-neo-white text-black px-12 py-5 font-bold font-mono text-xl hover:bg-neo-black hover:text-white border-4 border-black transition-all shadow-hard hover:shadow-none cursor-hover">
                     VIEW ALL REPOS ON GITHUB
                 </a>
             </div>
@@ -766,119 +929,152 @@
     </section>
 
     <section id="certificates" class="py-24 bg-neo-black border-t-4 border-black overflow-hidden relative">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="flex items-center gap-2 mb-16 bg-white/5 border-2 border-white/10 p-4 inline-flex shadow-hard shadow-neo-blue/20">
-            <div class="flex gap-2">
-                <div class="h-3 w-3 bg-red-500 rounded-full border border-black"></div>
-                <div class="h-3 w-3 bg-yellow-500 rounded-full border border-black"></div>
-                <div class="h-3 w-3 bg-green-500 rounded-full border border-black"></div>
+        <div class="max-w-7xl mx-auto px-4">
+            <div
+                class="flex flex-wrap items-center gap-2 mb-6 bg-white/5 border-2 border-white/10 p-4 shadow-hard shadow-neo-blue/20">
+                <div class="flex gap-2">
+                    <div class="h-3 w-3 bg-red-500 rounded-full border border-black"></div>
+                    <div class="h-3 w-3 bg-yellow-500 rounded-full border border-black"></div>
+                    <div class="h-3 w-3 bg-green-500 rounded-full border border-black"></div>
+                </div>
+                <h2 class="font-mono text-white text-xl font-bold ml-4 tracking-tighter">Certifications.log</h2>
+                <div class="ml-auto px-2 bg-neo-green text-black text-[10px] font-black uppercase">Verified_Records</div>
             </div>
-            <h2 class="font-mono text-white text-xl font-bold ml-4 tracking-tighter">Certifications.log</h2>
-            <div class="ml-8 px-2 bg-neo-green text-black text-[10px] font-black uppercase">Verified_Records</div>
+
+            <div class="flex items-center justify-between gap-4 mb-2">
+                <p class="font-mono text-gray-500 text-xs uppercase tracking-widest">
+                    <i class="ri-drag-move-2-line"></i> Drag to browse
+                </p>
+                <div class="flex gap-3">
+                    <button id="cert-prev" type="button" aria-label="Previous certificate"
+                        class="w-12 h-12 bg-white text-black border-2 border-white flex items-center justify-center hover:bg-neo-green transition-all active:translate-x-1 active:translate-y-1 cursor-hover">
+                        <i class="ri-arrow-left-line text-2xl"></i>
+                    </button>
+                    <button id="cert-next" type="button" aria-label="Next certificate"
+                        class="w-12 h-12 bg-white text-black border-2 border-white flex items-center justify-center hover:bg-neo-green transition-all active:translate-x-1 active:translate-y-1 cursor-hover">
+                        <i class="ri-arrow-right-line text-2xl"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="marquee-container group cursor-hover">
-        <div class="marquee-content flex gap-8 py-12 px-4 select-none">
-            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-green/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+        <div class="cert-rail px-4 md:px-[max(1rem,calc((100vw-80rem)/2))]" role="region"
+            aria-label="Certificates carousel">
+            <article
+                class="cert-card w-[300px] sm:w-[420px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-green/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
                 <div class="absolute top-0 left-0 w-full h-1 bg-neo-green"></div>
-                <div class="flex justify-between items-start mb-4">
-                    <div class="font-mono text-neo-green text-xs font-bold tracking-widest uppercase">CERT_001.jpg</div>
-                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                <div class="flex justify-between items-start mb-4 gap-3">
+                    <div class="font-mono text-neo-green text-xs font-bold tracking-widest uppercase">Google Developer Group &middot; Bath Spa University UAE</div>
+                    <div class="text-[10px] font-mono text-gray-500 shrink-0">26 NOV 2025</div>
                 </div>
                 <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
-                    <img src="Assets/Certificates/certificate1.jpg" alt="Certificate 1" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                    <img src="Assets/Certificates/certificate1.jpg" alt="Build Intelligent Agents certificate issued to Abdullah Kamran"
+                        loading="lazy"
+                        class="w-full h-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-500">
                 </div>
-                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
-            </div>
+                <h3 class="font-display font-black text-white text-xl uppercase leading-tight mb-1">Build Intelligent Agents</h3>
+                <p class="font-mono text-gray-400 text-[11px] uppercase tracking-tight">Google Agent Development Kit</p>
+            </article>
 
-            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+            <article
+                class="cert-card w-[300px] sm:w-[420px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
                 <div class="absolute top-0 left-0 w-full h-1 bg-neo-blue"></div>
-                <div class="flex justify-between items-start mb-4">
-                    <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">CERT_002.jpg</div>
-                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                <div class="flex justify-between items-start mb-4 gap-3">
+                    <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">Great Learning Academy</div>
+                    <div class="text-[10px] font-mono text-gray-500 shrink-0">DEC 2024</div>
                 </div>
                 <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
-                    <img src="Assets/Certificates/certificate2.jpg" alt="Certificate 2" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                    <img src="Assets/Certificates/certificate2.jpg" alt="Python Tkinter certificate issued to Abdullah Kamran"
+                        loading="lazy"
+                        class="w-full h-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-500">
                 </div>
-                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
-            </div>
+                <h3 class="font-display font-black text-white text-xl uppercase leading-tight mb-1">Python Tkinter</h3>
+                <p class="font-mono text-gray-400 text-[11px] uppercase tracking-tight">Desktop GUI development</p>
+            </article>
 
-            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-pink/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+            <article
+                class="cert-card w-[300px] sm:w-[420px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-yellow/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-neo-yellow"></div>
+                <div class="flex justify-between items-start mb-4 gap-3">
+                    <div class="font-mono text-neo-yellow text-xs font-bold tracking-widest uppercase">Sololearn</div>
+                    <div class="text-[10px] font-mono text-gray-500 shrink-0">04 APR 2024</div>
+                </div>
+                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
+                    <img src="Assets/Certificates/certificate3.jpg" alt="Introduction to JavaScript certificate issued to Abdullah Kamran"
+                        loading="lazy"
+                        class="w-full h-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                </div>
+                <h3 class="font-display font-black text-white text-xl uppercase leading-tight mb-1">Introduction to JavaScript</h3>
+                <p class="font-mono text-gray-400 text-[11px] uppercase tracking-tight">Credential CC-T9DT8AWN</p>
+            </article>
+
+            <article
+                class="cert-card w-[300px] sm:w-[420px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-pink/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
                 <div class="absolute top-0 left-0 w-full h-1 bg-neo-pink"></div>
-                <div class="flex justify-between items-start mb-4">
-                    <div class="font-mono text-neo-pink text-xs font-bold tracking-widest uppercase">CERT_003.jpg</div>
-                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                <div class="flex justify-between items-start mb-4 gap-3">
+                    <div class="font-mono text-neo-pink text-xs font-bold tracking-widest uppercase">GDGoC &middot; Bath Spa University RAK</div>
+                    <div class="text-[10px] font-mono text-gray-500 shrink-0">09 FEB 2026</div>
                 </div>
                 <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
-                    <img src="Assets/Certificates/certificate3.jpg" alt="Certificate 3" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                    <img src="Assets/Certificates/certificate4.jpg" alt="Dream vs Reality: AI Battle certificate issued to Abdullah Kamran"
+                        loading="lazy"
+                        class="w-full h-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-500">
                 </div>
-                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
-            </div>
+                <h3 class="font-display font-black text-white text-xl uppercase leading-tight mb-1">Dream vs Reality: AI Battle</h3>
+                <p class="font-mono text-gray-400 text-[11px] uppercase tracking-tight">Applied AI competition</p>
+            </article>
 
-            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-purple/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+            <article
+                class="cert-card w-[300px] sm:w-[420px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-purple/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
                 <div class="absolute top-0 left-0 w-full h-1 bg-neo-purple"></div>
-                <div class="flex justify-between items-start mb-4">
-                    <div class="font-mono text-neo-purple text-xs font-bold tracking-widest uppercase">CERT_004.jpg</div>
-                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                <div class="flex justify-between items-start mb-4 gap-3">
+                    <div class="font-mono text-neo-purple text-xs font-bold tracking-widest uppercase">LinkedIn Learning</div>
+                    <div class="text-[10px] font-mono text-gray-500 shrink-0">06 JAN 2026</div>
                 </div>
                 <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
-                    <img src="Assets/Certificates/certificate4.jpg" alt="Certificate 4" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                    <img src="Assets/Certificates/certificate5.jpg" alt="Node.js Essential Training certificate issued to Abdullah Kamran"
+                        loading="lazy"
+                        class="w-full h-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-500">
                 </div>
-                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
-            </div>
+                <h3 class="font-display font-black text-white text-xl uppercase leading-tight mb-1">Node.js Essential Training</h3>
+                <p class="font-mono text-gray-400 text-[11px] uppercase tracking-tight">Server-side JavaScript</p>
+            </article>
 
-            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-green/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+            <article
+                class="cert-card w-[300px] sm:w-[420px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-orange/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
+                <div class="absolute top-0 left-0 w-full h-1 bg-neo-orange"></div>
+                <div class="flex justify-between items-start mb-4 gap-3">
+                    <div class="font-mono text-neo-orange text-xs font-bold tracking-widest uppercase">LinkedIn Learning</div>
+                    <div class="text-[10px] font-mono text-gray-500 shrink-0">06 JAN 2026</div>
+                </div>
+                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
+                    <img src="Assets/Certificates/certificate6.jpg" alt="Designing RESTful APIs certificate issued to Abdullah Kamran"
+                        loading="lazy"
+                        class="w-full h-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                </div>
+                <h3 class="font-display font-black text-white text-xl uppercase leading-tight mb-1">Designing RESTful APIs</h3>
+                <p class="font-mono text-gray-400 text-[11px] uppercase tracking-tight">API architecture &amp; design</p>
+            </article>
+
+            <article
+                class="cert-card w-[300px] sm:w-[420px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-green/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
                 <div class="absolute top-0 left-0 w-full h-1 bg-neo-green"></div>
-                <div class="flex justify-between items-start mb-4">
-                    <div class="font-mono text-neo-green text-xs font-bold tracking-widest uppercase">CERT_005.jpg</div>
-                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
+                <div class="flex justify-between items-start mb-4 gap-3">
+                    <div class="font-mono text-neo-green text-xs font-bold tracking-widest uppercase">Sololearn</div>
+                    <div class="text-[10px] font-mono text-gray-500 shrink-0">04 DEC 2024</div>
                 </div>
                 <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
-                    <img src="Assets/Certificates/certificate5.jpg" alt="Certificate 1" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
+                    <img src="Assets/Certificates/certificate7.jpg" alt="Python Intermediate certificate issued to Abdullah Kamran"
+                        loading="lazy"
+                        class="w-full h-full object-contain grayscale group-hover/card:grayscale-0 transition-all duration-500">
                 </div>
-                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
-            </div>
+                <h3 class="font-display font-black text-white text-xl uppercase leading-tight mb-1">Python Intermediate</h3>
+                <p class="font-mono text-gray-400 text-[11px] uppercase tracking-tight">Credential CC-PFV7WMC1</p>
+            </article>
+        </div>
 
-            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
-                <div class="absolute top-0 left-0 w-full h-1 bg-neo-blue"></div>
-                <div class="flex justify-between items-start mb-4">
-                    <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">CERT_006.jpg</div>
-                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
-                </div>
-                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
-                    <img src="Assets/Certificates/certificate6.jpg" alt="Certificate 2" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
-                </div>
-                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
-            </div>
-
-            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
-                <div class="absolute top-0 left-0 w-full h-1 bg-neo-blue"></div>
-                <div class="flex justify-between items-start mb-4">
-                    <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">CERT_007.jpg</div>
-                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
-                </div>
-                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
-                    <img src="Assets/Certificates/certificate6.jpg" alt="Certificate 2" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
-                </div>
-                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
-            </div>
-
-            <div class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-6 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left">
-                <div class="absolute top-0 left-0 w-full h-1 bg-neo-blue"></div>
-                <div class="flex justify-between items-start mb-4">
-                    <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">CERT_008.jpg</div>
-                    <div class="text-[10px] font-mono text-gray-500">IMAGE_FILE</div>
-                </div>
-                <div class="aspect-video w-full bg-white/5 border-2 border-white/10 overflow-hidden mb-4">
-                    <img src="certificate2.jpg" alt="Certificate 2" class="w-full h-full object-cover grayscale group-hover/card:grayscale-0 transition-all duration-500">
-                </div>
-                <p class="font-mono text-gray-400 text-[10px] uppercase tracking-tight">Status: Successfully Validated</p>
-            </div>
-            
-            </div>
-    </div>
-</section>
+        <div id="cert-dots" class="flex justify-center gap-3 mt-4" aria-hidden="true"></div>
+    </section>
 
     <section id="contact" class="py-24 px-4 max-w-5xl mx-auto">
         <div class="bg-white border-4 border-black shadow-hard-xl p-8 md:p-12 relative reveal mt-12">
@@ -949,16 +1145,22 @@
             <div>
                 <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
                 <ul class="space-y-2 text-gray-400">
-                    <li><a href="#"
+                    <li><a href="index.html"
                             class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Home</a>
                     </li>
-                    <li><a href="#projects"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Works</a>
-                    </li>
-                    <li><a href="#about"
+                    <li><a href="about.html"
                             class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">About</a>
                     </li>
-                    <li><a href="#contact"
+                    <li><a href="skills.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Skills</a>
+                    </li>
+                    <li><a href="logs.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Logs</a>
+                    </li>
+                    <li><a href="work.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Work</a>
+                    </li>
+                    <li><a href="index.html#contact"
                             class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
                     </li>
                 </ul>
@@ -967,13 +1169,13 @@
             <div>
                 <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SOCIALS</h3>
                 <div class="flex gap-4">
-                    <a href="https://www.instagram.com/4bdulllahh/"
+                    <a href="https://www.instagram.com/4bdulllahh/" target="_blank" rel="noopener" aria-label="Instagram"
                         class="text-2xl hover:text-neo-pink transition-colors cursor-hover"><i
                             class="ri-instagram-fill"></i></a>
-                    <a href="https://github.com/4bdulllahh"
+                    <a href="https://github.com/4bdulllahh" target="_blank" rel="noopener" aria-label="GitHub"
                         class="text-2xl hover:text-neo-yellow transition-colors cursor-hover"><i
                             class="ri-github-fill"></i></a>
-                    <a href="https://www.linkedin.com/in/abdullah-kamran-047905213/?skipRedirect=true"
+                    <a href="https://www.linkedin.com/in/abzoola" target="_blank" rel="noopener" aria-label="LinkedIn"
                         class="text-2xl hover:text-neo-purple transition-colors cursor-hover"><i
                             class="ri-linkedin-fill"></i></a>
                 </div>
@@ -990,55 +1192,7 @@
         </div>
     </footer>
 
-    <script>
-        // Custom Cursor Logic
-        const cursor = document.getElementById('cursor');
-        const hoverElements = document.querySelectorAll('.cursor-hover, a, button, input, textarea');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            cursor.style.transform = `translate(-50%, -50%)`;
-        });
-
-        // Add hover effect to cursor
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.width = '60px';
-                cursor.style.height = '60px';
-                cursor.style.backgroundColor = '#FBFF48'; // Neo Yellow
-                cursor.style.mixBlendMode = 'normal';
-                cursor.style.border = '2px solid black';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.width = '24px';
-                cursor.style.height = '24px';
-                cursor.style.backgroundColor = '#fff';
-                cursor.style.mixBlendMode = 'difference';
-                cursor.style.border = 'none';
-            });
-        });
-
-        // Scroll Reveal Logic
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // Scroll Progress Bar
-        window.onscroll = function () {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("progressBar").style.width = scrolled + "%";
-        };
-    </script>
+    <script src="js/main.js"></script>
 </body>
 
 
