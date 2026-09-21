@@ -19,6 +19,41 @@ body {
     background-size: 40px 40px, 100px 100px, 100px 100px;
 }
 
+/* Nothing should ever push the page sideways on a phone. `clip` rather than
+   `hidden` so it doesn't create a scroll container and break sticky elements. */
+html,
+body {
+    overflow-x: clip;
+}
+
+/* Laptops look like a scaled-down version of the 1920px desktop layout rather
+   than the same-sized elements crammed into less room. Every Tailwind spacing
+   and type size is rem-based, so scaling the root scales the whole design:
+   16px at 1920px and up (unchanged), easing down to 14px at 1280px. Tablets and
+   phones keep the standard 16px root and get their own layouts instead. */
+@media (min-width: 1024px) {
+    html {
+        font-size: clamp(14px, calc(10px + 0.3125vw), 16px);
+    }
+}
+
+/* Inline links in body copy: the same yellow marker as the "personality"
+   highlight on the home page, instead of an underline. */
+.hl-link {
+    background-color: #FBFF48;
+    color: #121212;
+    border: 1px solid #000;
+    padding: 0 0.25em;
+    text-decoration: none;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    transition: background-color 0.2s;
+}
+
+.hl-link:hover {
+    background-color: #FF70A6;
+}
+
 /* Touch devices get the real cursor back — there is no pointer to replace. */
 @media (hover: none),
 (pointer: coarse) {
@@ -248,14 +283,16 @@ body {
 }
 
 /* ==========================================================================
-   CERTIFICATE RAIL — drag, flick, scroll or arrow through
+   CERTIFICATE RAIL — rolls right to left on its own; drag, flick, scroll or
+   arrow through it and it pauses, then picks up again.
+   No scroll-snap and no CSS smooth scrolling here: the auto-roll nudges
+   scrollLeft a fraction of a pixel every frame, and both of those would fight
+   it. The arrow buttons ask for smooth scrolling explicitly in JS instead.
    ========================================================================== */
 .cert-rail {
     display: flex;
     gap: 2rem;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -269,8 +306,6 @@ body {
 
 .cert-rail.is-dragging {
     cursor: grabbing;
-    scroll-behavior: auto;
-    scroll-snap-type: none;
 }
 
 /* While dragging, swallow clicks so a flick never opens a link. */
@@ -280,7 +315,6 @@ body {
 
 .cert-card {
     flex: 0 0 auto;
-    scroll-snap-align: center;
 }
 
 /* Dots under the rail. */
