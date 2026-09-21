@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Abdullah Kamran</title>
+
+    <meta name="description" content="Abdullah Kamran - full stack developer. From sales floor to shipping software: how I think, how I work, and what I build when nobody is watching.">
+    <meta name="keywords" content="Abdullah Kamran about, full stack developer bio, Bath Spa University, UAE developer">
+    <link rel="canonical" href="https://abdullahexe.online/about.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About | Abdullah Kamran">
+    <meta property="og:description" content="Abdullah Kamran - full stack developer. From sales floor to shipping software: how I think, how I work, and what I build when nobody is watching.">
+    <meta property="og:url" content="https://abdullahexe.online/about.html">
+
+    <meta name="theme-color" content="#121212">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link type="logo" rel="icon" href="Assets/images/title_icon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        // Only arm the transition curtain when JS is running, so a visitor with
+        // scripts disabled never meets a black screen they cannot dismiss.
+        document.documentElement.classList.add('transition-page');
+    </script>
+</head>
+
+<body class="text-neo-black font-display antialiased selection:bg-neo-black selection:text-neo-yellow">
+
+    <!-- ============ PAGE TRANSITION CURTAIN ============ -->
+    <div id="page-transition" aria-hidden="true">
+        <span
+            class="relative z-10 text-[11vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
+            Abdullah<span class="text-neo-green">.exe</span>
+        </span>
+    </div>
+
+    <div id="cursor" class="w-6 h-6 bg-white rounded-full border-2 border-black hidden lg:block"></div>
+
+    <div class="fixed top-0 left-0 h-2 bg-neo-green z-[60] border-b-2 border-black" id="progressBar" style="width: 0%">
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 px-4 py-4 pointer-events-none">
+        <div class="max-w-7xl mx-auto pointer-events-auto">
+            <div class="flex justify-between items-center">
+                <a href="index.html"
+                    class="bg-neo-white border-2 border-black px-4 py-1 text-2xl font-black shadow-hard hover:bg-neo-yellow transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none cursor-hover">
+                    Abdullah.exe
+                </a>
+
+                <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
+                    <a href="about.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover bg-neo-black text-white">/ABOUT</a>
+                    <a href="skills.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/SKILLS</a>
+                    <a href="logs.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/LOGS</a>
+                    <a href="work.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/WORK</a>
+                    <a href="index.html#contact"
+                        class="px-3 py-1 font-mono font-bold text-sm bg-neo-yellow border border-black hover:bg-neo-pink transition-colors cursor-hover">/CONTACT
+                        ME</a>
+                </div>
+
+                <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                    class="md:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
+                    <i class="ri-menu-line text-2xl"></i>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden mt-3">
+                <div class="bg-white border-2 border-black shadow-hard flex flex-col divide-y-2 divide-black">
+                    <a href="about.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors bg-neo-black text-white">/ABOUT</a>
+                    <a href="skills.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/SKILLS</a>
+                    <a href="logs.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/LOGS</a>
+                    <a href="work.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/WORK</a>
+                    <a href="index.html#contact"
+                        class="px-4 py-3 font-mono font-bold bg-neo-yellow hover:bg-neo-pink transition-colors">/CONTACT
+                        ME</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-36 pb-16 px-4 max-w-7xl mx-auto">
+        <div class="inline-block bg-neo-white border-2 border-black px-4 py-1 mb-6 shadow-hard rotate-[-2deg]">
+            <span class="font-mono font-bold text-neo-green bg-black px-2 mr-2">&#9679;</span>
+            <span class="font-mono font-bold">FILE: ABOUT.MD</span>
+        </div>
+
+        <h1 class="text-[15vw] md:text-[11vw] leading-[0.82] font-black uppercase tracking-tighter mb-8">
+            WHO<br><span class="text-white" style="-webkit-text-stroke: 3px black;">AM I?</span>
+        </h1>
+
+        <p class="font-mono text-lg md:text-xl max-w-3xl bg-neo-yellow border-2 border-black p-5 shadow-hard rotate-1">
+            I started on a sales floor, not in a lecture hall. I learned to code because my customers deserved better than what I could sell them. Everything since has been an extension of that.
+        </p>
+    </header>
+
+    <!-- ============ HERO IMAGE ============ -->
+    <section class="px-4 max-w-7xl mx-auto mb-24">
+        <div class="relative border-4 border-black shadow-hard-lg overflow-hidden bg-neo-black">
+            <img src="Assets/images/about-hero.jpg"
+                alt="Abdullah Kamran looking out over a mountain range"
+                onerror="this.onerror=null;this.src='Assets/images/img.jpg';"
+                class="w-full h-[45vh] md:h-[70vh] object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 p-6 md:p-10">
+                <span class="font-mono text-xs bg-neo-red text-white px-2 py-1 border border-black">ABDULLAH.JPG</span>
+                <p class="font-mono text-white text-lg md:text-2xl mt-4 max-w-2xl leading-relaxed">
+                    Best ideas arrive somewhere with no Wi-Fi.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ORIGIN STORY ============ -->
+    <section class="py-20 px-4 max-w-7xl mx-auto border-x-4 border-black bg-white shadow-hard-lg mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+            <div class="md:col-span-4">
+                <h2 class="text-5xl md:text-6xl font-black uppercase leading-[0.9] sticky top-32">
+                    The<br>Origin<br><span class="text-neo-red">Story</span>
+                </h2>
+            </div>
+            <div class="md:col-span-8 space-y-6 font-mono text-lg leading-relaxed">
+                <p>
+                    In 2022 I was a sales guy at <b>Uniformers</b> with amateur tech experience and a drive to close
+                    deals. I was good at the talking part. What bothered me was everything that happened after the
+                    handshake &mdash; the clunky forms, the dead links, the websites that made good businesses look
+                    careless.
+                </p>
+                <p>
+                    So I stopped complaining and opened a text editor. HTML, then CSS, then JavaScript, learned on the
+                    fly between calls because I wanted to give my customers a better experience than the one I was
+                    selling them.
+                </p>
+                <p class="border-l-4 border-neo-purple pl-5 text-gray-700">
+                    That's still the shape of how I work: I don't learn a technology because it's trending. I learn it
+                    because something in front of me is broken and that's what fixes it.
+                </p>
+                <p>
+                    A degree in Computer Science at <b>Bath Spa University</b> gave that instinct a backbone &mdash;
+                    algorithms, databases, machine learning, the reasons things work rather than just the fact that they
+                    do. Now I take projects end to end: the design, the backend, the deploy, and the client conversation
+                    in between.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section class="py-24 bg-neo-black text-neo-white border-y-4 border-black relative overflow-hidden mb-24">
+        <div class="absolute inset-0 opacity-20"
+            style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 40px 40px;">
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4">
+                WHAT I<span class="text-neo-green">_BELIEVE</span>
+            </h2>
+            <p class="font-mono text-neo-green text-sm mb-14">/// OPINIONS, HELD LOOSELY BUT HELD</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="border-2 border-white/20 p-8 hover:border-neo-green transition-colors">
+                    <div class="font-mono text-neo-green text-xs mb-3">&gt;_ 01</div>
+                    <h3 class="font-black text-2xl uppercase mb-3">The web got sanitized</h3>
+                    <p class="font-mono text-gray-400 leading-relaxed">
+                        Every site looks like every other site. Same hero, same three cards, same rounded corners. I'd
+                        rather build something a person remembers the next morning than something that scores well on a
+                        template checklist.
+                    </p>
+                </div>
+
+                <div class="border-2 border-white/20 p-8 hover:border-neo-pink transition-colors">
+                    <div class="font-mono text-neo-pink text-xs mb-3">&gt;_ 02</div>
+                    <h3 class="font-black text-2xl uppercase mb-3">Shipped beats perfect</h3>
+                    <p class="font-mono text-gray-400 leading-relaxed">
+                        A live site earning a business money is worth more than a flawless one still in a branch. Ship
+                        it, watch real people use it, then fix what actually broke instead of what you imagined would.
+                    </p>
+                </div>
+
+                <div class="border-2 border-white/20 p-8 hover:border-neo-blue transition-colors">
+                    <div class="font-mono text-neo-blue text-xs mb-3">&gt;_ 03</div>
+                    <h3 class="font-black text-2xl uppercase mb-3">Code is a means, not the point</h3>
+                    <p class="font-mono text-gray-400 leading-relaxed">
+                        Nobody hires a developer because they want more code in the world. They want more customers,
+                        less admin, fewer mistakes. Sales taught me to ask what the actual problem is before quoting a
+                        solution.
+                    </p>
+                </div>
+
+                <div class="border-2 border-white/20 p-8 hover:border-neo-yellow transition-colors">
+                    <div class="font-mono text-neo-yellow text-xs mb-3">&gt;_ 04</div>
+                    <h3 class="font-black text-2xl uppercase mb-3">Learn it by building it</h3>
+                    <p class="font-mono text-gray-400 leading-relaxed">
+                        I've never finished a tutorial and felt like I knew anything. I learned computer vision by
+                        making a turret track my face, and machine learning by trying to predict strokes. Build the
+                        thing badly, then find out why.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ WORLDVIEW ============ -->
+    <section class="py-20 px-4 max-w-7xl mx-auto mb-12">
+        <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-12">
+            How I See<span class="text-neo-purple">_The World</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="reveal bg-white border-4 border-black p-8 shadow-hard">
+                <i class="ri-node-tree text-5xl text-neo-purple mb-4 block"></i>
+                <h3 class="text-2xl font-black uppercase mb-3">It's all one system</h3>
+                <p class="font-mono text-sm leading-relaxed text-gray-700">
+                    A React component, a servo motor, a sales funnel and a person deciding whether to trust you are
+                    the same kind of problem wearing different clothes. Inputs, state, feedback. Once you see that,
+                    moving between web, hardware and AI stops feeling like switching careers.
+                </p>
+            </div>
+
+            <div class="reveal bg-white border-4 border-black p-8 shadow-hard">
+                <i class="ri-scales-3-line text-5xl text-neo-blue mb-4 block"></i>
+                <h3 class="text-2xl font-black uppercase mb-3">Constraints are the gift</h3>
+                <p class="font-mono text-sm leading-relaxed text-gray-700">
+                    Unlimited budget and unlimited time produce mush. A bakery with no budget, a deadline in nine days
+                    and one phone to test on forces you to decide what actually matters. Most of my best work came out
+                    of a corner I had to think my way out of.
+                </p>
+            </div>
+
+            <div class="reveal bg-white border-4 border-black p-8 shadow-hard">
+                <i class="ri-robot-2-line text-5xl text-neo-green mb-4 block"></i>
+                <h3 class="text-2xl font-black uppercase mb-3">AI raises the floor, not the ceiling</h3>
+                <p class="font-mono text-sm leading-relaxed text-gray-700">
+                    It makes the boring parts cheap, which means taste and judgement are worth more than they were, not
+                    less. I use it heavily and trust it narrowly. Knowing why the answer is right is still the whole
+                    job.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ HOW I WORK ============ -->
+    <section class="py-24 px-4 bg-neo-yellow border-y-4 border-black mb-24">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4 text-white"
+                style="-webkit-text-stroke: 3px black;">
+                How I Work
+            </h2>
+            <p class="font-mono font-bold mb-14">/// IDEA &rarr; DESIGN &rarr; BUILD &rarr; SHIP</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border-4 border-black p-6 shadow-hard">
+                    <div class="font-mono font-black text-6xl text-neo-red mb-4">01</div>
+                    <h3 class="text-xl font-black uppercase mb-3">Understand the business</h3>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">
+                        Before a single line: who is this for, what do they need to do, and what happens to the business
+                        if they can't? Half the features people ask for disappear at this stage.
+                    </p>
+                </div>
+
+                <div class="bg-white border-4 border-black p-6 shadow-hard">
+                    <div class="font-mono font-black text-6xl text-neo-blue mb-4">02</div>
+                    <h3 class="text-xl font-black uppercase mb-3">Design in the open</h3>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">
+                        Layout and flow first, in something we can both look at and argue about. Cheap to change now,
+                        expensive to change once it's built.
+                    </p>
+                </div>
+
+                <div class="bg-white border-4 border-black p-6 shadow-hard">
+                    <div class="font-mono font-black text-6xl text-neo-purple mb-4">03</div>
+                    <h3 class="text-xl font-black uppercase mb-3">Build the spine first</h3>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">
+                        The path that makes money gets built and working end to end before anything decorative.
+                        Everything else is polish layered onto something that already runs.
+                    </p>
+                </div>
+
+                <div class="bg-white border-4 border-black p-6 shadow-hard">
+                    <div class="font-mono font-black text-6xl text-neo-green mb-4">04</div>
+                    <h3 class="text-xl font-black uppercase mb-3">Ship, then listen</h3>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">
+                        Live, on a real domain, tested on a real phone. Then I watch what people actually do with it,
+                        which is never quite what anyone predicted, and iterate from there.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ LIFE OUTSIDE CODE ============ -->
+    <section class="py-20 px-4 max-w-7xl mx-auto mb-12">
+        <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4">
+            Life Outside<span class="text-neo-pink">_The Editor</span>
+        </h2>
+        <p class="font-mono text-gray-600 mb-14">/// THE PART THAT MAKES THE OTHER PART WORK</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="reveal bg-white border-4 border-black p-8 shadow-hard hover:shadow-hard-xl transition-all">
+                <div class="flex items-center gap-4 mb-4">
+                    <i class="ri-mountain-line text-4xl text-neo-green"></i>
+                    <h3 class="text-3xl font-black uppercase">Outdoors</h3>
+                </div>
+                <p class="font-mono text-sm leading-relaxed text-gray-700">
+                    Hiking, mountains, anywhere the signal drops. I solve more problems walking up a ridge with no
+                    laptop than I do staring at the bug. It's the only reliable debugger I've found for my own head.
+                </p>
+            </div>
+
+            <div class="reveal bg-white border-4 border-black p-8 shadow-hard hover:shadow-hard-xl transition-all">
+                <div class="flex items-center gap-4 mb-4">
+                    <i class="ri-gamepad-line text-4xl text-neo-purple"></i>
+                    <h3 class="text-3xl font-black uppercase">Games</h3>
+                </div>
+                <p class="font-mono text-sm leading-relaxed text-gray-700">
+                    I play them and I make them. <b>Dragons &amp; Knights</b> in Unity and <b>Hallways</b>, a branching
+                    horror piece in Twine, both started as "I wonder if I could" on a weekend. Game design is the
+                    fastest teacher of feedback loops and pacing I know.
+                </p>
+            </div>
+
+            <div class="reveal bg-white border-4 border-black p-8 shadow-hard hover:shadow-hard-xl transition-all">
+                <div class="flex items-center gap-4 mb-4">
+                    <i class="ri-headphone-line text-4xl text-neo-blue"></i>
+                    <h3 class="text-3xl font-black uppercase">Music</h3>
+                </div>
+                <p class="font-mono text-sm leading-relaxed text-gray-700">
+                    Headphones on is the default state. There's a direct relationship between what's playing and what
+                    gets built &mdash; one album for wiring up a backend, something entirely different for pushing
+                    pixels around at 2am.
+                </p>
+            </div>
+
+            <div class="reveal bg-white border-4 border-black p-8 shadow-hard hover:shadow-hard-xl transition-all">
+                <div class="flex items-center gap-4 mb-4">
+                    <i class="ri-tools-line text-4xl text-neo-orange"></i>
+                    <h3 class="text-3xl font-black uppercase">Tinkering</h3>
+                </div>
+                <p class="font-mono text-sm leading-relaxed text-gray-700">
+                    Arduino boards, servos, 3D-printed parts and things that move when they're told to. The
+                    <a href="work.html" class="underline decoration-neo-orange decoration-2 cursor-hover">face-tracking
+                        turret</a> exists purely because software that stays on a screen eventually gets boring.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FAST FACTS ============ -->
+    <section class="py-24 px-4 mb-12">
+        <div class="max-w-5xl mx-auto bg-neo-black border-4 border-black shadow-hard-xl overflow-hidden">
+            <div class="flex items-center gap-2 bg-white/5 border-b-2 border-white/10 p-4">
+                <div class="flex gap-2">
+                    <div class="h-3 w-3 bg-red-500 rounded-full border border-black"></div>
+                    <div class="h-3 w-3 bg-yellow-500 rounded-full border border-black"></div>
+                    <div class="h-3 w-3 bg-green-500 rounded-full border border-black"></div>
+                </div>
+                <span class="font-mono text-white text-sm font-bold ml-4">abdullah@portfolio: ~ $ whoami</span>
+            </div>
+
+            <div class="p-6 md:p-10 font-mono text-sm md:text-base space-y-3">
+                <div class="flex flex-col sm:flex-row sm:gap-6">
+                    <span class="text-neo-green w-56 shrink-0">&gt; NAME</span>
+                    <span class="text-white">Abdullah Kamran</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:gap-6">
+                    <span class="text-neo-green w-56 shrink-0">&gt; ROLE</span>
+                    <span class="text-white">Full Stack Developer</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:gap-6">
+                    <span class="text-neo-green w-56 shrink-0">&gt; LOCATION</span>
+                    <span class="text-white">Worldwide &mdash; remote by default</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:gap-6">
+                    <span class="text-neo-green w-56 shrink-0">&gt; EDUCATION</span>
+                    <span class="text-white">BSc Computer Science, Bath Spa University</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:gap-6">
+                    <span class="text-neo-green w-56 shrink-0">&gt; WRITING_CODE_SINCE</span>
+                    <span class="text-white">2022</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:gap-6">
+                    <span class="text-neo-green w-56 shrink-0">&gt; CURRENTLY_LEARNING</span>
+                    <span class="text-white">AI agent architectures, systems design, data science</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:gap-6">
+                    <span class="text-neo-green w-56 shrink-0">&gt; FIRST_LANGUAGE</span>
+                    <span class="text-white">HTML, out of necessity, between sales calls</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:gap-6">
+                    <span class="text-neo-green w-56 shrink-0">&gt; WEAKNESS</span>
+                    <span class="text-white">Starting the next project before finishing the README</span>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:gap-6">
+                    <span class="text-neo-green w-56 shrink-0">&gt; STATUS</span>
+                    <span class="text-neo-green font-bold">AVAILABLE FOR WORK</span><!--
+                    TODO(abdullah): add spoken languages + hometown here if you want them public. -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 max-w-5xl mx-auto text-center">
+        <p class="font-mono text-xl md:text-2xl mb-10">Enough about how I think. Here's what I've actually built.</p>
+        <a href="work.html"
+            class="inline-flex items-center gap-3 bg-neo-black text-white px-12 py-6 font-bold font-mono text-xl border-4 border-black shadow-hard-lg hover:bg-neo-purple hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
+            SEE THE WORK <i class="ri-arrow-right-line"></i>
+        </a>
+    </section>
+
+
+    <footer class="bg-black text-white py-16 px-4 border-t-8 border-neo-green font-mono relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+            <div class="col-span-1 md:col-span-2">
+                <h2 class="text-4xl font-black mb-6">Abdullah.</h2>
+                <p class="text-gray-400 max-w-sm">
+                    Designing for the future with the raw aesthetics of the past. No cookies, no trackers, just code.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="index.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Home</a>
+                    </li>
+                    <li><a href="about.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">About</a>
+                    </li>
+                    <li><a href="skills.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Skills</a>
+                    </li>
+                    <li><a href="logs.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Logs</a>
+                    </li>
+                    <li><a href="work.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Work</a>
+                    </li>
+                    <li><a href="index.html#contact"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SOCIALS</h3>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/4bdulllahh/" target="_blank" rel="noopener" aria-label="Instagram"
+                        class="text-2xl hover:text-neo-pink transition-colors cursor-hover"><i
+                            class="ri-instagram-fill"></i></a>
+                    <a href="https://github.com/4bdulllahh" target="_blank" rel="noopener" aria-label="GitHub"
+                        class="text-2xl hover:text-neo-yellow transition-colors cursor-hover"><i
+                            class="ri-github-fill"></i></a>
+                    <a href="https://www.linkedin.com/in/abzoola" target="_blank" rel="noopener" aria-label="LinkedIn"
+                        class="text-2xl hover:text-neo-purple transition-colors cursor-hover"><i
+                            class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-16 pt-8 border-t border-gray-800 text-gray-500 text-sm">
+            <p>&copy; 2026 Abdullah.exe // SYSTEM_END</p>
+        </div>
+
+        <div
+            class="absolute bottom-0 left-0 w-full text-[20vw] font-black text-white opacity-[0.03] leading-none select-none pointer-events-none text-center">
+            BRUTAL
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
