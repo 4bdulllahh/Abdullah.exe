@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | Abdullah Kamran</title>
+
+    <meta name="description" content="The full technical breakdown - frontend, backend, mobile, AI, hardware and design. Every skill backed by a shipped project.">
+    <meta name="keywords" content="Abdullah Kamran skills, React Vue Python Kotlin developer, full stack tech stack">
+    <link rel="canonical" href="https://abdullahexe.online/skills.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Skills | Abdullah Kamran">
+    <meta property="og:description" content="The full technical breakdown - frontend, backend, mobile, AI, hardware and design. Every skill backed by a shipped project.">
+    <meta property="og:url" content="https://abdullahexe.online/skills.html">
+
+    <meta name="theme-color" content="#121212">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link type="logo" rel="icon" href="Assets/images/title_icon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        // Only arm the transition curtain when JS is running, so a visitor with
+        // scripts disabled never meets a black screen they cannot dismiss.
+        document.documentElement.classList.add('transition-page');
+    </script>
+</head>
+
+<body class="text-neo-black font-display antialiased selection:bg-neo-black selection:text-neo-yellow">
+
+    <!-- ============ PAGE TRANSITION CURTAIN ============ -->
+    <div id="page-transition" aria-hidden="true">
+        <span
+            class="relative z-10 text-[11vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
+            Abdullah<span class="text-neo-green">.exe</span>
+        </span>
+    </div>
+
+    <div id="cursor" class="w-6 h-6 bg-white rounded-full border-2 border-black hidden lg:block"></div>
+
+    <div class="fixed top-0 left-0 h-2 bg-neo-green z-[60] border-b-2 border-black" id="progressBar" style="width: 0%">
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 px-4 py-4 pointer-events-none">
+        <div class="max-w-7xl mx-auto pointer-events-auto">
+            <div class="flex justify-between items-center">
+                <a href="index.html"
+                    class="bg-neo-white border-2 border-black px-4 py-1 text-2xl font-black shadow-hard hover:bg-neo-yellow transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none cursor-hover">
+                    Abdullah.exe
+                </a>
+
+                <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
+                    <a href="about.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/ABOUT</a>
+                    <a href="skills.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover bg-neo-black text-white">/SKILLS</a>
+                    <a href="logs.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/LOGS</a>
+                    <a href="work.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/WORK</a>
+                    <a href="index.html#contact"
+                        class="px-3 py-1 font-mono font-bold text-sm bg-neo-yellow border border-black hover:bg-neo-pink transition-colors cursor-hover">/CONTACT
+                        ME</a>
+                </div>
+
+                <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                    class="md:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
+                    <i class="ri-menu-line text-2xl"></i>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden mt-3">
+                <div class="bg-white border-2 border-black shadow-hard flex flex-col divide-y-2 divide-black">
+                    <a href="about.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/ABOUT</a>
+                    <a href="skills.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors bg-neo-black text-white">/SKILLS</a>
+                    <a href="logs.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/LOGS</a>
+                    <a href="work.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/WORK</a>
+                    <a href="index.html#contact"
+                        class="px-4 py-3 font-mono font-bold bg-neo-yellow hover:bg-neo-pink transition-colors">/CONTACT
+                        ME</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-36 pb-16 px-4 max-w-7xl mx-auto">
+        <div class="inline-block bg-neo-white border-2 border-black px-4 py-1 mb-6 shadow-hard rotate-[-2deg]">
+            <span class="font-mono font-bold text-neo-green bg-black px-2 mr-2">&#9679;</span>
+            <span class="font-mono font-bold">FILE: SKILLS.JSON</span>
+        </div>
+
+        <h1 class="text-[15vw] md:text-[11vw] leading-[0.82] font-black uppercase tracking-tighter mb-8">
+            TECH<br><span class="text-white" style="-webkit-text-stroke: 3px black;">STACK</span>
+        </h1>
+
+        <p class="font-mono text-lg md:text-xl max-w-3xl bg-neo-yellow border-2 border-black p-5 shadow-hard rotate-1">
+            Everything below is backed by something I shipped, broke or got certified in &mdash; not a list of things I read about once. Percentages are my own honest read on how deep I've gone.
+        </p>
+    </header>
+
+    <section class="py-20 bg-neo-black text-neo-white border-y-4 border-black relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20"
+            style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 40px 40px;">
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-4 border-white pb-4">
+                <h2 class="text-5xl md:text-7xl font-black uppercase text-white tracking-tighter">
+                    FULL<span class="text-neo-green">_BREAKDOWN</span>
+                </h2>
+                <div class="flex items-center gap-2 mb-2 md:mb-4">
+                    <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                    <p class="font-mono text-neo-green text-sm font-bold">/// 43 NODES ONLINE</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <section class="reveal border-2 border-white/20 bg-white/[0.02] p-6 md:p-8 hover:border-neo-blue transition-colors">
+                <div class="flex items-center gap-4 mb-8 pb-5 border-b-2 border-white/20">
+                    <i class="ri-layout-masonry-line text-4xl text-neo-blue"></i>
+                    <h2 class="font-display font-black text-2xl md:text-3xl uppercase text-white tracking-tight">Frontend</h2>
+                    <span class="ml-auto font-mono text-xs text-gray-600">9 NODES</span>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">HTML5</span>
+                            <span class="font-mono text-neo-blue text-xs shrink-0">95%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-blue" data-level="95"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Every site here, hand-written, semantic and accessible.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">CSS3</span>
+                            <span class="font-mono text-neo-blue text-xs shrink-0">92%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-blue" data-level="92"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">This portfolio's neo-brutalist system, top to bottom.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">JavaScript</span>
+                            <span class="font-mono text-neo-blue text-xs shrink-0">90%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-blue" data-level="90"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Interaction layer on Dekor, Prime and this site.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Tailwind CSS</span>
+                            <span class="font-mono text-neo-blue text-xs shrink-0">90%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-blue" data-level="90"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">The design system behind Dekor, Prime and Hannah Morgan Homes.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">React</span>
+                            <span class="font-mono text-neo-blue text-xs shrink-0">78%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-blue" data-level="78"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Component-driven interfaces and state management.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Vue 3</span>
+                            <span class="font-mono text-neo-blue text-xs shrink-0">75%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-blue" data-level="75"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Hannah Morgan Homes &mdash; CRM views and analytics dashboard.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Next.js</span>
+                            <span class="font-mono text-neo-blue text-xs shrink-0">70%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-blue" data-level="70"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Routing and server rendering for production builds.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Three.js</span>
+                            <span class="font-mono text-neo-blue text-xs shrink-0">72%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-blue" data-level="72"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">3D product and property visuals on Dekor and Prime.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">GSAP</span>
+                            <span class="font-mono text-neo-blue text-xs shrink-0">68%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-blue" data-level="68"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Scroll and timeline animation on client marketing sites.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal border-2 border-white/20 bg-white/[0.02] p-6 md:p-8 hover:border-neo-green transition-colors">
+                <div class="flex items-center gap-4 mb-8 pb-5 border-b-2 border-white/20">
+                    <i class="ri-server-line text-4xl text-neo-green"></i>
+                    <h2 class="font-display font-black text-2xl md:text-3xl uppercase text-white tracking-tight">Backend &amp; Data</h2>
+                    <span class="ml-auto font-mono text-xs text-gray-600">8 NODES</span>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Python</span>
+                            <span class="font-mono text-neo-green text-xs shrink-0">90%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-green" data-level="90"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">HomingPigeon, Auto-Leads-Checker, the stroke prediction model.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Node.js</span>
+                            <span class="font-mono text-neo-green text-xs shrink-0">80%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-green" data-level="80"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Dekor's server, order handling and payment flow.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Express</span>
+                            <span class="font-mono text-neo-green text-xs shrink-0">76%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-green" data-level="76"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">REST routing and middleware on Dekor.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">REST APIs</span>
+                            <span class="font-mono text-neo-green text-xs shrink-0">85%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-green" data-level="85"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Certified by LinkedIn Learning; consumed in the Trivia app.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">MongoDB</span>
+                            <span class="font-mono text-neo-green text-xs shrink-0">78%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-green" data-level="78"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Dekor's product catalogue and order store.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">MySQL</span>
+                            <span class="font-mono text-neo-green text-xs shrink-0">74%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-green" data-level="74"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Relational listings data for Prime Real Estate.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">SQLite</span>
+                            <span class="font-mono text-neo-green text-xs shrink-0">80%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-green" data-level="80"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">HomingPigeon's local campaign and contact database.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">SQL</span>
+                            <span class="font-mono text-neo-green text-xs shrink-0">76%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-green" data-level="76"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Schema design and querying across coursework and projects.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal border-2 border-white/20 bg-white/[0.02] p-6 md:p-8 hover:border-neo-purple transition-colors">
+                <div class="flex items-center gap-4 mb-8 pb-5 border-b-2 border-white/20">
+                    <i class="ri-brain-line text-4xl text-neo-purple"></i>
+                    <h2 class="font-display font-black text-2xl md:text-3xl uppercase text-white tracking-tight">Data &amp; AI</h2>
+                    <span class="ml-auto font-mono text-xs text-gray-600">6 NODES</span>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Pandas</span>
+                            <span class="font-mono text-neo-purple text-xs shrink-0">80%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-purple" data-level="80"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Cleaning and feature engineering for the stroke dataset.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Scikit-learn</span>
+                            <span class="font-mono text-neo-purple text-xs shrink-0">76%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-purple" data-level="76"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">RandomForestClassifier trained and tuned on Kaggle.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Google Agent Dev Kit</span>
+                            <span class="font-mono text-neo-purple text-xs shrink-0">70%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-purple" data-level="70"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Certified at the GDG Bath Spa UAE agents workshop.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">LLM Training &amp; Prompting</span>
+                            <span class="font-mono text-neo-purple text-xs shrink-0">75%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-purple" data-level="75"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Agent workflows and prompt design in day-to-day builds.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">OpenCV</span>
+                            <span class="font-mono text-neo-purple text-xs shrink-0">72%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-purple" data-level="72"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Real-time face detection driving the laser turret.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Data Visualisation</span>
+                            <span class="font-mono text-neo-purple text-xs shrink-0">70%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-purple" data-level="70"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Matplotlib reporting on model performance.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal border-2 border-white/20 bg-white/[0.02] p-6 md:p-8 hover:border-neo-orange transition-colors">
+                <div class="flex items-center gap-4 mb-8 pb-5 border-b-2 border-white/20">
+                    <i class="ri-smartphone-line text-4xl text-neo-orange"></i>
+                    <h2 class="font-display font-black text-2xl md:text-3xl uppercase text-white tracking-tight">Mobile</h2>
+                    <span class="ml-auto font-mono text-xs text-gray-600">5 NODES</span>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Kotlin</span>
+                            <span class="font-mono text-neo-orange text-xs shrink-0">82%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-orange" data-level="82"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Trivia app and the SuperCar wiki app.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Java</span>
+                            <span class="font-mono text-neo-orange text-xs shrink-0">78%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-orange" data-level="78"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Android fundamentals and the SuperCar app's core.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Android SDK</span>
+                            <span class="font-mono text-neo-orange text-xs shrink-0">80%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-orange" data-level="80"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Activities, fragments, lifecycle and Material UI.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Android Studio</span>
+                            <span class="font-mono text-neo-orange text-xs shrink-0">82%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-orange" data-level="82"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Primary mobile environment.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Gradle</span>
+                            <span class="font-mono text-neo-orange text-xs shrink-0">70%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-orange" data-level="70"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Build configuration and dependency management.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal border-2 border-white/20 bg-white/[0.02] p-6 md:p-8 hover:border-neo-red transition-colors">
+                <div class="flex items-center gap-4 mb-8 pb-5 border-b-2 border-white/20">
+                    <i class="ri-cpu-line text-4xl text-neo-red"></i>
+                    <h2 class="font-display font-black text-2xl md:text-3xl uppercase text-white tracking-tight">Hardware &amp; Systems</h2>
+                    <span class="ml-auto font-mono text-xs text-gray-600">5 NODES</span>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">C++</span>
+                            <span class="font-mono text-neo-red text-xs shrink-0">74%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-red" data-level="74"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Arduino firmware for servo control and sensor reads.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Arduino</span>
+                            <span class="font-mono text-neo-red text-xs shrink-0">80%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-red" data-level="80"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Face-tracking turret plus a run of smaller builds.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">PyQt6</span>
+                            <span class="font-mono text-neo-red text-xs shrink-0">78%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-red" data-level="78"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">HomingPigeon's multi-threaded desktop interface.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">3D Modelling &amp; Printing</span>
+                            <span class="font-mono text-neo-red text-xs shrink-0">65%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-red" data-level="65"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">CAD and printed parts for the turret housing.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Email Infrastructure</span>
+                            <span class="font-mono text-neo-red text-xs shrink-0">72%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-red" data-level="72"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">SPF, DKIM and DMARC checking built into HomingPigeon.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal border-2 border-white/20 bg-white/[0.02] p-6 md:p-8 hover:border-neo-pink transition-colors">
+                <div class="flex items-center gap-4 mb-8 pb-5 border-b-2 border-white/20">
+                    <i class="ri-gamepad-line text-4xl text-neo-pink"></i>
+                    <h2 class="font-display font-black text-2xl md:text-3xl uppercase text-white tracking-tight">Game &amp; Interactive</h2>
+                    <span class="ml-auto font-mono text-xs text-gray-600">4 NODES</span>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Unity</span>
+                            <span class="font-mono text-neo-pink text-xs shrink-0">75%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-pink" data-level="75"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Dragons &amp; Knights, built and shipped solo to itch.io.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">C#</span>
+                            <span class="font-mono text-neo-pink text-xs shrink-0">72%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-pink" data-level="72"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Gameplay, physics and animation scripting in Unity.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Twine / Harlowe</span>
+                            <span class="font-mono text-neo-pink text-xs shrink-0">80%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-pink" data-level="80"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Hallways &mdash; branching horror with multiple endings.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Game &amp; Level Design</span>
+                            <span class="font-mono text-neo-pink text-xs shrink-0">70%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-pink" data-level="70"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Pacing, feedback loops and difficulty curves.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal border-2 border-white/20 bg-white/[0.02] p-6 md:p-8 hover:border-neo-yellow transition-colors">
+                <div class="flex items-center gap-4 mb-8 pb-5 border-b-2 border-white/20">
+                    <i class="ri-palette-line text-4xl text-neo-yellow"></i>
+                    <h2 class="font-display font-black text-2xl md:text-3xl uppercase text-white tracking-tight">Design &amp; Tooling</h2>
+                    <span class="ml-auto font-mono text-xs text-gray-600">6 NODES</span>
+                </div>
+
+                <div class="space-y-5">
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Figma</span>
+                            <span class="font-mono text-neo-yellow text-xs shrink-0">75%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-yellow" data-level="75"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Layout and flow before any code gets written.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Adobe Creative Suite</span>
+                            <span class="font-mono text-neo-yellow text-xs shrink-0">78%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-yellow" data-level="78"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Asset production, retouching and brand work.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Git &amp; GitHub</span>
+                            <span class="font-mono text-neo-yellow text-xs shrink-0">85%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-yellow" data-level="85"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Version control across every project listed here.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Vite</span>
+                            <span class="font-mono text-neo-yellow text-xs shrink-0">72%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-yellow" data-level="72"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Build tooling for the Vue projects.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">Vercel</span>
+                            <span class="font-mono text-neo-yellow text-xs shrink-0">80%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-yellow" data-level="80"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">Deployment and hosting for Dekor and Prime.</p>
+                    </div>
+
+                    <div class="border-b border-white/10 pb-5 last:border-0">
+                        <div class="flex justify-between items-baseline mb-2 gap-4">
+                            <span class="font-display font-black text-white text-lg uppercase">UI / UX Design</span>
+                            <span class="font-mono text-neo-yellow text-xs shrink-0">80%</span>
+                        </div>
+                        <div class="h-2 w-full bg-white/10 mb-3">
+                            <div class="skill-bar-fill h-full bg-neo-yellow" data-level="80"></div>
+                        </div>
+                        <p class="font-mono text-gray-500 text-xs leading-relaxed">The whole visual language of this site.</p>
+                    </div>
+                </div>
+            </section>
+            </div>
+
+            <div class="border-t-4 border-white mt-12 pt-4 flex flex-wrap gap-4 justify-between font-mono text-xs text-gray-500">
+                <span>TOTAL_NODES: 43</span>
+                <a href="work.html" class="text-neo-green hover:text-white font-bold cursor-hover">&gt; SEE THEM IN USE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CURRENTLY LEARNING ============ -->
+    <section class="py-24 px-4 max-w-7xl mx-auto">
+        <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4">
+            Currently<span class="text-neo-orange">_Learning</span>
+        </h2>
+        <p class="font-mono text-gray-600 mb-12">/// THE STACK IS NEVER FINISHED</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="reveal bg-white border-4 border-black p-8 shadow-hard">
+                <i class="ri-robot-2-line text-5xl text-neo-purple mb-4 block"></i>
+                <h3 class="text-2xl font-black uppercase mb-3">AI Agent Architecture</h3>
+                <p class="font-mono text-sm text-gray-700 leading-relaxed">
+                    Building multi-step agents that call real tools and recover from their own mistakes, starting from
+                    the Google Agent Development Kit workshop at Bath Spa UAE.
+                </p>
+            </div>
+
+            <div class="reveal bg-white border-4 border-black p-8 shadow-hard">
+                <i class="ri-database-2-line text-5xl text-neo-green mb-4 block"></i>
+                <h3 class="text-2xl font-black uppercase mb-3">Data Science</h3>
+                <p class="font-mono text-sm text-gray-700 leading-relaxed">
+                    Going deeper than a single classifier &mdash; feature engineering, model evaluation that survives
+                    contact with messy data, and explaining results to people who don't read confusion matrices.
+                </p>
+            </div>
+
+            <div class="reveal bg-white border-4 border-black p-8 shadow-hard">
+                <i class="ri-stack-line text-5xl text-neo-blue mb-4 block"></i>
+                <h3 class="text-2xl font-black uppercase mb-3">Systems Design</h3>
+                <p class="font-mono text-sm text-gray-700 leading-relaxed">
+                    The gap between "it works on my machine" and "it works for ten thousand people": caching, queues,
+                    failure modes and the boring infrastructure that keeps a product up.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 max-w-5xl mx-auto text-center">
+        <p class="font-mono text-xl md:text-2xl mb-10">Certificates, coursework and the jobs that paid for the learning.</p>
+        <a href="logs.html"
+            class="inline-flex items-center gap-3 bg-neo-black text-white px-12 py-6 font-bold font-mono text-xl border-4 border-black shadow-hard-lg hover:bg-neo-green hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
+            OPEN THE LOGS <i class="ri-arrow-right-line"></i>
+        </a>
+    </section>
+
+
+    <footer class="bg-black text-white py-16 px-4 border-t-8 border-neo-green font-mono relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+            <div class="col-span-1 md:col-span-2">
+                <h2 class="text-4xl font-black mb-6">Abdullah.</h2>
+                <p class="text-gray-400 max-w-sm">
+                    Designing for the future with the raw aesthetics of the past. No cookies, no trackers, just code.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="index.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Home</a>
+                    </li>
+                    <li><a href="about.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">About</a>
+                    </li>
+                    <li><a href="skills.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Skills</a>
+                    </li>
+                    <li><a href="logs.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Logs</a>
+                    </li>
+                    <li><a href="work.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Work</a>
+                    </li>
+                    <li><a href="index.html#contact"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SOCIALS</h3>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/4bdulllahh/" target="_blank" rel="noopener" aria-label="Instagram"
+                        class="text-2xl hover:text-neo-pink transition-colors cursor-hover"><i
+                            class="ri-instagram-fill"></i></a>
+                    <a href="https://github.com/4bdulllahh" target="_blank" rel="noopener" aria-label="GitHub"
+                        class="text-2xl hover:text-neo-yellow transition-colors cursor-hover"><i
+                            class="ri-github-fill"></i></a>
+                    <a href="https://www.linkedin.com/in/abzoola" target="_blank" rel="noopener" aria-label="LinkedIn"
+                        class="text-2xl hover:text-neo-purple transition-colors cursor-hover"><i
+                            class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-16 pt-8 border-t border-gray-800 text-gray-500 text-sm">
+            <p>&copy; 2026 Abdullah.exe // SYSTEM_END</p>
+        </div>
+
+        <div
+            class="absolute bottom-0 left-0 w-full text-[20vw] font-black text-white opacity-[0.03] leading-none select-none pointer-events-none text-center">
+            BRUTAL
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
