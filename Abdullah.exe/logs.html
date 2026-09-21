@@ -43,7 +43,7 @@
     <!-- ============ PAGE TRANSITION CURTAIN ============ -->
     <div id="page-transition" aria-hidden="true">
         <span
-            class="relative z-10 text-[11vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
+            class="relative z-10 whitespace-nowrap text-[12vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
             Abdullah<span class="text-neo-green">.exe</span>
         </span>
     </div>
@@ -61,7 +61,7 @@
                     Abdullah.exe
                 </a>
 
-                <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
+                <div class="hidden lg:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
                     <a href="about.html"
                         class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/ABOUT</a>
                     <a href="skills.html"
@@ -77,12 +77,12 @@
 
                 <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
                     aria-label="Toggle navigation menu"
-                    class="md:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
+                    class="lg:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
                     <i class="ri-menu-line text-2xl"></i>
                 </button>
             </div>
 
-            <div id="mobile-menu" class="md:hidden mt-3">
+            <div id="mobile-menu" class="lg:hidden mt-3">
                 <div class="bg-white border-2 border-black shadow-hard flex flex-col divide-y-2 divide-black">
                     <a href="about.html"
                         class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/ABOUT</a>
@@ -106,7 +106,7 @@
             <span class="font-mono font-bold">FILE: LOGS.TXT</span>
         </div>
 
-        <h1 class="text-[15vw] md:text-[11vw] leading-[0.82] font-black uppercase tracking-tighter mb-8">
+        <h1 class="text-[15vw] md:text-[length:min(11vw,13.2rem)] leading-[0.82] font-black uppercase tracking-tighter mb-8">
             EXPERIENCE<br><span class="text-white" style="-webkit-text-stroke: 3px black;">&amp; LOGS</span>
         </h1>
 
@@ -118,7 +118,7 @@
     <!-- ============ WORK ============ -->
     <section class="py-16 px-4 max-w-7xl mx-auto">
         <h2 class="text-4xl md:text-6xl font-black uppercase mb-14 tracking-tighter">
-            Work<span class="text-neo-red">_History</span>
+            Work<wbr><span class="text-neo-red">_History</span>
         </h2>
 
         <div class="relative border-l-4 border-black ml-4 md:ml-10 space-y-12">
@@ -151,14 +151,14 @@
                             than just talk about them.</li>
                         <li>Designed and built the <a href="https://github.com/4bdulllahh/Uniformers" target="_blank"
                                 rel="noopener"
-                                class="underline decoration-neo-pink decoration-2 cursor-hover">company website</a>, so
+                                class="hl-link cursor-hover">company website</a>, so
                             prospects arrived already convinced.</li>
-                        <li>Wrote <a href="https://github.com/4bdulllahh/Auto-Leads-Checker-" target="_blank"
+                        <li>Built <a href="https://github.com/4bdulllahh/Auto-Leads-Checker-" target="_blank"
                                 rel="noopener"
-                                class="underline decoration-neo-pink decoration-2 cursor-hover">Auto-Leads-Checker</a>
-                            in Python to validate stale lead lists automatically instead of by hand.</li>
+                                class="hl-link cursor-hover">LeadsVeri</a>, a Python desktop app that
+                            verifies stale lead lists automatically instead of by hand.</li>
                         <li>Built <a href="https://github.com/4bdulllahh/HomingPigeon" target="_blank" rel="noopener"
-                                class="underline decoration-neo-pink decoration-2 cursor-hover">HomingPigeon</a> to make
+                                class="hl-link cursor-hover">HomingPigeon</a> to make
                             our outreach deliverable and compliant rather than a spam-folder lottery.</li>
                     </ul>
 
@@ -194,7 +194,7 @@
                         <li>Hunted my own leads and turned vague client ideas into working, launched websites.</li>
                         <li>Shipped <a href="https://github.com/4bdulllahh/Al-Habibi-Bakery.github.io" target="_blank"
                                 rel="noopener"
-                                class="underline decoration-neo-red decoration-2 cursor-hover">Al Habibi Bakery</a>, a
+                                class="hl-link cursor-hover">Al Habibi Bakery</a>, a
                             local business site that became the start of my lead generation.</li>
                         <li>Handled everything solo &mdash; copy, design, build, domain, deploy and the follow-up
                             support calls.</li>
@@ -232,12 +232,12 @@
                     <h4 class="font-mono font-bold text-xs uppercase tracking-widest text-gray-500 mb-2">What I did</h4>
                     <ul class="list-disc list-inside font-mono text-gray-700 space-y-1 mb-5">
                         <li>Built <a href="work.html"
-                                class="underline decoration-neo-green decoration-2 cursor-hover">Dekor</a>, a Swedish
+                                class="hl-link cursor-hover">Dekor</a>, a Swedish
                             furniture storefront with a product database and a working payment wall.</li>
                         <li>Built <a href="work.html"
-                                class="underline decoration-neo-green decoration-2 cursor-hover">Prime Real Estate</a>,
+                                class="hl-link cursor-hover">Prime Real Estate</a>,
                             a property marketing site with 3D visuals and a listings database.</li>
-                        <li>Built <a href="work.html" class="underline decoration-neo-green decoration-2 cursor-hover">Hannah
+                        <li>Built <a href="work.html" class="hl-link cursor-hover">Hannah
                                 Morgan Homes</a> in Vue 3 with a CRM and an analytics dashboard behind it.</li>
                         <li>Work directly with clients from first brief to launch, translating what they asked for into
                             what they actually needed.</li>
@@ -260,7 +260,7 @@
     <!-- ============ EDUCATION ============ -->
     <section class="py-16 px-4 max-w-7xl mx-auto">
         <h2 class="text-4xl md:text-6xl font-black uppercase mb-14 tracking-tighter">
-            Education<span class="text-neo-blue">_Log</span>
+            Education<wbr><span class="text-neo-blue">_Log</span>
         </h2>
 
         <div class="relative border-l-4 border-black ml-4 md:ml-10 space-y-12">
@@ -314,7 +314,7 @@
 
         <div class="max-w-7xl mx-auto px-4 relative z-10">
             <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-4">
-                University<span class="text-neo-green">_Achievements</span>
+                University<wbr><span class="text-neo-green">_Achievements</span>
             </h2>
             <p class="font-mono text-neo-green text-sm mb-14">/// VERIFIED_RECORDS</p>
 
@@ -361,7 +361,7 @@
                         and messy real-world features. <a
                             href="https://www.kaggle.com/code/abood186/stroke-prediction-using-randomforestclassifier"
                             target="_blank" rel="noopener"
-                            class="text-neo-blue underline decoration-2 cursor-hover">Read the notebook</a>.
+                            class="hl-link cursor-hover">Read the notebook</a>.
                     </p>
                 </div>
 
@@ -402,7 +402,7 @@
                     <p class="font-mono text-gray-400 text-sm leading-relaxed">
                         Node.js, RESTful API design, JavaScript, Python, Tkinter and applied AI &mdash; studied
                         alongside the degree. <a href="index.html#certificates"
-                            class="text-neo-yellow underline decoration-2 cursor-hover">See the records</a>.
+                            class="hl-link cursor-hover">See the records</a>.
                     </p>
                 </div>
             </div>
@@ -431,22 +431,22 @@
                 <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
                 <ul class="space-y-2 text-gray-400">
                     <li><a href="index.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Home</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Home</a>
                     </li>
                     <li><a href="about.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">About</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">About</a>
                     </li>
                     <li><a href="skills.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Skills</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Skills</a>
                     </li>
                     <li><a href="logs.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Logs</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Logs</a>
                     </li>
                     <li><a href="work.html"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Work</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Work</a>
                     </li>
                     <li><a href="index.html#contact"
-                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
+                            class="px-1 -mx-1 hover:bg-neo-yellow hover:text-black transition-colors cursor-hover">Contact</a>
                     </li>
                 </ul>
             </div>
