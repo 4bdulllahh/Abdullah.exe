@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work | Abdullah Kamran</title>
+
+    <meta name="description" content="Thirteen projects across web, mobile, machine learning, hardware and games - each with the problem it solved and the stack it used.">
+    <meta name="keywords" content="Abdullah Kamran projects, developer portfolio, HomingPigeon, Vue real estate CRM">
+    <link rel="canonical" href="https://abdullahexe.online/work.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Work | Abdullah Kamran">
+    <meta property="og:description" content="Thirteen projects across web, mobile, machine learning, hardware and games - each with the problem it solved and the stack it used.">
+    <meta property="og:url" content="https://abdullahexe.online/work.html">
+
+    <meta name="theme-color" content="#121212">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/tailwind-config.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link type="logo" rel="icon" href="Assets/images/title_icon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        // Only arm the transition curtain when JS is running, so a visitor with
+        // scripts disabled never meets a black screen they cannot dismiss.
+        document.documentElement.classList.add('transition-page');
+    </script>
+</head>
+
+<body class="text-neo-black font-display antialiased selection:bg-neo-black selection:text-neo-yellow">
+
+    <!-- ============ PAGE TRANSITION CURTAIN ============ -->
+    <div id="page-transition" aria-hidden="true">
+        <span
+            class="relative z-10 text-[11vw] md:text-[7vw] leading-none font-black uppercase tracking-tighter text-white">
+            Abdullah<span class="text-neo-green">.exe</span>
+        </span>
+    </div>
+
+    <div id="cursor" class="w-6 h-6 bg-white rounded-full border-2 border-black hidden lg:block"></div>
+
+    <div class="fixed top-0 left-0 h-2 bg-neo-green z-[60] border-b-2 border-black" id="progressBar" style="width: 0%">
+    </div>
+
+    <nav class="fixed top-0 w-full z-50 px-4 py-4 pointer-events-none">
+        <div class="max-w-7xl mx-auto pointer-events-auto">
+            <div class="flex justify-between items-center">
+                <a href="index.html"
+                    class="bg-neo-white border-2 border-black px-4 py-1 text-2xl font-black shadow-hard hover:bg-neo-yellow transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none cursor-hover">
+                    Abdullah.exe
+                </a>
+
+                <div class="hidden md:flex gap-4 bg-white border-2 border-black p-2 shadow-hard">
+                    <a href="about.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/ABOUT</a>
+                    <a href="skills.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/SKILLS</a>
+                    <a href="logs.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover">/LOGS</a>
+                    <a href="work.html"
+                        class="px-3 py-1 font-mono font-bold text-sm hover:bg-black hover:text-white transition-colors cursor-hover bg-neo-black text-white">/WORK</a>
+                    <a href="index.html#contact"
+                        class="px-3 py-1 font-mono font-bold text-sm bg-neo-yellow border border-black hover:bg-neo-pink transition-colors cursor-hover">/CONTACT
+                        ME</a>
+                </div>
+
+                <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu"
+                    aria-label="Toggle navigation menu"
+                    class="md:hidden w-12 h-12 bg-neo-yellow border-2 border-black shadow-hard flex items-center justify-center active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-hover">
+                    <i class="ri-menu-line text-2xl"></i>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden mt-3">
+                <div class="bg-white border-2 border-black shadow-hard flex flex-col divide-y-2 divide-black">
+                    <a href="about.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/ABOUT</a>
+                    <a href="skills.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/SKILLS</a>
+                    <a href="logs.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors">/LOGS</a>
+                    <a href="work.html"
+                        class="px-4 py-3 font-mono font-bold hover:bg-black hover:text-white transition-colors bg-neo-black text-white">/WORK</a>
+                    <a href="index.html#contact"
+                        class="px-4 py-3 font-mono font-bold bg-neo-yellow hover:bg-neo-pink transition-colors">/CONTACT
+                        ME</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-36 pb-16 px-4 max-w-7xl mx-auto">
+        <div class="inline-block bg-neo-white border-2 border-black px-4 py-1 mb-6 shadow-hard rotate-[-2deg]">
+            <span class="font-mono font-bold text-neo-green bg-black px-2 mr-2">&#9679;</span>
+            <span class="font-mono font-bold">FILE: WORK.DB</span>
+        </div>
+
+        <h1 class="text-[15vw] md:text-[11vw] leading-[0.82] font-black uppercase tracking-tighter mb-8">
+            SELECTED<br><span class="text-white" style="-webkit-text-stroke: 3px black;">WORKS</span>
+        </h1>
+
+        <p class="font-mono text-lg md:text-xl max-w-3xl bg-neo-yellow border-2 border-black p-5 shadow-hard rotate-1">
+            Thirteen projects across web, mobile, machine learning, hardware and games. Each one lists the problem it solved, not just the framework it used.
+        </p>
+    </header>
+
+    <section class="px-4 max-w-7xl mx-auto pb-8">
+        <div class="flex flex-wrap gap-3">
+            <button type="button" data-filter="all" aria-pressed="true"
+                class="filter-chip bg-neo-black text-white border-4 border-black px-6 py-3 font-mono font-bold text-sm shadow-hard hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">ALL</button>
+            <button type="button" data-filter="web" aria-pressed="false"
+                class="filter-chip bg-white text-black border-4 border-black px-6 py-3 font-mono font-bold text-sm shadow-hard hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">WEB</button>
+            <button type="button" data-filter="mobile" aria-pressed="false"
+                class="filter-chip bg-white text-black border-4 border-black px-6 py-3 font-mono font-bold text-sm shadow-hard hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">MOBILE</button>
+            <button type="button" data-filter="ai" aria-pressed="false"
+                class="filter-chip bg-white text-black border-4 border-black px-6 py-3 font-mono font-bold text-sm shadow-hard hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">AI &amp; DATA</button>
+            <button type="button" data-filter="hardware" aria-pressed="false"
+                class="filter-chip bg-white text-black border-4 border-black px-6 py-3 font-mono font-bold text-sm shadow-hard hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">HARDWARE</button>
+            <button type="button" data-filter="games" aria-pressed="false"
+                class="filter-chip bg-white text-black border-4 border-black px-6 py-3 font-mono font-bold text-sm shadow-hard hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">GAMES</button>
+        </div>
+    </section>
+
+    <section class="py-12 px-4 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+
+        <article data-stack="web ai"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div
+                class="bg-neo-black border-b-4 border-black aspect-video relative overflow-hidden flex flex-col items-center justify-center"
+                style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 30px 30px;">
+                <i class="ri-mail-send-line text-7xl text-neo-green mb-3"></i>
+                <span class="font-mono text-gray-500 text-xs uppercase tracking-widest">HomingPigeon</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                    <span
+                        class="inline-block bg-neo-green text-black font-mono text-[10px] font-black uppercase px-2 py-1 border-2 border-black mb-3">Featured</span>
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-green transition-colors glitch-hover">
+                    HomingPigeon</h3>
+                <p class="font-mono text-neo-green text-xs font-bold uppercase mb-4">Safe, compliant cold email for small businesses</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">Small businesses burn their domain reputation on outreach they don't understand, and end up permanently in spam folders.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A cross-platform desktop app that checks your SPF, DKIM and DMARC setup before you send a single message, then ramps volume gradually from ~20 a day with randomised delays, office-hours scheduling and holiday awareness. It scores messages for spam signals before they go, validates contacts on import, reads the inbox for bounces, handles unsubscribes with proper List-Unsubscribe headers and halts automatically if failures spike. Everything stays on the user's machine, with credentials encrypted through the OS keystore.</p>
+                </div>
+
+                    <p class="font-mono text-xs text-gray-500 border-l-2 border-neo-green pl-3 mb-4">Currently in beta (v0.5.1) &mdash; my most-starred repository.</p>
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">Python</span>
+                        <span class="bg-neo-black text-white px-2 py-1">PyQt6</span>
+                        <span class="bg-neo-black text-white px-2 py-1">SQLite</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Multi-threading</span>
+                        <span class="bg-neo-black text-white px-2 py-1">SMTP/IMAP</span>
+                        <span class="bg-neo-black text-white px-2 py-1">DNS</span>
+                    </div>
+                    <a href="https://github.com/4bdulllahh/HomingPigeon" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-green hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="web"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div class="bg-black border-b-4 border-black aspect-video relative overflow-hidden">
+                <img src="Assets/images/Dekor.jpg" alt="Dekor project by Abdullah Kamran" loading="lazy"
+                    class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-red transition-colors glitch-hover">
+                    Dekor</h3>
+                <p class="font-mono text-neo-red text-xs font-bold uppercase mb-4">Swedish furniture storefront with a real payment wall</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A furniture brand needed to sell online without their catalogue looking like every other template store.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A minimalist storefront backed by a MongoDB product database, an Express API for the catalogue and orders, and a working payment wall. Three.js handles the product visuals so pieces can be viewed properly before buying.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">JavaScript</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Node.js</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Express</span>
+                        <span class="bg-neo-black text-white px-2 py-1">MongoDB</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Three.js</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Tailwind</span>
+                    </div>
+                    <a href="https://dekorfurniture.vercel.app/" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-red hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="web"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div
+                class="bg-neo-black border-b-4 border-black aspect-video relative overflow-hidden flex flex-col items-center justify-center"
+                style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 30px 30px;">
+                <i class="ri-home-smile-line text-7xl text-neo-blue mb-3"></i>
+                <span class="font-mono text-gray-500 text-xs uppercase tracking-widest">Hannah Morgan Homes</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                    <span
+                        class="inline-block bg-neo-blue text-black font-mono text-[10px] font-black uppercase px-2 py-1 border-2 border-black mb-3">Featured</span>
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-blue transition-colors glitch-hover">
+                    Hannah Morgan Homes</h3>
+                <p class="font-mono text-neo-blue text-xs font-bold uppercase mb-4">Real estate portfolio with a CRM and analytics behind it</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">An agent's portfolio site is useless if the leads it generates then die in an inbox.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A Vue 3 single-page application built with Vite and Tailwind, pairing the public-facing portfolio with a private CRM for tracking leads through their pipeline and an analytics dashboard showing where enquiries actually come from. Linted and structured as a production app, not a demo.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">Vue 3</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Vite</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Tailwind</span>
+                        <span class="bg-neo-black text-white px-2 py-1">JavaScript</span>
+                        <span class="bg-neo-black text-white px-2 py-1">CRM</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Analytics</span>
+                    </div>
+                    <a href="https://github.com/4bdulllahh/Hannah-Morgan-Homes" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-blue hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="hardware ai"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div
+                class="bg-neo-black border-b-4 border-black aspect-video relative overflow-hidden flex flex-col items-center justify-center"
+                style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 30px 30px;">
+                <i class="ri-focus-3-line text-7xl text-neo-purple mb-3"></i>
+                <span class="font-mono text-gray-500 text-xs uppercase tracking-widest">Face-Tracking Laser Turret</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                    <span
+                        class="inline-block bg-neo-purple text-black font-mono text-[10px] font-black uppercase px-2 py-1 border-2 border-black mb-3">Featured</span>
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-purple transition-colors glitch-hover">
+                    Face-Tracking Laser Turret</h3>
+                <p class="font-mono text-neo-purple text-xs font-bold uppercase mb-4">Computer vision driving physical hardware</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">I wanted to find out where software stops and the physical world starts.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A 3D-printed two-axis turret driven by two servos. A Python process reads the laptop camera, detects faces in real time with OpenCV, converts their position into servo angles and streams those over serial to an Arduino running the motor control firmware. The repository holds the CAD files, the firmware, the vision code and the wiring diagrams.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">Python</span>
+                        <span class="bg-neo-black text-white px-2 py-1">OpenCV</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Arduino</span>
+                        <span class="bg-neo-black text-white px-2 py-1">C++</span>
+                        <span class="bg-neo-black text-white px-2 py-1">3D Printing</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Serial</span>
+                    </div>
+                    <a href="https://github.com/4bdulllahh/Face-Tracking-Laser" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-purple hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="web"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div class="bg-black border-b-4 border-black aspect-video relative overflow-hidden">
+                <img src="Assets/images/Prime.jpg" alt="Prime Real Estate project by Abdullah Kamran" loading="lazy"
+                    class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-blue transition-colors glitch-hover">
+                    Prime Real Estate</h3>
+                <p class="font-mono text-neo-blue text-xs font-bold uppercase mb-4">Property marketing with 3D visuals</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">Property listings are dull, and dull listings don't convert.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A marketing site with GSAP-driven scroll animation, Three.js visuals and a MySQL-backed listings database, wrapped in a lead capture flow that actually gets used.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">JavaScript</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Three.js</span>
+                        <span class="bg-neo-black text-white px-2 py-1">GSAP</span>
+                        <span class="bg-neo-black text-white px-2 py-1">MySQL</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Tailwind</span>
+                        <span class="bg-neo-black text-white px-2 py-1">HTML5</span>
+                    </div>
+                    <a href="https://prime-marketing-two.vercel.app/" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-blue hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="ai"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div class="bg-black border-b-4 border-black aspect-video relative overflow-hidden">
+                <img src="Assets/images/stroke.jpg" alt="Stroke Prediction Model project by Abdullah Kamran" loading="lazy"
+                    class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-green transition-colors glitch-hover">
+                    Stroke Prediction Model</h3>
+                <p class="font-mono text-neo-green text-xs font-bold uppercase mb-4">Machine learning on messy clinical data</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">Predicting stroke risk from a real, imbalanced clinical dataset where the interesting cases are rare.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A RandomForestClassifier trained in Python, with pandas handling cleaning and feature engineering, careful treatment of the class imbalance, and evaluation that goes past raw accuracy. Published as a public Kaggle notebook.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">Python</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Pandas</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Scikit-learn</span>
+                        <span class="bg-neo-black text-white px-2 py-1">RandomForest</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Matplotlib</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Kaggle</span>
+                    </div>
+                    <a href="https://www.kaggle.com/code/abood186/stroke-prediction-using-randomforestclassifier" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-green hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="web"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div
+                class="bg-neo-black border-b-4 border-black aspect-video relative overflow-hidden flex flex-col items-center justify-center"
+                style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 30px 30px;">
+                <i class="ri-t-shirt-line text-7xl text-neo-pink mb-3"></i>
+                <span class="font-mono text-gray-500 text-xs uppercase tracking-widest">Uniformers</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-pink transition-colors glitch-hover">
+                    Uniformers</h3>
+                <p class="font-mono text-neo-pink text-xs font-bold uppercase mb-4">The company site I built while selling for them</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">I was pitching a company whose online presence undercut every word of the pitch.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">The full company website, designed and built while I was working the sales floor &mdash; the project that turned me from a salesperson who dabbled into a developer.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">HTML5</span>
+                        <span class="bg-neo-black text-white px-2 py-1">CSS3</span>
+                        <span class="bg-neo-black text-white px-2 py-1">JavaScript</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Responsive</span>
+                        <span class="bg-neo-black text-white px-2 py-1">SEO</span>
+                    </div>
+                    <a href="https://github.com/4bdulllahh/Uniformers" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-pink hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="web ai"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div
+                class="bg-neo-black border-b-4 border-black aspect-video relative overflow-hidden flex flex-col items-center justify-center"
+                style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 30px 30px;">
+                <i class="ri-list-check-2 text-7xl text-neo-orange mb-3"></i>
+                <span class="font-mono text-gray-500 text-xs uppercase tracking-widest">Auto-Leads-Checker</span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-orange transition-colors glitch-hover">
+                    Auto-Leads-Checker</h3>
+                <p class="font-mono text-neo-orange text-xs font-bold uppercase mb-4">Stop emailing dead leads</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">Old lead lists rot. Emailing addresses that no longer exist wrecks your sender reputation and wastes everyone's time.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A Python script that walks a lead database and checks whether each email address and website is still live, so the list gets cleaned automatically instead of by hand.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">Python</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Automation</span>
+                        <span class="bg-neo-black text-white px-2 py-1">DNS</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Data Cleaning</span>
+                    </div>
+                    <a href="https://github.com/4bdulllahh/Auto-Leads-Checker-" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-orange hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="web"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div class="bg-black border-b-4 border-black aspect-video relative overflow-hidden">
+                <img src="Assets/images/Habibi.jpg" alt="Al Habibi Bakery project by Abdullah Kamran" loading="lazy"
+                    class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-pink transition-colors glitch-hover">
+                    Al Habibi Bakery</h3>
+                <p class="font-mono text-neo-pink text-xs font-bold uppercase mb-4">My first real client</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A local bakery with great products and no way for anyone to find them online.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A responsive site built for my local bakery &mdash; the project that started my lead generation and taught me how to work with a client who doesn't speak in technical terms.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">HTML5</span>
+                        <span class="bg-neo-black text-white px-2 py-1">CSS3</span>
+                        <span class="bg-neo-black text-white px-2 py-1">JavaScript</span>
+                        <span class="bg-neo-black text-white px-2 py-1">WebGL</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Three.js</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Responsive</span>
+                    </div>
+                    <a href="https://github.com/4bdulllahh/Al-Habibi-Bakery.github.io" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-pink hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="mobile"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div class="bg-black border-b-4 border-black aspect-video relative overflow-hidden">
+                <img src="Assets/images/SuperCar App.jpg" alt="SuperCar App project by Abdullah Kamran" loading="lazy"
+                    class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-orange transition-colors glitch-hover">
+                    SuperCar App</h3>
+                <p class="font-mono text-neo-orange text-xs font-bold uppercase mb-4">Android wiki for supercar manufacturers</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">I wanted to learn Android properly, and I wanted to look at cars.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A native Android wiki app covering the history and specs of the major supercar manufacturers, built with Material UI components and proper lifecycle handling.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">Java</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Kotlin</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Android SDK</span>
+                        <span class="bg-neo-black text-white px-2 py-1">XML</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Material UI</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Gradle</span>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1AAui8mtSlI0Icuko635WuqXJL2-oai_4?usp=sharing" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-orange hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="mobile"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div class="bg-black border-b-4 border-black aspect-video relative overflow-hidden">
+                <img src="Assets/images/Trivia.jpg" alt="Trivia App project by Abdullah Kamran" loading="lazy"
+                    class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-yellow transition-colors glitch-hover">
+                    Trivia App</h3>
+                <p class="font-mono text-neo-yellow text-xs font-bold uppercase mb-4">Live API consumption on Android</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">Coursework that needed to prove I could talk to a real API, not a hardcoded array.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A Kotlin app that pulls random trivia questions from a live REST API with selectable difficulty levels, handling loading states, errors and configuration changes properly.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">Kotlin</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Android Studio</span>
+                        <span class="bg-neo-black text-white px-2 py-1">REST API</span>
+                        <span class="bg-neo-black text-white px-2 py-1">JSON</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Gradle</span>
+                    </div>
+                    <a href="https://github.com/CodeLab-II/skills-portfolio-4bdulllahh" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-yellow hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="games"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div class="bg-black border-b-4 border-black aspect-video relative overflow-hidden">
+                <img src="Assets/images/DndK.jpg" alt="Dragons and Knights project by Abdullah Kamran" loading="lazy"
+                    class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-purple transition-colors glitch-hover">
+                    Dragons &amp; Knights</h3>
+                <p class="font-mono text-neo-purple text-xs font-bold uppercase mb-4">A solo indie game, start to finish</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">I wanted to know whether I could finish a game on my own rather than abandon it at 60%.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A complete indie game built solo in Unity &mdash; gameplay scripting in C#, physics, animation and level design, then shipped publicly to itch.io.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">Unity</span>
+                        <span class="bg-neo-black text-white px-2 py-1">C#</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Physics</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Animation</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Game Design</span>
+                    </div>
+                    <a href="https://a6dullah.itch.io/dragons-knights" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-purple hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <article data-stack="games"
+            class="reveal project-card group bg-white border-4 border-black shadow-hard hover:shadow-hard-xl transition-all overflow-hidden">
+            <div class="bg-black border-b-4 border-black aspect-video relative overflow-hidden">
+                <img src="Assets/images/Twine.jpg" alt="Hallways project by Abdullah Kamran" loading="lazy"
+                    class="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+                <h3 class="text-3xl font-black uppercase mb-1 group-hover:text-neo-red transition-colors glitch-hover">
+                    Hallways</h3>
+                <p class="font-mono text-neo-red text-xs font-bold uppercase mb-4">Branching horror with multiple endings</p>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">The problem
+                    </h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">Interactive fiction is the cheapest way to learn how choice and consequence actually feel to a player.</p>
+                </div>
+
+                <div class="mb-4">
+                    <h4 class="font-mono font-bold text-[10px] uppercase tracking-widest text-gray-500 mb-1">What I
+                        built</h4>
+                    <p class="font-mono text-sm text-gray-700 leading-relaxed">A horror game written in Twine with Harlowe, built around branching choices that lead to genuinely different endings, with custom CSS and original artwork.</p>
+                </div>
+
+                <div class="project-card-footer pt-4">
+                    <div class="flex gap-2 font-mono text-xs font-bold flex-wrap mb-5">
+                        <span class="bg-neo-black text-white px-2 py-1">Twine</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Harlowe</span>
+                        <span class="bg-neo-black text-white px-2 py-1">HTML5</span>
+                        <span class="bg-neo-black text-white px-2 py-1">CSS3</span>
+                        <span class="bg-neo-black text-white px-2 py-1">Branching Narrative</span>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1Ddc5JVyv-Wa_dSpraJdL7n838MO633_5?usp=sharing" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 bg-neo-black text-white border-2 border-black px-5 py-3 font-mono font-bold text-sm shadow-hard-sm hover:bg-neo-red hover:text-black transition-all cursor-hover">
+                        OPEN PROJECT <i class="ri-arrow-right-up-line text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </article>
+        </div>
+
+        <div class="text-center mt-20">
+            <a href="https://github.com/4bdulllahh" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-3 bg-neo-black text-white px-12 py-6 font-bold font-mono text-xl border-4 border-black shadow-hard-lg hover:bg-neo-yellow hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
+                <i class="ri-github-fill text-2xl"></i> VIEW ALL REPOS ON GITHUB
+            </a>
+        </div>
+    </section>
+
+    <section class="py-24 px-4 max-w-5xl mx-auto text-center">
+        <p class="font-mono text-xl md:text-2xl mb-10">Got something that needs building? I'm available.</p>
+        <a href="index.html#contact"
+            class="inline-flex items-center gap-3 bg-neo-black text-white px-12 py-6 font-bold font-mono text-xl border-4 border-black shadow-hard-lg hover:bg-neo-yellow hover:text-black hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-hover">
+            START A CONVERSATION <i class="ri-arrow-right-line"></i>
+        </a>
+    </section>
+
+
+    <footer class="bg-black text-white py-16 px-4 border-t-8 border-neo-green font-mono relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+            <div class="col-span-1 md:col-span-2">
+                <h2 class="text-4xl font-black mb-6">Abdullah.</h2>
+                <p class="text-gray-400 max-w-sm">
+                    Designing for the future with the raw aesthetics of the past. No cookies, no trackers, just code.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SITEMAP</h3>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="index.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Home</a>
+                    </li>
+                    <li><a href="about.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">About</a>
+                    </li>
+                    <li><a href="skills.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Skills</a>
+                    </li>
+                    <li><a href="logs.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Logs</a>
+                    </li>
+                    <li><a href="work.html"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Work</a>
+                    </li>
+                    <li><a href="index.html#contact"
+                            class="hover:text-white hover:underline decoration-neo-pink decoration-2 cursor-hover">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-neo-green mb-4 border-b border-gray-700 pb-2">SOCIALS</h3>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com/4bdulllahh/" target="_blank" rel="noopener" aria-label="Instagram"
+                        class="text-2xl hover:text-neo-pink transition-colors cursor-hover"><i
+                            class="ri-instagram-fill"></i></a>
+                    <a href="https://github.com/4bdulllahh" target="_blank" rel="noopener" aria-label="GitHub"
+                        class="text-2xl hover:text-neo-yellow transition-colors cursor-hover"><i
+                            class="ri-github-fill"></i></a>
+                    <a href="https://www.linkedin.com/in/abzoola" target="_blank" rel="noopener" aria-label="LinkedIn"
+                        class="text-2xl hover:text-neo-purple transition-colors cursor-hover"><i
+                            class="ri-linkedin-fill"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-16 pt-8 border-t border-gray-800 text-gray-500 text-sm">
+            <p>&copy; 2026 Abdullah.exe // SYSTEM_END</p>
+        </div>
+
+        <div
+            class="absolute bottom-0 left-0 w-full text-[20vw] font-black text-white opacity-[0.03] leading-none select-none pointer-events-none text-center">
+            BRUTAL
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
