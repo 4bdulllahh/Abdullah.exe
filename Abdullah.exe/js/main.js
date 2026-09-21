@@ -243,7 +243,15 @@
                 return;
             }
 
+            // After an arrival sweep the curtain is parked above the screen.
+            // Snap it below the screen first (no transition) so it always
+            // fills bottom -> top, never drops down from the top.
             curtain.classList.remove('is-leaving');
+            curtain.style.transition = 'none';
+            curtain.style.transform = 'translateY(100%)';
+            void curtain.offsetHeight; // commit the snapped position
+            curtain.style.transition = '';
+            curtain.style.transform = '';
             curtain.classList.add('is-covering');
 
             // Swap the page only once the curtain has fully covered it.
@@ -262,91 +270,228 @@
     }
 
     /* ----------------------------------------------------------------------
-       CERTIFICATE RAIL — drag to scroll, arrows, dots
+       CERTIFICATE RAIL — auto-rolls right to left, loops seamlessly, and
+       still takes mouse drag, touch flick, trackpad, arrows, dots and keys.
        ---------------------------------------------------------------------- */
     function initCertRail() {
         var rail = document.querySelector('.cert-rail');
         if (!rail) return;
 
-        var cards = rail.querySelectorAll('.cert-card');
-        if (!cards.length) return;
+        var originals = Array.prototype.slice.call(rail.querySelectorAll('.cert-card'));
+        var n = originals.length;
+        if (!n) return;
 
-        /* --- drag to scroll --- */
+        var SPEED = 45;          // px per second of auto-roll
+        var RESUME_AFTER = 2500; // ms of quiet after an interaction before rolling again
+
+        /* --- seamless loop -------------------------------------------------
+           Append two cloned sets so the track reads [A][B][C], all identical.
+           We keep the scroll position inside the middle band and jump by
+           exactly one set width whenever it drifts out. Because the sets are
+           identical, the jump is invisible - and it works in both directions,
+           so dragging backwards never hits a wall. */
+        for (var k = 0; k < 2; k++) {
+            originals.forEach(function (card) {
+                var clone = card.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                clone.querySelectorAll('a, button').forEach(function (el) { el.setAttribute('tabindex', '-1'); });
+                rail.appendChild(clone);
+            });
+        }
+        var cards = rail.querySelectorAll('.cert-card');
+
+        var loop = 0;            // width of one set, in px
+        var pos = 0;             // our own float copy of scrollLeft (the DOM value may round)
+        var startScroll = 0;     // drag origin, shifted along with any wrap
+
+        function measure() {
+            loop = cards[n].offsetLeft - cards[0].offsetLeft;
+        }
+
+        function normalize() {
+            if (!loop) return;
+            var shift = 0;
+            if (pos >= loop * 1.5) shift = -loop;
+            else if (pos < loop * 0.5) shift = loop;
+            if (shift) {
+                pos += shift;
+                startScroll += shift;
+                rail.scrollLeft = pos;
+            }
+        }
+
+        measure();
+        pos = loop;
+        rail.scrollLeft = pos;
+
+        window.addEventListener('resize', function () {
+            measure();
+            normalize();
+        });
+
+        /* --- pause state ----------------------------------------------------- */
+        var hovering = false;
+        var dragging = false;
+        var touching = false;
+        var focused = false;
+        var onScreen = true;
+        var resumeAt = 0;
+
+        function nudge(ms) {
+            resumeAt = performance.now() + (ms || RESUME_AFTER);
+        }
+
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (entries) {
+                onScreen = entries[0].isIntersecting;
+            }).observe(rail);
+        }
+
+        /* --- mouse / pen drag ----------------------------------------------
+           Touch is left to the browser so phones keep native momentum
+           flicking; we only pause the roll while a finger is down. */
         var isDown = false;
         var startX = 0;
-        var startScroll = 0;
         var moved = 0;
 
+        rail.addEventListener('pointerenter', function (e) {
+            if (e.pointerType === 'mouse') hovering = true;
+        });
+        rail.addEventListener('pointerleave', function (e) {
+            if (e.pointerType === 'mouse') {
+                hovering = false;
+                nudge(800);
+            }
+        });
+
         rail.addEventListener('pointerdown', function (e) {
-            // Ignore right/middle click.
+            if (e.pointerType === 'touch') {
+                touching = true;
+                return;
+            }
             if (e.button !== 0) return;
             isDown = true;
             moved = 0;
             startX = e.clientX;
             startScroll = rail.scrollLeft;
+            pos = startScroll;
         });
 
         rail.addEventListener('pointermove', function (e) {
             if (!isDown) return;
-            var dx = e.clientX - startX;
-            if (Math.abs(dx) > 5 && !rail.classList.contains('is-dragging')) {
-                rail.classList.add('is-dragging');
-                rail.setPointerCapture(e.pointerId);
+            // Button already up (released outside the window and the pointerup
+            // never reached us) - end the drag rather than follow the mouse.
+            if (e.buttons === 0) {
+                release(e);
+                return;
             }
-            if (!rail.classList.contains('is-dragging')) return;
+            var dx = e.clientX - startX;
+            if (!dragging && Math.abs(dx) > 5) {
+                dragging = true;
+                rail.classList.add('is-dragging');
+                try { rail.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+            }
+            if (!dragging) return;
             moved = Math.abs(dx);
-            rail.scrollLeft = startScroll - dx;
+            pos = startScroll - dx;
+            normalize();
+            rail.scrollLeft = pos;
         });
 
         function release(e) {
+            if (e.pointerType === 'touch') {
+                touching = false;
+                nudge();
+                return;
+            }
             if (!isDown) return;
             isDown = false;
-            if (rail.hasPointerCapture && e.pointerId !== undefined) {
+            if (dragging) {
                 try { rail.releasePointerCapture(e.pointerId); } catch (err) { /* already gone */ }
+                nudge();
             }
-            // Drop the dragging class a tick late so the click it would have
-            // fired gets swallowed by the pointer-events rule.
+            // Drop the flag a tick late so the click that follows a drag is
+            // still swallowed below.
             window.setTimeout(function () {
+                dragging = false;
                 rail.classList.remove('is-dragging');
-            }, moved > 5 ? 50 : 0);
+            }, 0);
         }
 
         rail.addEventListener('pointerup', release);
         rail.addEventListener('pointercancel', release);
-        rail.addEventListener('pointerleave', release);
+        // Alt-tabbing away mid-drag shouldn't leave the rail stuck either.
+        window.addEventListener('blur', function () {
+            if (isDown) release({ pointerType: 'mouse' });
+            touching = false;
+            hovering = false;
+        });
 
-        // A genuine drag should never follow a link.
+        // A genuine drag should never also count as a click.
         rail.addEventListener('click', function (e) {
             if (moved > 5) {
                 e.preventDefault();
                 e.stopPropagation();
+                moved = 0;
             }
         }, true);
 
-        /* --- arrow buttons --- */
+        // Trackpad swipes and shift+wheel scroll the rail natively; just pause.
+        rail.addEventListener('wheel', function () { nudge(); }, { passive: true });
+
+        // Only keyboard focus pauses the roll. A mouse drag also focuses the
+        // rail (it's tabbable), and that must not freeze it until the next click.
+        rail.addEventListener('focusin', function () {
+            try { focused = rail.matches(':focus-visible'); } catch (err) { focused = false; }
+        });
+        rail.addEventListener('focusout', function () { focused = false; nudge(800); });
+
+        // Anything that scrolled the rail other than our own writes (native
+        // touch/trackpad scrolling, smooth arrow scrolls) becomes the new truth.
+        rail.addEventListener('scroll', function () {
+            if (Math.abs(rail.scrollLeft - pos) > 2) pos = rail.scrollLeft;
+            syncDots();
+        }, { passive: true });
+
+        /* --- arrow buttons ------------------------------------------------- */
         function step() {
-            var card = rail.querySelector('.cert-card');
-            if (!card) return rail.clientWidth;
-            var styles = window.getComputedStyle(rail);
-            return card.offsetWidth + (parseInt(styles.columnGap || styles.gap, 10) || 32);
+            return cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : rail.clientWidth;
+        }
+
+        function glide(delta) {
+            normalize();
+            nudge(3000);
+            rail.scrollBy({ left: delta, behavior: 'smooth' });
         }
 
         var prev = document.getElementById('cert-prev');
         var next = document.getElementById('cert-next');
-        if (prev) prev.addEventListener('click', function () { rail.scrollBy({ left: -step(), behavior: 'smooth' }); });
-        if (next) next.addEventListener('click', function () { rail.scrollBy({ left: step(), behavior: 'smooth' }); });
+        if (prev) prev.addEventListener('click', function () { glide(-step()); });
+        if (next) next.addEventListener('click', function () { glide(step()); });
 
-        /* --- dots --- */
+        /* --- dots: one per real certificate -------------------------------- */
         var dotWrap = document.getElementById('cert-dots');
         var dots = [];
+
+        function centreOf(card) {
+            return card.offsetLeft + card.offsetWidth / 2 - rail.clientWidth / 2;
+        }
+
         if (dotWrap) {
-            cards.forEach(function (card, i) {
+            originals.forEach(function (card, i) {
                 var dot = document.createElement('button');
                 dot.type = 'button';
                 dot.className = 'cert-dot w-3 h-3 border-2 border-white/40 bg-white/10 cursor-hover';
                 dot.setAttribute('aria-label', 'Go to certificate ' + (i + 1));
                 dot.addEventListener('click', function () {
-                    rail.scrollTo({ left: card.offsetLeft - (rail.clientWidth - card.offsetWidth) / 2, behavior: 'smooth' });
+                    // Of the three copies of this certificate, go to the nearest.
+                    var best = null;
+                    for (var c = 0; c < 3; c++) {
+                        var target = centreOf(cards[i + c * n]);
+                        if (best === null || Math.abs(target - pos) < Math.abs(best - pos)) best = target;
+                    }
+                    nudge(3000);
+                    rail.scrollTo({ left: best, behavior: 'smooth' });
                 });
                 dotWrap.appendChild(dot);
                 dots.push(dot);
@@ -355,25 +500,43 @@
 
         function syncDots() {
             if (!dots.length) return;
-            var center = rail.scrollLeft + rail.clientWidth / 2;
+            var centre = rail.scrollLeft + rail.clientWidth / 2;
             var best = 0;
             var bestDist = Infinity;
-            cards.forEach(function (card, i) {
-                var dist = Math.abs((card.offsetLeft + card.offsetWidth / 2) - center);
+            for (var i = 0; i < cards.length; i++) {
+                var dist = Math.abs((cards[i].offsetLeft + cards[i].offsetWidth / 2) - centre);
                 if (dist < bestDist) { bestDist = dist; best = i; }
-            });
-            dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === best); });
+            }
+            var active = best % n;
+            dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === active); });
         }
 
-        rail.addEventListener('scroll', syncDots, { passive: true });
         syncDots();
 
-        /* --- keyboard --- */
+        /* --- keyboard ------------------------------------------------------ */
         rail.setAttribute('tabindex', '0');
         rail.addEventListener('keydown', function (e) {
-            if (e.key === 'ArrowRight') { e.preventDefault(); rail.scrollBy({ left: step(), behavior: 'smooth' }); }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); rail.scrollBy({ left: -step(), behavior: 'smooth' }); }
+            if (e.key === 'ArrowRight') { e.preventDefault(); glide(step()); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); glide(-step()); }
         });
+
+        /* --- the roll ------------------------------------------------------ */
+        if (reduceMotion) return;
+
+        var last = performance.now();
+        function tick(now) {
+            // Clamp the frame gap so a backgrounded tab doesn't lurch forward.
+            var dt = Math.min(now - last, 50);
+            last = now;
+
+            if (onScreen && !hovering && !dragging && !touching && !focused && now >= resumeAt) {
+                pos += SPEED * dt / 1000;
+                normalize();
+                rail.scrollLeft = pos;
+            }
+            window.requestAnimationFrame(tick);
+        }
+        window.requestAnimationFrame(tick);
     }
 
     /* ----------------------------------------------------------------------
