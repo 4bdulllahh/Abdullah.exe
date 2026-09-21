@@ -8,7 +8,7 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - **Interactive Mechanics:** Features a custom client-side cursor tracking node with dynamic CSS matrix transforms and mix-blend-mode adjustments, an asynchronous fluid marquee loop, dynamic scroll-reveal intersection observing, and a client-side window progress bar tracker.
 
 ## Core Technical Stack
-- **Languages:** JavaScript (ES6+), Python, C++, Java, Kotlin
+- **Languages:** JavaScript (ES6+), Python, C++, C#, Java, Kotlin
 - **Web Architectures:** Tailwind CSS, HTML5, CSS3, JSON, APIs, WebGL
 - **Game Engines & Prototyping:** Unity, Twine
 - **Mobile Environments:** Android Studio, Gradle
@@ -24,11 +24,11 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 
 ### 2. Prime Real Estate (Corporate Platform)
 - **URL:** https://prime-marketing-two.vercel.app/
-- **Description:** Comprehensive online real estate showcase framework modeled initially alongside real-time asset data pipelines and trading layout capabilities.
+- **Description:** A property marketing platform with animated 3D visuals, a searchable listings database and an integrated lead capture flow.
 - **Stack:** Frontend layout, Three.js spatial components, MySQL database querying, and responsive Tailwind UI styling.
 
 ### 3. Al Habibi Bakery (B2B Landing Engine)
-- **Code Repository:** https://github.com/4bdulllahhexe/Al-Habibi-Bakery.github.io.git
+- **Code Repository:** https://github.com/4bdulllahh/Al-Habibi-Bakery.github.io
 - **Description:** Custom performance-tuned business landing page built to initialize automated local lead generation funnels.
 - **Stack:** WebGL render modules, vanilla frontend architecture, and Three.js environmental layouts.
 
@@ -40,12 +40,12 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 ### 5. Dragon & Knights (Indie Game Production)
 - **URL:** https://a6dullah.itch.io/dragons-knights
 - **Description:** An independently constructed side-scrolling action indie game implementing physics loops and custom environmental state layers.
-- **Stack:** Unity Engine, C++ scripting patterns, custom 2D sprite animations, and local velocity mechanics.
+- **Stack:** Unity Engine, C# gameplay scripting, custom 2D sprite animations, and local velocity mechanics.
 
 ### 6. Stroke Prediction Engine (Machine Learning Notebook)
 - **Kaggle Notebook:** https://www.kaggle.com/code/abood186/stroke-prediction-using-randomforestclassifier
 - **Description:** A classification model trained to isolate patient diagnostic risk parameters and accurately calculate acute brain stroke probability.
-- **Stack:** Python data structures, Kaggle dataset kernels, RandomForestClassifier execution, and MySQL target tables.
+- **Stack:** Python, pandas feature engineering, scikit-learn RandomForestClassifier, and Matplotlib evaluation reporting.
 
 ### 7. Hallways (Interactive Fiction Production)
 - **Asset Hub:** https://drive.google.com/drive/folders/1Ddc5JVyv-Wa_dSpraJdL7n838MO633_5?usp=sharing
@@ -56,6 +56,38 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - **Code Repository:** https://github.com/CodeLab-II/skills-portfolio-4bdulllahh.git
 - **Description:** An interactive quiz application making automated third-party API queries to serve randomized trivia modules separated across complex operational difficulties.
 - **Stack:** Android Studio interface, Gradle builds, Kotlin routines, and asynchronous API integrations.
+
+### 9. HomingPigeon (Desktop Email Infrastructure Tool)
+- **Code Repository:** https://github.com/4bdulllahh/HomingPigeon
+- **Description:** A cross-platform desktop application for safe, compliant business outreach. Verifies SPF/DKIM/DMARC records, ramps sending volume gradually from ~20 per day with randomized delays and office-hours scheduling, previews spam scores before sending, validates contacts on import, reads the inbox for bounces, handles one-click unsubscribes via List-Unsubscribe headers, and halts automatically when failures spike. All data stays local with OS-level credential encryption (DPAPI on Windows). Currently beta v0.5.1.
+- **Stack:** Python, PyQt6, SQLite, multi-threaded architecture, SMTP/IMAP, DNS record inspection.
+
+### 10. Hannah Morgan Homes (Vue SPA with CRM)
+- **Code Repository:** https://github.com/4bdulllahh/Hannah-Morgan-Homes
+- **Description:** A real estate agent portfolio paired with a private CRM for lead pipeline tracking and an analytics dashboard showing enquiry sources.
+- **Stack:** Vue 3, Vite, Tailwind CSS, ESLint, PostCSS.
+
+### 11. Face-Tracking Laser Turret (Computer Vision + Embedded)
+- **Code Repository:** https://github.com/4bdulllahh/Face-Tracking-Laser
+- **Description:** A 3D-printed two-axis servo turret driven by real-time OpenCV face detection. Python reads the laptop camera, converts detected face positions into servo angles, and streams them over serial to Arduino firmware. Repository includes CAD files, firmware, vision code and wiring diagrams.
+- **Stack:** Python, OpenCV, Arduino, C++, 3D modelling and printing, serial communication.
+
+### 12. Uniformers (Corporate Website)
+- **Code Repository:** https://github.com/4bdulllahh/Uniformers
+- **Description:** The company website built while working the sales floor at Uniformers - the project that turned a salesperson into a developer.
+- **Stack:** HTML5, CSS3, JavaScript, responsive layout, SEO.
+
+### 13. Auto-Leads-Checker (Sales Automation Script)
+- **Code Repository:** https://github.com/4bdulllahh/Auto-Leads-Checker-
+- **Description:** A Python utility that walks a lead database and validates whether each email address and website is still live, cleaning stale lists automatically to protect sender reputation.
+- **Stack:** Python, DNS lookups, automated data cleaning.
+
+## Site Structure
+- **/** - Landing page: hero, about summary, tech stack grid (40 nodes), experience and education logs, selected works (3-column grid), draggable certifications carousel, contact form.
+- **/about.html** - Full biography: origin story, technical beliefs, worldview, working process, life outside code, fast facts terminal.
+- **/skills.html** - Complete technical breakdown across seven categories with proficiency levels and the project each skill was used on.
+- **/logs.html** - Detailed work history, education record and verified university achievements.
+- **/work.html** - All thirteen projects with the problem solved, what was built, and the stack used. Filterable by Web / Mobile / AI & Data / Hardware / Games.
 
 ## Professional Milestone Log
 
@@ -72,10 +104,9 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - Maximized operational downtime to master web mechanics, self-teaching frontend logic to deploy web environments and streamline customer feedback routes.
 
 ## Verified Credentials & Academic History
-- **BSc in Computer Science** | BathSpa University (2023 - 2026). Honors List student. Focuses on advanced algorithm structures, responsive application engineering, and mobile platform design.
-- **Masters in Data Science** | In-Progress (2026 - Present). Emphasizes classification mechanics, dataset curation, and scalable neural architectures.
+- **BSc in Computer Science** | BathSpa University (2023 - 2026). Focuses on advanced algorithm structures, responsive application engineering, and mobile platform design.
 - **General Science Diploma** | The English Private School (2010 - 2022).
-- **Verified Certifications Tracker (`Certifications.log`):** Contains 8 distinct verified credentials documented locally via verified image path maps (`Assets/Certificates/certificate1.jpg` through `certificate7.jpg`).
+- **Verified Certifications Tracker (`Certifications.log`):** Contains 7 distinct verified credentials (`Assets/Certificates/certificate1.jpg` through `certificate7.jpg`): Build Intelligent Agents / Google Agent Development Kit (GDG Bath Spa University UAE, 26 Nov 2025); Dream vs Reality AI Battle (GDGoC Bath Spa University RAK, 09 Feb 2026); Node.js Essential Training (LinkedIn Learning, 06 Jan 2026); Designing RESTful APIs (LinkedIn Learning, 06 Jan 2026); Introduction to JavaScript (Sololearn, 04 Apr 2024); Python Intermediate (Sololearn, 04 Dec 2024); Python Tkinter (Great Learning Academy, Dec 2024).
 
 ## Links, Coordinates & Verified Profiles
 - **Primary Website:** https://abdullahexe.online
@@ -83,4 +114,4 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - **Primary Email Address:** abdullahkamran823@gmail.com
 - **Global GitHub Interface:** https://github.com/4bdulllahh
 - **Instagram Portal:** https://www.instagram.com/4bdulllahh/
-- **LinkedIn Profile:** linkedin.com/in/abdullah-kamran-047905213/
+- **LinkedIn Profile:** https://www.linkedin.com/in/abzoola
