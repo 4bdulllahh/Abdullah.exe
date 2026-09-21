@@ -62,9 +62,10 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - **Description:** A cross-platform desktop application for safe, compliant business outreach. Verifies SPF/DKIM/DMARC records, ramps sending volume gradually from ~20 per day with randomized delays and office-hours scheduling, previews spam scores before sending, validates contacts on import, reads the inbox for bounces, handles one-click unsubscribes via List-Unsubscribe headers, and halts automatically when failures spike. All data stays local with OS-level credential encryption (DPAPI on Windows). Currently beta v0.5.1.
 - **Stack:** Python, PyQt6, SQLite, multi-threaded architecture, SMTP/IMAP, DNS record inspection.
 
-### 10. Hannah Morgan Homes (Vue SPA with CRM)
+### 10. Hannah Morgan Homes (Vue SPA with AI Assistant and CRM)
+- **Live URL:** https://morgan-horizon-homes.base44.app/
 - **Code Repository:** https://github.com/4bdulllahh/Hannah-Morgan-Homes
-- **Description:** A real estate agent portfolio paired with a private CRM for lead pipeline tracking and an analytics dashboard showing enquiry sources.
+- **Description:** A luxury real estate site for a UAE coastline agent. An on-page AI assistant qualifies buyers conversationally (budget, emirate, beachfront or skyline) and routes them to listings or the enquiry form, backed by a private CRM for lead pipeline tracking and an analytics dashboard showing enquiry sources.
 - **Stack:** Vue 3, Vite, Tailwind CSS, ESLint, PostCSS.
 
 ### 11. Face-Tracking Laser Turret (Computer Vision + Embedded)
@@ -72,15 +73,15 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - **Description:** A 3D-printed two-axis servo turret driven by real-time OpenCV face detection. Python reads the laptop camera, converts detected face positions into servo angles, and streams them over serial to Arduino firmware. Repository includes CAD files, firmware, vision code and wiring diagrams.
 - **Stack:** Python, OpenCV, Arduino, C++, 3D modelling and printing, serial communication.
 
-### 12. Uniformers (Corporate Website)
+### 12. Uniformers (Bilingual Corporate Website)
 - **Code Repository:** https://github.com/4bdulllahh/Uniformers
-- **Description:** The company website built while working the sales floor at Uniformers - the project that turned a salesperson into a developer.
-- **Stack:** HTML5, CSS3, JavaScript, responsive layout, SEO.
+- **Description:** The company website for a uniform, workwear and merchandise manufacturer in Sharjah, UAE, with product categories, services, a size guide and a request-a-quote flow in English and Arabic. Built while working the sales floor at Uniformers - the project that turned a salesperson into a developer.
+- **Stack:** HTML5, CSS3, JavaScript, English/Arabic, responsive layout, SEO.
 
-### 13. Auto-Leads-Checker (Sales Automation Script)
+### 13. LeadsVeri (Desktop Lead Verification App)
 - **Code Repository:** https://github.com/4bdulllahh/Auto-Leads-Checker-
-- **Description:** A Python utility that walks a lead database and validates whether each email address and website is still live, cleaning stale lists automatically to protect sender reputation.
-- **Stack:** Python, DNS lookups, automated data cleaning.
+- **Description:** A desktop app for cold outreach teams. Import an Excel or CSV file with an email and/or website column and it checks every lead concurrently, flagging dead contacts before anyone calls or emails them. Safe, Normal and Fast scan speeds balance throughput against rate limiting. Ships as a standalone Windows executable. Currently v0.1 beta.
+- **Stack:** Python, asyncio, desktop GUI, Excel/CSV parsing, PyInstaller.
 
 ## Site Structure
 - **/** - Landing page: hero, about summary, tech stack grid (40 nodes), experience and education logs, selected works (3-column grid), draggable certifications carousel, contact form.
@@ -111,7 +112,7 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 ## Links, Coordinates & Verified Profiles
 - **Primary Website:** https://abdullahexe.online
 - **Direct CV Asset Download Path:** https://abdullahexe.online/Assets/Resume/Abdullah.pdf
-- **Primary Email Address:** abdullahkamran823@gmail.com
+- **Primary Email Address:** abdullahworkaholic@gmail.com
 - **Global GitHub Interface:** https://github.com/4bdulllahh
 - **Instagram Portal:** https://www.instagram.com/4bdulllahh/
 - **LinkedIn Profile:** https://www.linkedin.com/in/abzoola
