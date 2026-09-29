@@ -189,8 +189,8 @@
     /* ----------------------------------------------------------------------
        PAGE TRANSITION CURTAIN
        ---------------------------------------------------------------------- */
-    var COVER_MS = 600;   // curtain fills bottom -> top
-    var HOLD_MS = 260;    // fully covered, before the page swaps
+    var COVER_MS = 220;   // curtain fills bottom -> top
+    var HOLD_MS = 30;     // fully covered, before the page swaps
 
     function initPageTransitions(skipArrival) {
         var curtain = document.getElementById('page-transition');
