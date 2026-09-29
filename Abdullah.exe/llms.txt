@@ -8,8 +8,9 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - **Interactive Mechanics:** Features a custom client-side cursor tracking node with dynamic CSS matrix transforms and mix-blend-mode adjustments, an asynchronous fluid marquee loop, dynamic scroll-reveal intersection observing, and a client-side window progress bar tracker.
 
 ## Core Technical Stack
-- **Languages:** JavaScript (ES6+), Python, C++, C#, Java, Kotlin
-- **Web Architectures:** Tailwind CSS, HTML5, CSS3, JSON, APIs, WebGL
+- **Languages:** JavaScript (ES6+), TypeScript, Python, C++, C#, Java, Kotlin
+- **Web Architectures:** React, Next.js, Vue 3, Vite, Tailwind CSS, HTML5, CSS3, JSON, APIs, WebGL, WebAssembly, Socket.IO, IndexedDB, pdf.js, p5.js
+- **Testing:** Vitest, Playwright, GitHub Actions CI
 - **Game Engines & Prototyping:** Unity, Twine
 - **Mobile Environments:** Android Studio, Gradle
 - **Data Science:** Kaggle (RandomForestClassifier, predictive model training)
@@ -79,16 +80,49 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - **Stack:** HTML5, CSS3, JavaScript, English/Arabic, responsive layout, SEO.
 
 ### 13. LeadsVeri (Desktop Lead Verification App)
-- **Code Repository:** https://github.com/4bdulllahh/Auto-Leads-Checker-
+- **Code Repository:** https://github.com/4bdulllahh/LeadsVeri
 - **Description:** A desktop app for cold outreach teams. Import an Excel or CSV file with an email and/or website column and it checks every lead concurrently, flagging dead contacts before anyone calls or emails them. Safe, Normal and Fast scan speeds balance throughput against rate limiting. Ships as a standalone Windows executable. Currently v0.1 beta.
 - **Stack:** Python, asyncio, desktop GUI, Excel/CSV parsing, PyInstaller.
 
+### 14. DocSanitize (Private In-Browser PDF & Image Toolkit)
+- **Live URL:** https://docsanitize.vercel.app
+- **Code Repository:** https://github.com/4bdulllahh/DocSanitize
+- **Description:** 55 free, private PDF, image and media tools that run entirely in the browser with no account and no server. Strips hidden metadata (EXIF, GPS, XMP, Office properties), finds fake redactions and invisible text, detects personal data, merges, splits, redacts, signs (drawn or certificate), OCRs scans, converts to and from Word, Excel and PowerPoint, and processes audio and video. Works offline in five languages including right-to-left Arabic. v2.0, MIT licensed.
+- **Stack:** TypeScript, Next.js (static export), React 19, Tailwind CSS v4, Zustand, pdf-lib, pdf.js, FFmpeg.wasm, Tesseract.js, WebAssembly, Vitest, Playwright, GitHub Actions.
+
+### 15. Paperless (Private In-Browser Invoicing)
+- **Live URL:** https://paperless-bay-zeta.vercel.app
+- **Code Repository:** https://github.com/4bdulllahh/Paperless-Invoices-Web
+- **Description:** Local-first invoice builder with a live, exact A4 PDF preview across six templates, automatic setup for 63 countries (currency, tax name and rate, tax-number labels), tax-invoice compliance checks, payment QR codes and exact integer money maths with 100% test coverage. No account or server; data stays in localStorage and IndexedDB, and it works offline as a PWA.
+- **Stack:** TypeScript, React 19, Vite, Tailwind CSS v4, Zustand, Zod, @react-pdf/renderer in a Web Worker, pdf.js, Vitest, PWA.
+
+### 16. Abdullah.exe (This Portfolio)
+- **Live URL:** https://abdullahexe.online
+- **Code Repository:** https://github.com/4bdulllahh/Abdullah.exe
+- **Description:** A hand-built neo-brutalist portfolio with no framework: boot sequence, page-transition curtain, draggable auto-rolling certificate rail, filterable project grid and animated skill bars.
+- **Stack:** HTML5, CSS3, JavaScript, Tailwind CSS, SEO, Vercel.
+
+### 17. Bound (Real-Time Multiplayer Card Game)
+- **Code Repository:** https://github.com/4bdulllahh/BoundWeb
+- **Description:** An online multiplayer version of a custom house-rules Hokm variant: 36-card deck with two Jokers, anti-clockwise play, Joker trap fouls, a "Bound" call to sweep all nine tricks, and a checker that ends each round early once it is mathematically decided. Began as a Python prototype.
+- **Stack:** JavaScript, React, Vite, Node.js, Express, Socket.IO, Python.
+
+### 18. Creative Coding (p5.js Sketch Series)
+- **Code Repository:** https://github.com/4bdulllahh/Creative-Coding
+- **Description:** Ten p5.js sketches covering pixel manipulation, filters, clipping masks, typography, mouse trails, interactive art, audio visualisation, data visualisation and an asteroid shooter game.
+- **Stack:** JavaScript, p5.js, p5.sound, HTML5, CSS3.
+
+### 19. Arduino Projects (Embedded Fundamentals)
+- **Code Repository:** https://github.com/4bdulllahh/Ardiono-Projects
+- **Description:** Six Arduino builds - traffic light, ultrasonic distance, rain sensor, sound sensor, potentiometer and keypad - plus the first version of the face-tracking laser.
+- **Stack:** C++, Arduino, Python (serial), sensors and electronics.
+
 ## Site Structure
-- **/** - Landing page: hero, about summary, tech stack grid (40 nodes), experience and education logs, selected works (3-column grid), draggable certifications carousel, contact form.
+- **/** - Landing page: hero, about summary, tech stack grid (48 nodes), experience and education logs, selected works (3x3 grid of nine projects), draggable certifications carousel, contact form.
 - **/about.html** - Full biography: origin story, technical beliefs, worldview, working process, life outside code, fast facts terminal.
 - **/skills.html** - Complete technical breakdown across seven categories with proficiency levels and the project each skill was used on.
 - **/logs.html** - Detailed work history, education record and verified university achievements.
-- **/work.html** - All thirteen projects with the problem solved, what was built, and the stack used. Filterable by Web / Mobile / AI & Data / Hardware / Games.
+- **/work.html** - All nineteen projects with the problem solved, what was built, and the stack used. Filterable by Web / Mobile / AI & Data / Hardware / Games.
 
 ## Professional Milestone Log
 
