@@ -9,8 +9,10 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 
 ## Core Technical Stack
 - **Languages:** JavaScript (ES6+), TypeScript, Python, C++, C#, Java, Kotlin
-- **Web Architectures:** React, Next.js, Vue 3, Vite, Tailwind CSS, HTML5, CSS3, JSON, APIs, WebGL, WebAssembly, Socket.IO, IndexedDB, pdf.js, p5.js
-- **Testing:** Vitest, Playwright, GitHub Actions CI
+- **Web Architectures:** React, Next.js, Vue 3, Vite, React Router, React Three Fiber, Tailwind CSS, SCSS, HTML5, CSS3, Canvas 2D, Web Audio API, MediaRecorder, JSON, APIs, WebGL, WebAssembly, Socket.IO, IndexedDB, pdf.js, p5.js
+- **Python Tooling:** PyQt6, httpx, aiohttp, asyncio, Beautiful Soup, openpyxl, Tkinter, PyInstaller
+- **AI APIs:** Google Gemini, Anthropic Claude, OpenAI-compatible APIs
+- **Testing:** Vitest, Playwright, pytest, GitHub Actions CI
 - **Game Engines & Prototyping:** Unity, Twine
 - **Mobile Environments:** Android Studio, Gradle
 - **Data Science:** Kaggle (RandomForestClassifier, predictive model training)
@@ -63,11 +65,11 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - **Description:** A cross-platform desktop application for safe, compliant business outreach. Verifies SPF/DKIM/DMARC records, ramps sending volume gradually from ~20 per day with randomized delays and office-hours scheduling, previews spam scores before sending, validates contacts on import, reads the inbox for bounces, handles one-click unsubscribes via List-Unsubscribe headers, and halts automatically when failures spike. All data stays local with OS-level credential encryption (DPAPI on Windows). Currently beta v0.5.1.
 - **Stack:** Python, PyQt6, SQLite, multi-threaded architecture, SMTP/IMAP, DNS record inspection.
 
-### 10. Hannah Morgan Homes (Vue SPA with AI Assistant and CRM)
+### 10. Hannah Morgan Homes (React SPA with AI Assistant and CRM)
 - **Live URL:** https://morgan-horizon-homes.base44.app/
 - **Code Repository:** https://github.com/4bdulllahh/Hannah-Morgan-Homes
 - **Description:** A luxury real estate site for a UAE coastline agent. An on-page AI assistant qualifies buyers conversationally (budget, emirate, beachfront or skyline) and routes them to listings or the enquiry form, backed by a private CRM for lead pipeline tracking and an analytics dashboard showing enquiry sources.
-- **Stack:** Vue 3, Vite, Tailwind CSS, ESLint, PostCSS.
+- **Stack:** React, JavaScript, TypeScript, Base44, Vite, React Router, Radix UI, Framer Motion, Tailwind CSS, ESLint, PostCSS.
 
 ### 11. Face-Tracking Laser Turret (Computer Vision + Embedded)
 - **Code Repository:** https://github.com/4bdulllahh/Face-Tracking-Laser
@@ -79,10 +81,10 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - **Description:** The company website for a uniform, workwear and merchandise manufacturer in Sharjah, UAE, with product categories, services, a size guide and a request-a-quote flow in English and Arabic. Built while working the sales floor at Uniformers - the project that turned a salesperson into a developer.
 - **Stack:** HTML5, CSS3, JavaScript, English/Arabic, responsive layout, SEO.
 
-### 13. LeadsVeri (Desktop Lead Verification App)
-- **Code Repository:** https://github.com/4bdulllahh/LeadsVeri
+### 13. LeadPulse (Desktop Lead Verification App)
+- **Code Repository:** https://github.com/4bdulllahh/LeadPulse
 - **Description:** A desktop app for cold outreach teams. Import an Excel or CSV file with an email and/or website column and it checks every lead concurrently, flagging dead contacts before anyone calls or emails them. Safe, Normal and Fast scan speeds balance throughput against rate limiting. Ships as a standalone Windows executable. Currently v0.1 beta.
-- **Stack:** Python, asyncio, desktop GUI, Excel/CSV parsing, PyInstaller.
+- **Stack:** Python, PyQt6, asyncio, aiohttp, dnspython, Beautiful Soup, openpyxl, SQLite, PyInstaller, pytest, GitHub Actions.
 
 ### 14. DocSanitize (Private In-Browser PDF & Image Toolkit)
 - **Live URL:** https://docsanitize.vercel.app
@@ -117,8 +119,31 @@ Self-taught software engineer and Full Stack Developer based in the United Arab 
 - **Description:** Six Arduino builds - traffic light, ultrasonic distance, rain sensor, sound sensor, potentiometer and keypad - plus the first version of the face-tracking laser.
 - **Stack:** C++, Arduino, Python (serial), sensors and electronics.
 
+### 20. GeoHarvest (Google Maps Lead Finder)
+- **Code Repository:** https://github.com/4bdulllahh/GeoHarvest
+- **Description:** A free Windows desktop app that finds business leads on Google Maps with no API key. Searches whole countries city by city or a radius around any address, then visits each website for emails, socials and the owner's name, estimates company age from RDAP and the Wayback Machine, and can score every lead with Gemini, Claude or an OpenAI-compatible model. Exports to Excel, CRM CSVs or Google Sheets. v0.2.2 beta, MIT licensed.
+- **Stack:** Python, PyQt6, httpx, SQLite, Gemini/Claude/OpenAI APIs, openpyxl, Windows DPAPI, Tkinter installer, PyInstaller, pytest, GitHub Actions.
+
+### 21. Typencut (3D Typing Racing Game)
+- **Live URL:** https://typencut-two.vercel.app
+- **Code Repository:** https://github.com/4bdulllahh/typencut
+- **Description:** A browser speed-typing game where every typed word steers a low-poly sports car through highway traffic: comma for left, full stop for right, ALL CAPS for nitro. Includes a WASD driving mode, and every car, sound effect and music track is generated in code. v1.17.0, MIT licensed.
+- **Stack:** TypeScript, Next.js, React, Three.js, React Three Fiber, Tailwind CSS, Web Audio API, Node test runner, GitHub Actions, Vercel.
+
+### 22. Matrixii (Webcam Matrix Filter)
+- **Live URL:** https://matrixii.vercel.app
+- **Code Repository:** https://github.com/4bdulllahh/Matrixii
+- **Description:** Turns a webcam feed or any video into Matrix digital rain in the browser, in eight character styles, and exports the result with its original sound. No framework, no dependencies, and video never leaves the device.
+- **Stack:** JavaScript, HTML5, CSS3, Canvas 2D, getUserMedia, MediaRecorder, Web Audio API, Vercel.
+
+### 23. Perfect Shades (Client Marketing Website)
+- **Live URL:** https://perfect-shades-website.vercel.app
+- **Code Repository:** https://github.com/4bdulllahh/Perfect-Shades-Website
+- **Description:** A five-page marketing site for a UAE company that builds car park shades, pergolas and canopies and does home maintenance, with a filterable project gallery, WhatsApp quick-connect and enquiry forms, built to the client's design system. Demo build for client review.
+- **Stack:** TypeScript, React, Vite, React Router, Tailwind CSS, Vercel.
+
 ## Site Structure
-- **/** - Landing page: hero, about summary, tech stack grid (48 nodes), experience and education logs, selected works (3x3 grid of nine projects), draggable certifications carousel, contact form.
+- **/** - Landing page: hero, about summary, tech stack grid (62 nodes), experience and education logs, selected works (3x3 grid of nine projects), draggable certifications carousel, contact form.
 - **/about.html** - Full biography: origin story, technical beliefs, worldview, working process, life outside code, fast facts terminal.
 - **/skills.html** - Complete technical breakdown across seven categories with proficiency levels and the project each skill was used on.
 - **/logs.html** - Detailed work history, education record and verified university achievements.
